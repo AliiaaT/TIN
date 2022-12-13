@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <a href="../index.html"><img src="../images/logo-fococlipping-standard.png" alt="logo" class="logo" ></a>
+            <ul class="nav-links">
+                <li><a href="../index.html"><h3>Home</h3></a></li>
+                <li><a href="../studentsPage/students.html"><h3>Students</h3></a></li>
+                <li><a href="../intructorPage/instructor.html"><h3>Instructors</h3></a></li>
+                <li class="lesson"><a href="../LessonsPage/lesson.html"><h3>Driving Lessons</h3></a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main">
+        <h2>Lesson Details:</h2>
+        <br>
+        <table class="table">
+            <thead>
+                <tr id="mainRow">
+
+                    <th>Student</th>
+                    <th>Instructor</th>
+                    <th>Start time</th>
+                    <th>End time</th>
+                    <th>Categoty</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Aliia Temirbek kyzy</td>
+                    <td>Max</td>
+                    <td>14/11/2022, 15:40</td>
+                    <td>14/11/2022, 19:40</td>
+                    <td>B</td>
+                    <td>
+                        <ul class="list">
+                            <li><a href="./details.html" class="list-action-button-details">Details</a></li>
+                            <li><a href="./form-edit.html" class="list-action-button-edit">Edit</a></li>
+                            <li><a onclick="deleteFunc()"  href="#" class="list-action-button-delete">Delete</a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Konrad</td>
+                    <td>Max</td>
+                    <td>14/11/2022, 15:40</td>
+                    <td>14/11/2022, 19:40</td>
+                    <td>C</td>
+                    <td>
+                        <ul class="list">
+                            <li><a href="./details.html" class="list-action-button-details">Details</a></li>
+                            <li><a href="./form-edit.html" class="list-action-button-edit">Edit</a></li>
+                            <li><a onclick="deleteFunc()"  href="#" class="list-action-button-delete">Delete</a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Michale</td>
+                    <td>Michal</td>
+                    <td>14/11/2022, 15:40</td>
+                    <td>14/11/2022, 19:40</td>
+                    <td>B</td>
+                    <td>
+                        <ul class="list">
+                            <li><a href="./details.html" class="list-action-button-details">Details</a></li>
+                            <li><a href="./form-edit.html" class="list-action-button-edit">Edit</a></li>
+                            <li><a onclick="deleteFunc()"  href="#" class="list-action-button-delete">Delete</a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Rema</td>
+                    <td>Olo</td>
+                    <td>14/11/2022, 15:40</td>
+                    <td>14/11/2022, 19:40</td>
+                    <td>B</td>
+                    <td>
+                        <ul class="list">
+                            <li><a href="./details.html" class="list-action-button-details">Deatails</a></li>
+                            <li><a href="./form-edit.html" class="list-action-button-edit">Edit</a></li>
+                            <li><a  onclick="deleteFunc()" href="#" class="list-action-button-delete">Delete</a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Selena</td>
+                    <td>Alex</td>
+                    <td>14/11/2022, 15:40</td>
+                    <td>14/11/2022, 19:40</td>
+                    <td>B</td>
+                    <td>
+                        <ul class="list">
+                            <li><a href="" class="list-action-button-details">Details</a></li>
+                            <li><a href="./form-edit.html" class="list-action-button-edit">Edit</a></li>
+                            <li><a  onclick="deleteFunc()" href="#" class="list-action-button-delete">Delete</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p><a href="./form.html" class="button-add">Add new lesson</a></p>
+    
+    </div>
+
+    <footer>
+        <hr>
+        <span>Aliia Temirbek kyzy</span><br>
+        <span>S21366</span>
+    </footer>
+
+    <script>
+        function deleteFunc() {
+            var response = confirm("Do you want to delete it?  Click OK to proceed otherwise click Cancel.");
+            if ( response == true )
+                {alert("Student was deleted")}
+        }
+     </script>
+    
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <a href="../index.html"><img src="../images/logo-fococlipping-standard.png" alt="logo" class="logo" ></a>
+            <ul class="nav-links">
+                <li><a href="../index.html"><h3>Home</h3></a></li>
+                <li  class="student"><a href="../studentsPage/students.html"><h3>Students</h3></a></li>
+                <li><a href="../intructorPage/instructor.html"><h3>Instructors</h3></a></li>
+                <li><a href="../LessonsPage/lesson.html"><h3>Driving Lessons</h3></a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main">
+        <h2>Add new instructor</h2>
+        <hr>
+        <br>
+        <form class="form">
+            <label>Name <span class="symbol-required">*</span></label>
+            <input type="text" required class="error-input">
+            <span id="errorName" class="errors-text">This field is required</span>
+            <label>Email<span class="symbol-required">*</span></label>
+            <input type="text" required class="error-input">
+            <span id="errorEmail" class="errors-text">This field is required</span>
+            <label>Price(per hour)<span class="symbol-required">*</span></label>
+            <input type="number" required class="error-input">
+            <span id="errorPrice" class="errors-text">This field is required</span>
+            <label>License issue date<span class="symbol-required">*</span></label>
+            <input type="date" required class="error-input">
+            <span id="errorLicense" class="errors-text">This field is required</span>
+
+            <div class="form-buttons">
+                <input type="submit" value="Add record" class="form-button-submit-add">
+                <a href="../intructorPage/instructor.html" class="form-button-cancel">Cancel</a>
+            </div>
+        </form>  
+    </div>
+
+    <footer>
+        <hr>
+        <span>Aliia Temirbek kyzy</span><br>
+        <span>S21366</span>
+    </footer>
+
+</body>
+</html>

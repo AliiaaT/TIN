@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructor</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <a href="../index.html"><img src="../images/logo-fococlipping-standard.png" alt="logo" class="logo" ></a>
+            <ul class="nav-links">
+                <li><a href="../index.html"><h3>Home</h3></a></li>
+                <li><a href="../studentsPage/students.html"><h3>Students</h3></a></li>
+                <li class="instructor"><a href=""><h3>Instructors</h3></a></li>
+                <li><a href="../LessonsPage/lesson.html"><h3>Driving Lessons</h3></a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main">
+        <h2>List of instructors:</h2>
+        <br>
+        <table class="table">
+            <thead>
+                <tr id="mainRow">
+
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Price(per hour)</th>
+                    <th>Lisence Issue Date</th>
+                    <th>Has Car</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Aliia</td>
+                    <td>Aliya12@gmail.com</td>
+                    <td>200 PLN</td>
+                    <td>2000.03.23</td>
+                    <td>Yes</td>
+                    <td>
+                        <ul class="list">
+                            <li><a href="./details.html" class="list-action-button-details">Details</a></li>
+                            <li><a href="./form-edit.html" class="list-action-button-edit">Edit</a></li>
+                            <li><a onclick="deleteFunc()"  href="#" class="list-action-button-delete">Delete</a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Max</td>
+                    <td>Max@gmail.com</td>
+                    <td>150 PLN</td>
+                    <td>1990.03.23</td>
+                    <td>Yes</td>
+                    <td>
+                        <ul class="list">
+                            <li><a href="" class="list-action-button-details">Details</a></li>
+                            <li><a href="./form-edit.html" class="list-action-button-edit">Edit</a></li>
+                            <li><a  onclick="deleteFunc()" href="#" class="list-action-button-delete">Delete</a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Alex</td>
+                    <td>Alex@gmail.com</td>
+                    <td>200 PLN</td>
+                    <td>2000.03.23</td>
+                    <td>Yes</td>
+                    <td>
+                        <ul class="list">
+                            <li><a href="" class="list-action-button-details">Details</a></li>
+                            <li><a href="./form-edit.html" class="list-action-button-edit">Edit</a></li>
+                            <li><a  onclick="deleteFunc()" href="#" class="list-action-button-delete">Delete</a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Olo</td>
+                    <td>Olo@gmail.com</td>
+                    <td>100 PLN</td>
+                    <td>1998.03.23</td>
+                    <td>No</td>
+                    <td>
+                        <ul class="list">
+                            <li><a href="" class="list-action-button-details">Deatails</a></li>
+                            <li><a href="./form-edit.html" class="list-action-button-edit">Edit</a></li>
+                            <li><a  onclick="deleteFunc()" href="#" class="list-action-button-delete">Delete</a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Michal</td>
+                    <td>Michal@gmail.com</td>
+                    <td>200 PLN</td>
+                    <td>2000.03.23</td>
+                    <td>Yes</td>
+                    <td>
+                        <ul class="list">
+                            <li><a href="" class="list-action-button-details">Details</a></li>
+                            <li><a href="./form-edit.html" class="list-action-button-edit">Edit</a></li>
+                            <li><a onclick="deleteFunc()"  href="#" class="list-action-button-delete">Delete</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p><a href="./form.html" class="button-add">Add new instructor</a></p>
+    
+    </div>
+
+    <footer>
+        <hr>
+        <span>Aliia Temirbek kyzy</span><br>
+        <span>S21366</span>
+    </footer>
+
+    <script>
+        function deleteFunc() {
+            var response = confirm("Do you want to delete it?  Click OK to proceed otherwise click Cancel.");
+            if ( response == true )
+                {alert("Student was deleted")}
+        }
+     </script>
+    
+
+</body>
+</html>

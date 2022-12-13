@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <a href="../index.html"><img src="../images/logo-fococlipping-standard.png" alt="logo" class="logo" ></a>
+            <ul class="nav-links">
+                <li><a href="../index.html"><h3>Home</h3></a></li>
+                <li><a href="../studentsPage/students.html"><h3>Students</h3></a></li>
+                <li><a href="../intructorPage/instructor.html"><h3>Instructors</h3></a></li>
+                <li class="lesson"><a href="../LessonsPage/lesson.html"><h3>Driving Lessons</h3></a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main">
+        <h2>Edit lesson</h2>
+        <hr>
+        <br>
+        <form class="form" novalidate onsubmit="return validateForm();">
+            <label>Student<span class="symbol-required">*</span></label>
+            <input type="text" value="Aliia Temirbek kyzy">
+            <span id="errorSName" class="errors-text"></span>
+            <label>Instructor <span class="symbol-required">*</span></label>
+            <input type="text" value="Max">
+            <span id="errorIName" class="errors-text"></span>
+            <label>Start Date<span class="symbol-required">*</span></label>
+            <input type="datetime-local" value="2022-11-14T15:40">
+            <span id="errorSNumber" class="errors-text"></span>
+            <label>End Date<span class="symbol-required">*</span></label>
+            <input type="datetime-local" value="2022-11-14T19:40">
+            <span id="errorENumber" class="errors-text"></span>
+
+            <label for="category">Category </label>
+            <select name="category" id="category">
+
+                <option value="1" >A</option>
+                <option value="2" selected>B</option>
+                <option value="3">C</option>
+
+            </select>
+            
+            <div class="form-buttons">
+                <input onclick="myFunction()" type="submit" value="Edit" class="form-button-submit-add">
+                <a href="./lesson.html" class="form-button-cancel">Cancel</a>
+            </div>
+        </form>  
+    </div>
+
+    <footer>
+        <hr>
+        <span>Aliia Temirbek kyzy</span><br>
+        <span>S21366</span>
+    </footer>
+
+    <script>
+        function myFunction() {
+          alert("Record has been edited.");
+        }
+    </script>
+
+</body>
+</html>
