@@ -25,18 +25,20 @@
         <hr>
         <br>
         <form class="form">
-            <label>Name <span class="symbol-required">*</span></label>
-            <input type="text" value="Max">
-            <span id="errorName" class="errors-text"></span>
-            <label>Email<span class="symbol-required">*</span></label>
-            <input type="text" value="Max@gmail.com	">
+            <label for="name">Name <span class="symbol-required">*</span></label>
+            <input id="name" type="text" value="Max">
+            <span id="errorName" class="errors-text"></span> <!--I dont think span is needed here in form page, it makes it redundat because all needed stuff is in form-invalid page-->
+            <label for="email">Email<span class="symbol-required">*</span></label>
+            <input id="email" type="text" value="Max@gmail.com	">
             <span id="errorEmail" class="errors-text"></span>
-            <label>Price(per hour)<span class="symbol-required">*</span></label>
-            <input type="number" value="200">
+            <label for="price">Price(per hour)<span class="symbol-required">*</span></label>
+            <input id="price" type="number" value="200">
             <span id="errorPrice" class="errors-text"></span>
-            <label>License issue date<span class="symbol-required">*</span></label>
-            <input type="date" value="2000-09-12">
+            <label for="license" >License issue date<span class="symbol-required">*</span></label>
+            <input id="license" type="date" value="2000-09-12">
             <span id="errorLicense" class="errors-text"></span>
+            <label for="hasCar">Has car</label>
+            <input id="hasCar" type="text">
 
             <div class="form-buttons">
                 <input onclick="myFunction()" type="submit" value="Edit" class="form-button-submit-add">

@@ -27,7 +27,7 @@
         <form class="form">
             <label >Name <span class="symbol-required">*</span></label>
             <input type="text" value="Max" disabled>
-            <span id="errorName" class="errors-text"></span>
+            <span id="errorName" class="errors-text"></span> <!--I dont think span is needed here FOR SURE? in form page, it makes it redundat because all needed stuff is in form-invalid page-->
             <label >Email<span class="symbol-required">*</span></label>
             <input type="text" value="Max@gmail.com	" disabled>
             <span id="errorEmail" class="errors-text"></span>
@@ -37,7 +37,9 @@
             <label >License issue date<span class="symbol-required">*</span></label>
             <input type="date" value="2000-09-12" disabled>
             <span id="errorLicense" class="errors-text"></span>
-            <a href="./form-edit.html">Edit</a>
+            <label>Has car</label>
+            <input id="hasCar" type="text" disabled>
+            <br><a href="./form-edit.html">Edit</a>
 
         </form>  
         <br>

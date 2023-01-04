@@ -25,31 +25,34 @@
         <hr>
         <br>
         <form class="form" novalidate onsubmit="return validateForm();">
-            <label for="student">Student </label>
+
+            <label for="student" >Student<span class="symbol-required">*</span> </label>
             <select name="student" id="student">
                 <option>--choose student--</option>">
                 <option value="1">Aliia Temirbek kyzy</option>
                 <option value="2">Michal Jackson</option>
                 <option value="3">Angelina Joulie</option>
             </select>
-            <span id="errorSName" class="errors-text"></span>
-            <label for="instructor">Instructor </label>
+            <span id="errorSName" class="errors-text"></span><!--I dont think span is needed here in form page, it makes it redundat because all needed stuff is in form-invalid page-->
+
+            <label for="instructor">Instructor<span class="symbol-required">*</span></label>
             <select name="instructor" id="instructor">
                 <option>--choose instructor--</option>">
                 <option value="1">Max</option>
                 <option value="2">Michal</option>
                 <option value="3">Ololo</option>
             </select>
-            
             <span id="errorIName" class="errors-text"></span>
+
             <label>Start Date<span class="symbol-required">*</span></label>
             <input id="startDate" type="datetime-local" required>
             <span id="errorSNumber" class="errors-text"></span>
+            
             <label>End Date<span class="symbol-required">*</span></label>
             <input id="endDate" type="datetime-local"  required>
             <span id="errorENumber" class="errors-text"></span>
 
-            <label for="category">Category </label>
+            <label for="category">Category</label>
             <input id="category" type="text"  required>
 
 

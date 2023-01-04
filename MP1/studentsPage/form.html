@@ -27,7 +27,7 @@
         <form class="form" novalidate onsubmit="return validateForm();">
             <label for="name">Name <span class="symbol-required">*</span></label>
             <input id="name" type="text" placeholder="2-60 symbols" required>
-            <span id="errorName" class="errors-text"></span>
+            <span id="errorName" class="errors-text"></span><!--I dont think span is needed here in form page, it makes it redundat because all needed stuff is in form-invalid page-->
             <label for="surname">Surname <span class="symbol-required">*</span></label>
             <input id="surname" type="text" placeholder="2-60 symbols" required>
             <span id="errorSurname" class="errors-text"></span>

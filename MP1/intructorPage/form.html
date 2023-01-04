@@ -25,11 +25,12 @@
         <hr>
         <br>
         <form class="form" novalidate onsubmit="return validateForm();">
+
             <label for="name">Name <span class="symbol-required">*</span></label>
             <input id="name" type="text" placeholder="2-60 symbols" required>
-            <span id="errorName" class="errors-text"></span>
+            <span id="errorName" class="errors-text"></span> <!--I dont think span is needed here in form page, it makes it redundat because all needed stuff is in form-invalid page-->
             <label for="email">Email<span class="symbol-required">*</span></label>
-            <input id="email" type="text">
+            <input id="email" type="text" required>
             <span id="errorEmail" class="errors-text"></span>
             <label for="price">Price(per hour)<span class="symbol-required">*</span></label>
             <input id="price" type="number" required>
@@ -37,6 +38,9 @@
             <label>License issue date<span class="symbol-required">*</span></label>
             <input id="lecense" type="date" required>
             <span id="errorLicense" class="errors-text"></span>
+            <label for="hasCar">Has car</label>
+            <input id="hasCar" type="text">
+
 
             <div class="form-buttons">
                 <input onclick="myFunction()" type="submit" value="Add record" class="form-button-submit-add">
