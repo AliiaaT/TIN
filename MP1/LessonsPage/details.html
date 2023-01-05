@@ -25,23 +25,37 @@
         <hr>
         <br>
         <form class="form">
-            <label>Student <span class="symbol-required">*</span></label>
-            <input type="text" name="Name" value="Aliia Temirbek kyzy" disabled>
-            <br><!--Like this instead of span? everywhere beyond form-invalid page-->
-            <label>Instructor <span class="symbol-required">*</span></label>
-            <input type="text" name="Surname" value="Max" disabled>
-            <br>
-            <label>Start Date<span class="symbol-required">*</span></label>
-            <input type="datetime-local" value="2017-06-01T08:30" disabled>
-            <br>
-            <label>End Date<span class="symbol-required">*</span></label>
-            <input type="datetime-local" value="2017-06-01T08:30" disabled>
-            <br>
-            <label>Category</label>
-            <input type="text" value="B" disabled>
-            <br>
 
+            <label for="student" >Student<span class="symbol-required">*</span> </label>
+            <select disabled name="student"  id="student">
+                <option>--choose student--</option>
+                <option value="1">Aliia Temirbek kyzy</option>
+                <option selected value="2">Michal Jackson</option>
+                <option value="3">Angelina Joulie</option>
+            </select>
+            <span id="errorSName" class="errors-text"></span>
+
+            <label for="instructor">Instructor<span class="symbol-required">*</span></label>
+            <select disabled name="instructor" id="instructor">
+                <option>--choose instructor--</option>
+                <option value="1">Max</option>
+                <option selected value="2">Michal</option>
+                <option value="3">Ololo</option>
+            </select>
+            <span id="errorIName" class="errors-text"></span>
+
+            <label for="startDate">Start Date<span class="symbol-required">*</span></label>
+            <input disabled id="startDate" name="startDate" value="2017-06-01T07:30" type="datetime-local" required>
+            <span id="errorSNumber" class="errors-text"></span>
+            
+            <label for="endDate">End Date<span class="symbol-required">*</span></label>
+            <input disabled id="endDate" name="endDate"  value="2017-06-01T08:30" type="datetime-local"  required>
+            <span id="errorENumber" class="errors-text"></span>
+
+            <label for="category">Category</label>
+            <input disabled id="category" name="category" value="B" type="text"  required>
            
+            <br>
             <a href="./form-edit.html">Edit</a>
 
         </form>  

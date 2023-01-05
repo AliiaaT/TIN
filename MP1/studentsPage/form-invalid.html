@@ -25,23 +25,28 @@
         <hr>
         <br>
         <form class="form">
-            <label>Name <span class="symbol-required">*</span></label>
-            <input type="text" required class="error-input">
+            <label for="name">Name <span class="symbol-required">*</span></label>
+            <input id="name" class="error-input" name="name" type="text" placeholder="2-60 symbols" required>
             <span id="errorName" class="errors-text">This field is required</span>
-            <label>Surname <span class="symbol-required">*</span></label>
-            <input type="text" required class="error-input">
+
+            <label for="surname">Surname <span class="symbol-required">*</span></label>
+            <input id="surname" class="error-input" name="surname" type="text" placeholder="2-60 symbols" required>
             <span id="errorSurname" class="errors-text">This field is required</span>
-            <label>Phone number<span class="symbol-required">*</span></label>
-            <input type="number" required class="error-input">
+
+            <label for="phoneNumber">Phone number<span class="symbol-required">*</span></label>
+            <input id="phoneNumber" class="error-input"  name="phoneNumber" type="number" placeholder="phone number with county code" required>
             <span id="errorNumber" class="errors-text">This field is required</span>
-            <label>Address</label>
-            <input type="text">
+
+            <label for="address">Address</label>
+            <input id="address" name="address" type="text">
             <br>
-            <label>Birth Date<span class="symbol-required">*</span></label>
-            <input type="date" required class="error-input">
+            <label for="birthDate">Birth Date<span class="symbol-required">*</span></label>
+            <input id="birthDate" class="error-input"  name="birthDate" type="date" required>
             <span id="errorDate" class="errors-text">This field is required</span>
 
             <div class="form-buttons">
+                <p id="ErrorSummary">Form contains errors.</p>
+                <br>
                 <input type="submit" value="Add record" class="form-button-submit-add">
                 <a href="../studentsPage/students.html" class="form-button-cancel">Cancel</a>
             </div>

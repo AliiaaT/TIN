@@ -27,22 +27,27 @@
         <form class="form" novalidate onsubmit="return validateForm();">
 
             <label for="name">Name <span class="symbol-required">*</span></label>
-            <input id="name" type="text" placeholder="2-60 symbols" required>
-            <span id="errorName" class="errors-text"></span> <!--I dont think span is needed here in form page, it makes it redundat because all needed stuff is in form-invalid page-->
-            <label for="email">Email<span class="symbol-required">*</span></label>
-            <input id="email" type="text" required>
+            <input id="name" name="name" type="text" placeholder="2-60 symbols" required>
+            <span id="errorName" class="errors-text"></span>
+
+            <label for="email">Email <span class="symbol-required">*</span></label>
+            <input id="email" name="email" type="text" required>
             <span id="errorEmail" class="errors-text"></span>
+
             <label for="price">Price(per hour)<span class="symbol-required">*</span></label>
-            <input id="price" type="number" required>
+            <input id="price" name="price" type="number" required>
             <span id="errorPrice" class="errors-text"></span>
-            <label>License issue date<span class="symbol-required">*</span></label>
-            <input id="lecense" type="date" required>
+
+            <label for="license">License issue date<span class="symbol-required">*</span></label>
+            <input id="lecense" name="license" type="date" required>
             <span id="errorLicense" class="errors-text"></span>
+
             <label for="hasCar">Has car</label>
-            <input id="hasCar" type="text">
+            <input id="hasCar" name="hasCar" type="text">
 
 
             <div class="form-buttons">
+                <p id="ErrorSummary"></p>
                 <input onclick="myFunction()" type="submit" value="Add record" class="form-button-submit-add">
                 <a href="../intructorPage/instructor.html" class="form-button-cancel">Cancel</a>
             </div>

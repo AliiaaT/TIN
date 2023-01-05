@@ -183,7 +183,8 @@ textarea {
 }
 
 .form input.error-input,
-.form select.error-input {
+.form select.error-input
+{
     border: 3px solid #e74c3c; /* you can put here errors-text here as well because it is also red, fix redundence */
 }
 
@@ -200,7 +201,8 @@ textarea {
 }
 
 .symbol-required,
-.errors-text {
+.errors-text,
+.form p {
     color: #c0392b;
 }
 

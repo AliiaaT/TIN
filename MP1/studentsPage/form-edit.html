@@ -25,23 +25,27 @@
         <hr>
         <br>
         <form class="form">
-            <label>Name <span class="symbol-required">*</span></label>
-            <input type="text" value="Aliia"> <!--I think I can put placeholder here as well-->
-            <br><!--I dont think span is needed here in form page, it makes it redundat because all needed stuff is in form-invalid page-->
-            <!--Like here just put br instead if span?-->
-            <label>Surname <span class="symbol-required">*</span></label>
-            <input type="text" value="Temirbek kyzy">
+            <label for="name">Name <span class="symbol-required">*</span></label>
+            <input id="name" name="name" type="text" placeholder="2-60 symbols" value="Aliia" required>
+            <span id="errorName" class="errors-text"></span>
+
+            <label for="surname">Surname <span class="symbol-required">*</span></label>
+            <input id="surname" name="surname" value="Temirbek kyzy" type="text" placeholder="2-60 symbols" required>
+            <span id="errorSurname" class="errors-text"></span>
+
+            <label for="phoneNumber">Phone number<span class="symbol-required">*</span></label>
+            <input id="phoneNumber" name="phoneNumber" value="0555679436" type="number" placeholder="phone number with county code" required>
+            <span id="errorNumber" class="errors-text"></span>
+
+            <label for="address">Address</label>
+            <input id="address" name="address" type="text">
             <br>
-            <label>Phone number<span class="symbol-required">*</span></label>
-            <input type="number" value="555689534">
-            <br>
-            <label>Address</label>
-            <input type="text" value="Poland, Warsaw	">
-            <br>
-            <label>Birth Date<span class="symbol-required">*</span></label>
-            <input type="date" value="2000-03-23">
+            <label for="birthDate">Birth Date<span class="symbol-required">*</span></label>
+            <input id="birthDate" name="birthDate" value="2000-07-23" type="date" required>
+            <span id="errorDate" class="errors-text"></span>
 
             <div class="form-buttons">
+                <p id="ErrorSummary"></p>
                 <input onclick="myFunction()" type="submit" value="Edit" class="form-button-submit-add">
                 <a href="../studentsPage/students.html" class="form-button-cancel">Cancel</a>
             </div>

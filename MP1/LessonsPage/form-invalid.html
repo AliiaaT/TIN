@@ -25,24 +25,39 @@
         <hr>
         <br>
         <form class="form" novalidate onsubmit="return validateForm();">
-            <label>Student<span class="symbol-required">*</span></label>
-            <input type="text" required class="error-input">
+
+            <label for="student" >Student<span class="symbol-required">*</span> </label>
+            <select name="student"  id="student" class="error-input">
+                <option>--choose student--</option>
+                <option value="1">Aliia Temirbek kyzy</option>
+                <option value="2">Michal Jackson</option>
+                <option value="3">Angelina Joulie</option>
+            </select>
             <span id="errorSName" class="errors-text">This field is required</span>
-            <label>Instructor <span class="symbol-required">*</span></label>
-            <input type="text" required class="error-input">
+
+            <label for="instructor">Instructor<span class="symbol-required">*</span></label>
+            <select name="instructor" id="instructor" class="error-input">
+                <option>--choose instructor--</option>
+                <option value="1">Max</option>
+                <option value="2">Michal</option>
+                <option value="3">Ololo</option>
+            </select>
             <span id="errorIName" class="errors-text">This field is required</span>
-            <label>Start Date<span class="symbol-required">*</span></label>
-            <input type="text" required class="error-input">
+
+            <label for="startDate">Start Date<span class="symbol-required">*</span></label>
+            <input id="startDate" name="startDate" class="error-input" type="datetime-local" required>
             <span id="errorSNumber" class="errors-text">This field is required</span>
-            <label>End Date<span class="symbol-required">*</span></label>
-            <input type="text" required class="error-input">
+            
+            <label for="endDate">End Date<span class="symbol-required">*</span></label>
+            <input id="endDate" name="endDate" class="error-input" type="datetime-local"  required>
             <span id="errorENumber" class="errors-text">This field is required</span>
 
             <label for="category">Category</label>
-            <input id="category" type="text"  required>
-
+            <input id="category" name="category" type="text"  required>
             
             <div class="form-buttons">
+                <p id="ErrorSummary">Form contains errors.</p>
+                <br>
                 <input type="submit" value="Add record" class="form-button-submit-add">
                 <a href="./lesson.html" class="form-button-cancel">Cancel</a>
             </div>

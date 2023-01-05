@@ -25,23 +25,31 @@
         <hr>
         <br>
         <form class="form">
-            <label >Name <span class="symbol-required">*</span></label>
-            <input type="text" value="Max" disabled>
-            <span id="errorName" class="errors-text"></span> <!--I dont think span is needed here FOR SURE? in form page, it makes it redundat because all needed stuff is in form-invalid page-->
-            <label >Email<span class="symbol-required">*</span></label>
-            <input type="text" value="Max@gmail.com	" disabled>
+
+            <label for="name">Name <span class="symbol-required">*</span></label>
+            <input id="name" name="name" value="Max" disabled type="text" placeholder="2-60 symbols" required>
+            <span id="errorName" class="errors-text"></span>
+
+            <label for="email">Email <span class="symbol-required">*</span></label>
+            <input id="email" name="email" value="Max@gmail.com" disabled type="text" required>
             <span id="errorEmail" class="errors-text"></span>
-            <label >Price(per hour)<span class="symbol-required">*</span></label>
-            <input type="number" value="200" disabled>
+
+            <label for="price">Price(per hour)<span class="symbol-required">*</span></label>
+            <input id="price" name="price" value="200" disabled type="number" required>
             <span id="errorPrice" class="errors-text"></span>
-            <label >License issue date<span class="symbol-required">*</span></label>
-            <input type="date" value="2000-09-12" disabled>
+
+            <label for="license">License issue date<span class="symbol-required">*</span></label>
+            <input id="lecense" name="license" type="date" required>
             <span id="errorLicense" class="errors-text"></span>
-            <label>Has car</label>
-            <input id="hasCar" type="text" disabled>
-            <br><a href="./form-edit.html">Edit</a>
+
+            <label for="hasCar">Has car</label>
+            <input id="hasCar" name="hasCar" value="No" disabled type="text">
+
+            <br><br>
+            <a href="./form-edit.html">Edit</a>
 
         </form>  
+        <br>
         <br>
         <table class="table-list">
             <thead>

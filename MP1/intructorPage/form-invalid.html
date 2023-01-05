@@ -25,23 +25,29 @@
         <hr>
         <br>
         <form class="form">
+
             <label for="name">Name <span class="symbol-required">*</span></label>
-            <input id="name" type="text" required class="error-input">
+            <input id="name" name="name" class="error-input" type="text" placeholder="2-60 symbols" required>
             <span id="errorName" class="errors-text">This field is required</span>
-            <label for="email">Email<span class="symbol-required">*</span></label>
-            <input id="email" type="text" required class="error-input">
+
+            <label for="email">Email <span class="symbol-required">*</span></label>
+            <input id="email" name="email" class="error-input" type="text" required>
             <span id="errorEmail" class="errors-text">This field is required</span>
+
             <label for="price">Price(per hour)<span class="symbol-required">*</span></label>
-            <input id="price" type="number" required class="error-input">
+            <input id="price" name="price" class="error-input" type="number" required>
             <span id="errorPrice" class="errors-text">This field is required</span>
+
             <label for="license">License issue date<span class="symbol-required">*</span></label>
-            <input id="license" type="date" required class="error-input">
+            <input id="lecense" name="license" class="error-input" type="date" required>
             <span id="errorLicense" class="errors-text">This field is required</span>
+
             <label for="hasCar">Has car</label>
-            <input id="hasCar" type="text">
+            <input id="hasCar" name="hasCar"  type="text">
 
             
             <div class="form-buttons">
+                <p id="ErrorSummary">Form contains errors.</p>
                 <input type="submit" value="Add record" class="form-button-submit-add">
                 <a href="../intructorPage/instructor.html" class="form-button-cancel">Cancel</a>
             </div>

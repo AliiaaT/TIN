@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <script type="application/javascript" src="/js/validationCommon.js"></script>
+    <script type="application/javascript" src="/js/validationStudentForm.js"></script>
 </head>
 <body>
     <div class="header">
@@ -23,25 +25,30 @@
     <div class="main">
         <h2>Add new student</h2>
         <hr>
-        <br>
+        <br>    
         <form class="form" novalidate onsubmit="return validateForm();">
+
             <label for="name">Name <span class="symbol-required">*</span></label>
-            <input id="name" type="text" placeholder="2-60 symbols" required>
-            <span id="errorName" class="errors-text"></span><!--I dont think span is needed here in form page, it makes it redundat because all needed stuff is in form-invalid page-->
+            <input id="name" name="name" type="text" placeholder="2-60 symbols" required>
+            <span id="errorName" class="errors-text"></span>
+
             <label for="surname">Surname <span class="symbol-required">*</span></label>
-            <input id="surname" type="text" placeholder="2-60 symbols" required>
+            <input id="surname" name="surname" type="text" placeholder="2-60 symbols" required>
             <span id="errorSurname" class="errors-text"></span>
+
             <label for="phoneNumber">Phone number<span class="symbol-required">*</span></label>
-            <input id="phoneNumber" type="number" placeholder="2-60 symbols" required>
+            <input id="phoneNumber" name="phoneNumber" type="number" placeholder="phone number with county code" required>
             <span id="errorNumber" class="errors-text"></span>
-            <label for="address">Address</label>
-            <input id="address" type="text">
+
+            <label for="address">Address</label> <!--No validation-->
+            <input id="address" name="address" placeholder="10-60 symbols" type="text">
             <br>
             <label for="birthDate">Birth Date<span class="symbol-required">*</span></label>
-            <input id="birthDate" type="date" required>
+            <input id="birthDate" name="birthDate" type="date" required>
             <span id="errorDate" class="errors-text"></span>
 
             <div class="form-buttons">
+                <p id="ErrorSummary"></p>
                 <input onclick="myFunction()" type="submit" value="Add record" class="form-button-submit-add">
                 <a href="../studentsPage/students.html" class="form-button-cancel">Cancel</a>
             </div>

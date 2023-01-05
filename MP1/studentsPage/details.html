@@ -25,22 +25,25 @@
         <hr>
         <br>
         <form class="form">
-            <label>Name <span class="symbol-required">*</span></label>
-            <input type="text" name="Name" value="Aliia" disabled>
-            <br><!--I dont think span is needed here in form page, it makes it redundat because all needed stuff is in form-invalid page-->
-            <!--Like here just put br instead if span?-->
-            <label>Surname <span class="symbol-required">*</span></label>
-            <input type="text" name="Surname" value="Temirbek kyzy" disabled>
+
+            <label for="name">Name <span class="symbol-required">*</span></label>
+            <input id="name" name="name" value="Aliia" disabled type="text"  required>
+            <span id="errorName" class="errors-text"></span>
+
+            <label for="surname">Surname <span class="symbol-required">*</span></label>
+            <input id="surname" name="surname" value="Temirbek kyzy" disabled type="text" required>
+            <span id="errorSurname" class="errors-text"></span>
+
+            <label for="phoneNumber">Phone number<span class="symbol-required">*</span></label>
+            <input id="phoneNumber" name="phoneNumber" value="555689534" disabled type="number" required>
+            <span id="errorNumber" class="errors-text"></span>
+
+            <label for="address">Address</label>
+            <input id="address" name="address" value="Warsaw wolska 105" disabled type="text">
             <br>
-            <label>Phone number<span class="symbol-required">*</span></label>
-            <input type="number" value="555689534" disabled>
-            <br>
-            <label>Address</label>
-            <input type="text" value="Poland, Warsaw" disabled>
-            <br>
-            <label>Birth Date<span class="symbol-required">*</span></label>
-            <input type="date" value="2000-03-23" disabled>
-            <br>
+            <label for="birthDate">Birth Date<span class="symbol-required">*</span></label>
+            <input id="birthDate" name="birthDate" value="2000-03-23" disabled type="date" required>
+            <span id="errorDate" class="errors-text"></span>
 
            
             <a href="./form-edit.html">Edit</a>

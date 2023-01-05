@@ -26,30 +26,41 @@
         <br>
         <form class="form" novalidate onsubmit="return validateForm();">
 
-            <label>Student<span class="symbol-required">*</span></label>
-            <input type="text" value="Aliia Temirbek kyzy">
-            <span id="errorSName" class="errors-text"></span><!--I dont think span is needed here in form page, it makes it redundat because all needed stuff is in form-invalid page-->
-            <label>Instructor <span class="symbol-required">*</span></label>
-            <input type="text" value="Max">
+
+            <label for="student" >Student<span class="symbol-required">*</span> </label>
+            <select name="student"  id="student">
+                <option>--choose student--</option>
+                <option value="1">Aliia Temirbek kyzy</option>
+                <option selected value="2">Michal Jackson</option>
+                <option value="3">Angelina Joulie</option>
+            </select>
+            <span id="errorSName" class="errors-text"></span>
+
+            <label for="instructor">Instructor<span class="symbol-required">*</span></label>
+            <select name="instructor" id="instructor">
+                <option>--choose instructor--</option>
+                <option value="1">Max</option>
+                <option selected value="2">Michal</option>
+                <option value="3">Ololo</option>
+            </select>
             <span id="errorIName" class="errors-text"></span>
-            <label>Start Date<span class="symbol-required">*</span></label>
-            <input type="datetime-local" value="2022-11-14T15:40">
+
+            <label for="startDate">Start Date<span class="symbol-required">*</span></label>
+            <input id="startDate" name="startDate" value="2017-06-01T07:30" type="datetime-local" required>
             <span id="errorSNumber" class="errors-text"></span>
-            <label>End Date<span class="symbol-required">*</span></label>
-            <input type="datetime-local" value="2022-11-14T19:40">
+            
+            <label for="endDate">End Date<span class="symbol-required">*</span></label>
+            <input id="endDate" name="endDate"  value="2017-06-01T08:30" type="datetime-local"  required>
             <span id="errorENumber" class="errors-text"></span>
 
-            <label for="category">Category </label>
-            <select name="category" id="category">
+            <label for="category">Category</label>
+            <input id="category" name="category" value="B" type="text"  required>
 
-                <option value="1" >A</option>
-                <option value="2" selected>B</option>
-                <option value="3">C</option>
 
-            </select>
             
             <div class="form-buttons">
-                <input onclick="myFunction()" type="submit" value="Edit" class="form-button-submit-add">
+                <p id="ErrorSummary"></p>
+                <input onclick="myFunction()" type="submit" value="Add record" class="form-button-submit-add">
                 <a href="./lesson.html" class="form-button-cancel">Cancel</a>
             </div>
         </form>  
