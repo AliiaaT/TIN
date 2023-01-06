@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <a href="../index.html"><img src="../images/logo-fococlipping-standard.png" alt="logo" class="logo" ></a>
+            <ul class="nav-links">
+                <li><a href="../index.html"><h3>Home</h3></a></li>
+                <li><a href="../studentsPage/students.html"><h3>Students</h3></a></li>
+                <li class="instructor"><a href="../intructorPage/instructor.html"><h3>Instructors</h3></a></li>
+                <li><a href="../LessonsPage/lesson.html"><h3>Driving Lessons</h3></a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main">
+        <h2>Istructor Details</h2>
+        <hr>
+        <br>
+        <form class="form">
+
+            <label for="name">Name <span class="symbol-required">*</span></label>
+            <input id="name" name="name" value="Max" disabled type="text" placeholder="2-60 symbols" required>
+            <span id="errorName" class="errors-text"></span>
+
+            <label for="email">Email <span class="symbol-required">*</span></label>
+            <input id="email" name="email" value="Max@gmail.com" disabled type="text" required>
+            <span id="errorEmail" class="errors-text"></span>
+
+            <label for="price">Price(per hour)<span class="symbol-required">*</span></label>
+            <input id="price" name="price" value="200" disabled type="number" required>
+            <span id="errorPrice" class="errors-text"></span>
+
+            <label for="license">License issue date<span class="symbol-required">*</span></label>
+            <input id="lecense" name="license" type="date" required>
+            <span id="errorLicense" class="errors-text"></span>
+
+            <label for="hasCar">Has car</label>
+            <input id="hasCar" name="hasCar" value="No" disabled type="text">
+
+            <br><br>
+            <a href="./form-edit.html">Edit</a>
+
+        </form>  
+        <br>
+        <br>
+        <table class="table-list">
+            <thead>
+                <tr id="mainRow">
+
+                    <th>Student</th>
+                    <th>Start time</th>
+                    <th>End time</th>
+                    <th>Categoty</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>Aliia Temirbek kyzy</td>
+                <td>14/11/2022, 15:40</td>
+                <td>14/11/2022, 19:40</td>
+                <td>B</td>
+            </tr>
+            <tr>
+                <td>Konrad</td>
+                <td>22/11/2022, 15:40</td>
+                <td>22/11/2022, 19:40</td>
+                <td>A</td>
+            </tr>
+
+        </table>
+        <br>
+        <a href="./instructor.html">Back</a>
+
+    </div>
+
+    <footer>
+
+        <hr>
+
+        <span>Aliia Temirbek kyzy</span><br>
+        <span>S21366</span>
+    </footer>
+
+</body>
+</html>

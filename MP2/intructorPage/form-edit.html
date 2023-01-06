@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script type="application/javascript" src="/js/validationCommon.js"></script>
+    <script type="application/javascript" src="/js/validationInstructor.js"></script>
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <a href="../index.html"><img src="../images/logo-fococlipping-standard.png" alt="logo" class="logo" ></a>
+            <ul class="nav-links">
+                <li><a href="../index.html"><h3>Home</h3></a></li>
+                <li><a href="../studentsPage/students.html"><h3>Students</h3></a></li>
+                <li class="instructor"><a href="../intructorPage/instructor.html"><h3>Instructors</h3></a></li>
+                <li><a href="../LessonsPage/lesson.html"><h3>Driving Lessons</h3></a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main">
+        <h2>Edit instructor</h2>
+        <hr>
+        <br>
+        <form class="form" novalidate onsubmit="return validateForm();">
+
+            <label for="name">Name <span class="symbol-required">*</span></label>
+            <input id="name" name="name" type="text" placeholder="2-60 symbols" required>
+            <span id="errorName" class="errors-text"></span>
+
+            <label for="email">Email <span class="symbol-required">*</span></label>
+            <input id="email" name="email" type="text" required>
+            <span id="errorEmail" class="errors-text"></span>
+
+            <label for="price">Price(per hour)<span class="symbol-required">*</span></label>
+            <input id="price" name="price" type="number" required>
+            <span id="errorPrice" class="errors-text"></span>
+
+            <label for="license">License issue date<span class="symbol-required">*</span></label>
+            <input id="lecense" name="license" type="date" required>
+            <span id="errorLicense" class="errors-text"></span>
+
+            <label for="hasCar">Has car</label>
+            <input id="hasCar" name="hasCar" type="text">
+
+            <div class="form-buttons">
+                <p id="errorSummary" style="visibility: hidden;">Form contains errors!</p>
+                <input type="submit" value="Edit" class="form-button-submit-add">
+                <a href="../intructorPage/instructor.html" class="form-button-cancel">Cancel</a>
+            </div>
+        </form>  
+    </div>
+
+    <footer>
+        <hr>
+        <span>Aliia Temirbek kyzy</span><br>
+        <span>S21366</span>
+    </footer>
+
+
+</body>
+</html>

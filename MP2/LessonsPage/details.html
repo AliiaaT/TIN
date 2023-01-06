@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <a href="../index.html"><img src="../images/logo-fococlipping-standard.png" alt="logo" class="logo" ></a>
+            <ul class="nav-links">
+                <li><a href="../index.html"><h3>Home</h3></a></li>
+                <li><a href="../studentsPage/students.html"><h3>Students</h3></a></li>
+                <li><a href="../intructorPage/instructor.html"><h3>Instructors</h3></a></li>
+                <li class="lesson"><a href="../LessonsPage/lesson.html"><h3>Driving Lessons</h3></a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main">
+        <h2>Lesson Details</h2>
+        <hr>
+        <br>
+        <form class="form">
+
+            <label for="student" >Student<span class="symbol-required">*</span> </label>
+            <select disabled name="student"  id="student">
+                <option>--choose student--</option>
+                <option value="1">Aliia Temirbek kyzy</option>
+                <option selected value="2">Michal Jackson</option>
+                <option value="3">Angelina Joulie</option>
+            </select>
+            <span id="errorSName" class="errors-text"></span>
+
+            <label for="instructor">Instructor<span class="symbol-required">*</span></label>
+            <select disabled name="instructor" id="instructor">
+                <option>--choose instructor--</option>
+                <option value="1">Max</option>
+                <option selected value="2">Michal</option>
+                <option value="3">Ololo</option>
+            </select>
+            <span id="errorIName" class="errors-text"></span>
+
+            <label for="startDate">Start Date<span class="symbol-required">*</span></label>
+            <input disabled id="startDate" name="startDate" value="2017-06-01T07:30" type="datetime-local" required>
+            <span id="errorSNumber" class="errors-text"></span>
+            
+            <label for="endDate">End Date<span class="symbol-required">*</span></label>
+            <input disabled id="endDate" name="endDate"  value="2017-06-01T08:30" type="datetime-local"  required>
+            <span id="errorENumber" class="errors-text"></span>
+
+            <label for="category">Category</label>
+            <input disabled id="category" name="category" value="B" type="text"  required>
+           
+            <br>
+            <a href="./form-edit.html">Edit</a>
+
+        </form>  
+        <br>
+        <table class="table-list">
+            <thead>
+                <tr id="mainRow">
+                    <th>Location</th>
+                    <th>Car Name</th>
+                    <th>Gear Type</th>
+                    <th>Bill for lesson</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>ul. Wolska 19</td>
+                <td>Tayota</td>
+                <td>manual</td>
+                <td>500 PLN</td>
+            </tr>
+            <tr>
+                <td>ul. Wolska 19</td>
+                <td>Audio</td>
+                <td>automatic</td>
+                <td>400 PLN</td>
+        </table>
+        <br>
+        <a href="./lesson.html">Back</a>
+
+    </div>
+
+</body>
+</html>

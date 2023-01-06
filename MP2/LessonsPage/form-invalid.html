@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <a href="../index.html"><img src="../images/logo-fococlipping-standard.png" alt="logo" class="logo" ></a>
+            <ul class="nav-links">
+                <li><a href="../index.html"><h3>Home</h3></a></li>
+                <li><a href="../studentsPage/students.html"><h3>Students</h3></a></li>
+                <li><a href="../intructorPage/instructor.html"><h3>Instructors</h3></a></li>
+                <li class="lesson"><a href="../LessonsPage/lesson.html"><h3>Driving Lessons</h3></a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main">
+        <h2>Add new lesson</h2>
+        <hr>
+        <br>
+        <form class="form" novalidate onsubmit="return validateForm();">
+
+            <label for="student" >Student<span class="symbol-required">*</span> </label>
+            <select name="student"  id="student" class="error-input">
+                <option>--choose student--</option>
+                <option value="1">Aliia Temirbek kyzy</option>
+                <option value="2">Michal Jackson</option>
+                <option value="3">Angelina Joulie</option>
+            </select>
+            <span id="errorSName" class="errors-text">This field is required</span>
+
+            <label for="instructor">Instructor<span class="symbol-required">*</span></label>
+            <select name="instructor" id="instructor" class="error-input">
+                <option>--choose instructor--</option>
+                <option value="1">Max</option>
+                <option value="2">Michal</option>
+                <option value="3">Ololo</option>
+            </select>
+            <span id="errorIName" class="errors-text">This field is required</span>
+
+            <label for="startDate">Start Date<span class="symbol-required">*</span></label>
+            <input id="startDate" name="startDate" class="error-input" type="datetime-local" required>
+            <span id="errorSNumber" class="errors-text">This field is required</span>
+            
+            <label for="endDate">End Date<span class="symbol-required">*</span></label>
+            <input id="endDate" name="endDate" class="error-input" type="datetime-local"  required>
+            <span id="errorENumber" class="errors-text">This field is required</span>
+
+            <label for="category">Category</label>
+            <input id="category" name="category" type="text"  required>
+            
+            <div class="form-buttons">
+                <p id="ErrorSummary">Form contains errors.</p>
+                <br>
+                <input type="submit" value="Add record" class="form-button-submit-add">
+                <a href="./lesson.html" class="form-button-cancel">Cancel</a>
+            </div>
+        </form>  
+    </div>
+
+    <footer>
+        <hr>
+        <span>Aliia Temirbek kyzy</span><br>
+        <span>S21366</span>
+    </footer>
+
+</body>
+</html>

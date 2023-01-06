@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script type="application/javascript" src="/js/validationCommon.js"></script>
+    <script type="application/javascript" src="/js/validationStudentForm.js"></script>
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <a href="../index.html"><img src="../images/logo-fococlipping-standard.png" alt="logo" class="logo" ></a>
+            <ul class="nav-links">
+                <li><a href="../index.html"><h3>Home</h3></a></li>
+                <li  class="student"><a href="../studentsPage/students.html"><h3>Students</h3></a></li>
+                <li><a href="../intructorPage/instructor.html"><h3>Instructors</h3></a></li>
+                <li><a href="../LessonsPage/lesson.html"><h3>Driving Lessons</h3></a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main">
+        <h2>Add new student</h2>
+        <hr>
+        <br>    
+        <form class="form" novalidate onsubmit="return validateForm();">
+
+            <label for="name">Name <span class="symbol-required">*</span></label>
+            <input id="name" name="name" type="text" placeholder="2-60 symbols" required>
+            <span id="errorName" class="errors-text"></span>
+
+            <label for="surname">Surname <span class="symbol-required">*</span></label>
+            <input id="surname" name="surname" type="text" placeholder="2-60 symbols" required>
+            <span id="errorSurname" class="errors-text"></span>
+
+            <label for="phoneNumber">Phone number<span class="symbol-required">*</span></label>
+            <input id="phoneNumber" name="phoneNumber" type="number" placeholder="ex. 571234839" required>
+            <span id="errorNumber" class="errors-text"></span>
+
+            <label for="address">Address</label> <!--No validation-->
+            <input id="address" name="address" placeholder="10-60 symbols" type="text">
+            <br>
+            <label for="birthDate">Birth Date<span class="symbol-required">*</span></label>
+            <input id="birthDate" name="birthDate" type="date" required>
+            <span id="errorDate" class="errors-text"></span>
+
+            <div class="form-buttons">
+                <p id="errorSummary" style="visibility: hidden;">Form contains errors!</p>
+                <input type="submit" value="Add record" class="form-button-submit-add">
+                <a href="../studentsPage/students.html" class="form-button-cancel">Cancel</a>
+            </div>
+        </form>  
+    </div>
+
+    <footer>
+        <hr>
+        <span>Aliia Temirbek kyzy</span><br>
+        <span>S21366</span>
+    </footer>
+
+
+</body>
+</html>
