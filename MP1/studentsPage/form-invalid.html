@@ -1,3 +1,4 @@
+<!--Not needed in MP2-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +25,7 @@
         <h2>Add new student</h2>
         <hr>
         <br>
-        <form class="form">
+        <form class="form" novalidate onsubmit="return validateForm();">
             <label for="name">Name <span class="symbol-required">*</span></label>
             <input id="name" class="error-input" name="name" type="text" placeholder="2-60 symbols" required>
             <span id="errorName" class="errors-text">This field is required</span>

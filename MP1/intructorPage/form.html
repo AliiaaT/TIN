@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <script type="application/javascript" src="/js/validationCommon.js"></script>
+    <script type="application/javascript" src="/js/validationInstructor.js"></script>
 </head>
 <body>
     <div class="header">
@@ -31,7 +33,7 @@
             <span id="errorName" class="errors-text"></span>
 
             <label for="email">Email <span class="symbol-required">*</span></label>
-            <input id="email" name="email" type="text" required>
+            <input id="email" name="email" placeholder="correct email address" type="text" required>
             <span id="errorEmail" class="errors-text"></span>
 
             <label for="price">Price(per hour)<span class="symbol-required">*</span></label>
@@ -47,8 +49,8 @@
 
 
             <div class="form-buttons">
-                <p id="ErrorSummary"></p>
-                <input onclick="myFunction()" type="submit" value="Add record" class="form-button-submit-add">
+                <p id="errorSummary" style="visibility: hidden;">Form contains errors!</p>
+                <input type="submit" value="Add record" class="form-button-submit-add">
                 <a href="../intructorPage/instructor.html" class="form-button-cancel">Cancel</a>
             </div>
         </form>  
@@ -60,11 +62,6 @@
         <span>S21366</span>
     </footer>
 
-    <script>
-        function myFunction() {
-          alert("Record has been added.");
-        }
-    </script>
 
 </body>
 </html>

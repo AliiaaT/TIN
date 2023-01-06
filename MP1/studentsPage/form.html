@@ -37,7 +37,7 @@
             <span id="errorSurname" class="errors-text"></span>
 
             <label for="phoneNumber">Phone number<span class="symbol-required">*</span></label>
-            <input id="phoneNumber" name="phoneNumber" type="number" placeholder="phone number with county code" required>
+            <input id="phoneNumber" name="phoneNumber" type="number" placeholder="ex. 571234839" required>
             <span id="errorNumber" class="errors-text"></span>
 
             <label for="address">Address</label> <!--No validation-->
@@ -48,8 +48,8 @@
             <span id="errorDate" class="errors-text"></span>
 
             <div class="form-buttons">
-                <p id="ErrorSummary"></p>
-                <input onclick="myFunction()" type="submit" value="Add record" class="form-button-submit-add">
+                <p id="errorSummary" style="visibility: hidden;">Form contains errors!</p>
+                <input type="submit" value="Add record" class="form-button-submit-add">
                 <a href="../studentsPage/students.html" class="form-button-cancel">Cancel</a>
             </div>
         </form>  
@@ -60,13 +60,6 @@
         <span>Aliia Temirbek kyzy</span><br>
         <span>S21366</span>
     </footer>
-
-
-    <script>
-        function myFunction() {
-          alert("Record has been added.");
-        }
-    </script>
 
 
 </body>
