@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <script type="application/javascript" src="/js/validationCommon.js"></script>
+    <script type="application/javascript" src="/js/validationInstructor.js"></script>
 </head>
 <body>
     <div class="header">
@@ -24,7 +26,7 @@
         <h2>Edit instructor</h2>
         <hr>
         <br>
-        <form class="form">
+        <form class="form" novalidate onsubmit="return validateForm();">
 
             <label for="name">Name <span class="symbol-required">*</span></label>
             <input id="name" name="name" type="text" placeholder="2-60 symbols" required>
@@ -46,8 +48,8 @@
             <input id="hasCar" name="hasCar" type="text">
 
             <div class="form-buttons">
-                <p id="ErrorSummary"></p>
-                <input onclick="myFunction()" type="submit" value="Edit" class="form-button-submit-add">
+                <p id="errorSummary" style="visibility: hidden;">Form contains errors!</p>
+                <input type="submit" value="Edit" class="form-button-submit-add">
                 <a href="../intructorPage/instructor.html" class="form-button-cancel">Cancel</a>
             </div>
         </form>  
@@ -59,11 +61,6 @@
         <span>S21366</span>
     </footer>
 
-    <script>
-        function myFunction() {
-          alert("Record has been edited.");
-        }
-    </script>
 
 </body>
 </html>
