@@ -9,29 +9,13 @@
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-    <div class="header">
-        <nav>
-            <a href="./index.html"><img src="./images/logo-fococlipping-standard.png" alt="logo" class="logo" ></a>
-            <ul class="nav-links">
-                <li class="home"><a href=""><h3>Home</h3></a></li>
-                <li><a href="./studentsPage/students.html"><h3>Students</h3></a></li>
-                <li><a href="./intructorPage/instructor.html"><h3>Instructors</h3></a></li>
-                <li><a href="./LessonsPage/lesson.html"><h3>Driving Lessons</h3></a></li>
-            </ul>
-        </nav>
-    </div>
-
+    <%- include('./fragments/header.ejs') %>
     <div class="main">
         <h2>About our driving academy GAZELKA Warsaw</h2><br>
         <p>We appreciate your interest in driving license courses at GAZELKA! We are a professional, fast growing driving school, established in 2014. Since then we've been offering driving lessons to suit almost every need. GAZELKA helped many Polish and foreign nationals pass the driving exam and get the driving license. Whether for your work, study or to feel more confident with your driving techniques, contact us to find out how we can help you.</p>
         <br><p>Feeling stressed at the thought of gripping the wheel? We get it! With us you will feel confident behind the wheel again. Our instructors will be happy to reawaken the pleasure of driving in you. We teach people of all ages, our students pass their exams and enjoy driving!</p>
         <br><img src="./images/8bb3ce5ce65928a1aef596b5c93217124afd4a1e.jpg" alt="photo">
     </div>
-
-    <footer>
-        <hr>
-        <span>Aliia Temirbek kyzy</span><br>
-        <span>S21366</span>
-    </footer>
+    <%- include('./fragments/footer.ejs') %>
 </body>
 </html>

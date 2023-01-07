@@ -82,11 +82,12 @@ nav{
     background-color: #8f9491;
 
 }
-.home{
-    text-decoration: underline;
-    background-color: #8f9491;
 
+li a.active {
+    text-decoration: underline;
+    font-weight: 900;
 }
+
 
 
 .table{

@@ -8,18 +8,7 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <div class="header">
-        <nav>
-            <a href="../index.html"><img src="../images/logo-fococlipping-standard.png" alt="logo" class="logo" ></a>
-            <ul class="nav-links">
-                <li><a href="../index.html"><h3>Home</h3></a></li>
-                <li><a href="../studentsPage/students.html"><h3>Students</h3></a></li>
-                <li class="instructor"><a href=""><h3>Instructors</h3></a></li>
-                <li><a href="../LessonsPage/lesson.html"><h3>Driving Lessons</h3></a></li>
-            </ul>
-        </nav>
-    </div>
-
+    <%- include('../fragments/header.ejs') %>
     <div class="main">
         <h2>List of instructors:</h2>
         <br>
@@ -109,14 +98,10 @@
             </tbody>
         </table>
         <p><a href="./form.html" class="button-add">Add new instructor</a></p>
-    
     </div>
+    
+    <%- include('../fragments/footer.ejs') %>
 
-    <footer>
-        <hr>
-        <span>Aliia Temirbek kyzy</span><br>
-        <span>S21366</span>
-    </footer>
 
     <script>
         function deleteFunc() {

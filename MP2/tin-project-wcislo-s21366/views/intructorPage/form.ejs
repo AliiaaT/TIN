@@ -10,17 +10,7 @@
     <script type="application/javascript" src="/js/validationInstructor.js"></script>
 </head>
 <body>
-    <div class="header">
-        <nav>
-            <a href="../index.html"><img src="../images/logo-fococlipping-standard.png" alt="logo" class="logo" ></a>
-            <ul class="nav-links">
-                <li><a href="../index.html"><h3>Home</h3></a></li>
-                <li><a href="../studentsPage/students.html"><h3>Students</h3></a></li>
-                <li class="instructor"><a href="../intructorPage/instructor.html"><h3>Instructors</h3></a></li>
-                <li><a href="../LessonsPage/lesson.html"><h3>Driving Lessons</h3></a></li>
-            </ul>
-        </nav>
-    </div>
+    <%- include('../fragments/header.ejs') %>
 
     <div class="main">
         <h2>Add new instructor</h2>
@@ -55,13 +45,7 @@
             </div>
         </form>  
     </div>
-
-    <footer>
-        <hr>
-        <span>Aliia Temirbek kyzy</span><br>
-        <span>S21366</span>
-    </footer>
-
+    <%- include('../fragments/footer.ejs') %>
 
 </body>
 </html>
