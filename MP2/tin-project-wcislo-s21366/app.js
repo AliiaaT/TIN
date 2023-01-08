@@ -9,6 +9,16 @@ var indexRouter = require('./routes/index');
 const studentRouter = require('./routes/studentRoute');
 const instructorRouter = require('./routes/instructorRoute');
 const lessonRouter = require('./routes/lessonRoute');
+const sequelizeInit = require('./config/sequelize/init');
+sequelizeInit()
+  .catch(err => {
+    console.log(err);
+});
+
+const stuApiRouter = require('./routes/api/StudentApiRoute');
+const insApiRouter = require('./routes/api/InstructorApiRoute');
+const lessonApiRouter = require('./routes/api/LessonApiRoute');
+
 
 
 
@@ -29,6 +39,11 @@ app.use('/', indexRouter);
 app.use('/student', studentRouter);
 app.use('/instructor', instructorRouter);
 app.use('/lesson', lessonRouter);
+app.use('/api/students', stuApiRouter);
+app.use('/api/instructors', insApiRouter);
+app.use('/api/lessons', lessonApiRouter);
+
+
 
 
 
