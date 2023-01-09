@@ -25,12 +25,13 @@
                 </tr>
             </thead>
             <tbody>
+                <% for (let student of studs) { %>
                 <tr>
-                    <td>Aliia</td>
-                    <td>Temirbek kyzy</td>
-                    <td>555689534</td>
-                    <td>Poland, Warsaw</td>
-                    <td>2000.03.23</td>
+                    <td><%= student.firstName %></td>
+                    <td><%= student.lastName %></td>
+                    <td><%= student.phoneNumber %></td>
+                    <td><%= student.address %></td>
+                    <td><%= student.birthDate %></td>
                     <td>
                         <ul class="list">
                             <li><a href="./details.html" class="list-action-button-details">Details</a></li>
@@ -39,64 +40,7 @@
                         </ul>
                     </td>
                 </tr>
-                <tr>
-                    <td>Konrad</td>
-                    <td>Sydow</td>
-                    <td>555689534</td>
-                    <td>Poland, Warsaw</td>
-                    <td>2000.03.23</td>
-                    <td>
-                        <ul class="list">
-                            <li><a href="./details.html" class="list-action-button-details">Details</a></li>
-                            <li><a href="./form-edit.html" class="list-action-button-edit">Edit</a></li>
-                            <li><a onclick="deleteFunc()" href="#" class="list-action-button-delete">Delete</a></li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Michale</td>
-                    <td>Ski</td>
-                    <td>555689534</td>
-                    <td>Poland, Warsaw</td>
-                    <td>2000.03.23</td>
-
-                    <td>
-                        <ul class="list">
-                            <li><a href="./details.html" class="list-action-button-details">Details</a></li>
-                            <li><a href="./form-edit.html" class="list-action-button-edit">Edit</a></li>
-                            <li><a onclick="deleteFunc()" href="#" class="list-action-button-delete">Delete</a></li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Rema</td>
-                    <td>Dino</td>
-                    <td>555689534</td>
-                    <td>Poland, Warsaw</td>
-                    <td>2000.03.23</td>
-
-                    <td>
-                        <ul class="list">
-                            <li><a href="./details.html" class="list-action-button-details">Deatails</a></li>
-                            <li><a href="./form-edit.html" class="list-action-button-edit">Edit</a></li>
-                            <li><a onclick="deleteFunc()" href="#" class="list-action-button-delete">Delete</a></li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Selena</td>
-                    <td>Gomes</td>
-                    <td>555689534</td>
-                    <td>Poland, Warsaw</td>
-                    <td>2000.03.23</td>
-                    <td>
-                        <ul class="list">
-                            <li><a href="./details.html" class="list-action-button-details">Details</a></li>
-                            <li><a href="./form-edit.html" class="list-action-button-edit">Edit</a></li>
-                            <li><a onclick="deleteFunc()" href="#" class="list-action-button-delete">Delete</a></li>
-                        </ul>
-                    </td>
-                </tr>
+                <% } %>
             </tbody>
         </table>
         <p><a href="./form.html" class="button-add">Add new student</a></p>

@@ -6,6 +6,6 @@ const lessonController = require('../controllers/lessonController');
 router.get('/', lessonController.showLessonList);
 router.get('/details/:lesId', lessonController.showLessonDetails);
 router.get('/add', lessonController.showAddLessonForm);
-router.get('/edit', lessonController.showEditLessonForm);
+router.get('/edit/:lesId', lessonController.showEditLessonForm);
 
 module.exports = router;
