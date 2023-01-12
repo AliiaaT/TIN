@@ -1,5 +1,14 @@
+const InstructorRepository = require('../repository/sequelize/InstructorRepository')
+
+
 exports.showInstructorList = (req, res, next) => {
-    res.render('intructorPage/instructor', {navLocation: 'instructor'});
+    InstructorRepository.getInstructors()
+        .then(insts => {
+            res.render('intructorPage/instructor', {
+                insts: insts,
+                navLocation: 'instructor'
+            });
+        })
 }
 
 exports.showAddInstructorForm = (req, res, next) => {

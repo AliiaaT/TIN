@@ -1,5 +1,14 @@
+const LessonRepository = require('../repository/sequelize/LessonRepository')
+
+
 exports.showLessonList = (req, res, next) => {
-    res.render('LessonsPage/lesson', {navLocation: 'lesson'});
+    LessonRepository.getLessons()
+        .then(lessns => {
+            res.render('LessonsPage/lesson', {
+                lessns: lessns,
+                navLocation: 'lesson'
+            });
+        })
 }
 
 exports.showAddLessonForm = (req, res, next) => {

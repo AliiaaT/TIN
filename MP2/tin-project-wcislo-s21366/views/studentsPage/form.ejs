@@ -16,10 +16,12 @@
         <h2><%= pageTitle %</h2>
         <hr>
         <br>    
-        <form class="form" novalidate onsubmit="return validateForm();">
+        <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+            <input type="hidden" name="_id" value="<%= stud._id %>">
 
             <label for="name">Name <span class="symbol-required">*</span></label>
-            <input id="name" name="name" type="text" placeholder="2-60 symbols" required>
+            <input id="name" name="name" type="text" placeholder="2-60 symbols" value="<% stud._id %>" 
+                <%= (formMode == 'showDetails') ? 'disables' : ''%> required>
             <span id="errorName" class="errors-text"></span>
 
             <label for="surname">Surname <span class="symbol-required">*</span></label>

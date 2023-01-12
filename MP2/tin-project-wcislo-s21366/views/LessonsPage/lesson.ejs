@@ -26,12 +26,13 @@
                 </tr>
             </thead>
             <tbody>
+                <% for (let lesson of lessns) { %>
                 <tr>
-                    <td>Aliia Temirbek kyzy</td>
-                    <td>Max</td>
-                    <td>14/11/2022, 15:40</td>
-                    <td>14/11/2022, 19:40</td>
-                    <td>B</td>
+                    <td><%= lesson.stuId%></td> <!--getName here not id-->
+                    <td><%= lesson.insId%></td> <!--getName here not id-->
+                    <td><%= lesson.startDate %></td>
+                    <td>1<%= lesson.endDate %></td>
+                    <td><%= lesson.category %></td>
                     <td>
                         <ul class="list">
                             <li><a href="./details.html" class="list-action-button-details">Details</a></li>
@@ -40,62 +41,7 @@
                         </ul>
                     </td>
                 </tr>
-                <tr>
-                    <td>Konrad</td>
-                    <td>Max</td>
-                    <td>14/11/2022, 15:40</td>
-                    <td>14/11/2022, 19:40</td>
-                    <td>C</td>
-                    <td>
-                        <ul class="list">
-                            <li><a href="./details.html" class="list-action-button-details">Details</a></li>
-                            <li><a href="./form-edit.html" class="list-action-button-edit">Edit</a></li>
-                            <li><a onclick="deleteFunc()"  href="#" class="list-action-button-delete">Delete</a></li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Michale</td>
-                    <td>Michal</td>
-                    <td>14/11/2022, 15:40</td>
-                    <td>14/11/2022, 19:40</td>
-                    <td>B</td>
-                    <td>
-                        <ul class="list">
-                            <li><a href="./details.html" class="list-action-button-details">Details</a></li>
-                            <li><a href="./form-edit.html" class="list-action-button-edit">Edit</a></li>
-                            <li><a onclick="deleteFunc()"  href="#" class="list-action-button-delete">Delete</a></li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Rema</td>
-                    <td>Olo</td>
-                    <td>14/11/2022, 15:40</td>
-                    <td>14/11/2022, 19:40</td>
-                    <td>B</td>
-                    <td>
-                        <ul class="list">
-                            <li><a href="./details.html" class="list-action-button-details">Deatails</a></li>
-                            <li><a href="./form-edit.html" class="list-action-button-edit">Edit</a></li>
-                            <li><a  onclick="deleteFunc()" href="#" class="list-action-button-delete">Delete</a></li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Selena</td>
-                    <td>Alex</td>
-                    <td>14/11/2022, 15:40</td>
-                    <td>14/11/2022, 19:40</td>
-                    <td>B</td>
-                    <td>
-                        <ul class="list">
-                            <li><a href="" class="list-action-button-details">Details</a></li>
-                            <li><a href="./form-edit.html" class="list-action-button-edit">Edit</a></li>
-                            <li><a  onclick="deleteFunc()" href="#" class="list-action-button-delete">Delete</a></li>
-                        </ul>
-                    </td>
-                </tr>
+                <% } %>
             </tbody>
         </table>
         <p><a href="./form.html" class="button-add">Add new lesson</a></p>
