@@ -8,4 +8,9 @@ router.get('/details/:lesId', lessonController.showLessonDetails);
 router.get('/add', lessonController.showAddLessonForm);
 router.get('/edit/:lesId', lessonController.showEditLessonForm);
 
+
+router.post('/add', lessonController.addLesson);
+router.post('/edit', lessonController.updateLesson);
+router.get('/delete/:lesId', lessonController.deleteLesson);
+
 module.exports = router;

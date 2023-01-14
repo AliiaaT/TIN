@@ -17,6 +17,20 @@ exports.getLessons = () => {
     });
 };
 
+exports.getAllStudentsAndInstructors = () => {
+    return new Promise((resolve, reject) => {
+        Promise.all([Student.findAll(), Instructor.findAll()]).then((result) => {
+            console.log(result)
+            resolve({
+                students: result[0],
+                instructors: result[1]
+            })
+        }).catch((error) => {
+            reject(error);
+        })
+    })
+}
+
 exports.getLessonById = (lessonId) => {
     return Lesson.findByPk(lessonId, {include: [
         {

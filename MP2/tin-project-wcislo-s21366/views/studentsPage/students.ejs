@@ -34,9 +34,9 @@
                     <td><%= student.birthDate %></td>
                     <td>
                         <ul class="list">
-                            <li><a href="./details.html" class="list-action-button-details">Details</a></li>
-                            <li><a href="./form-edit.html" class="list-action-button-edit">Edit</a></li>
-                            <li><a onclick="deleteFunc()" href="#" class="list-action-button-delete">Delete</a></li>
+                            <li><a href="/student/details/<%=student._id%>" class="list-action-button-details">Details</a></li>
+                            <li><a href="/student/edit/<%=student._id%>" class="list-action-button-edit">Edit</a></li>
+                            <li><a href="/student/delete/<%=student._id%>" class="list-action-button-delete">Delete</a></li>
                         </ul>
                     </td>
                 </tr>

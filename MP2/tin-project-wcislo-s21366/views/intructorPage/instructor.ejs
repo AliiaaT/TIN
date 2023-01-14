@@ -28,22 +28,22 @@
                 <% for (let instructor of insts) { %>
                 <tr>
                     <td><%= instructor.name %></td>
-                    <td><%= instructor.email %>/td>
+                    <td><%= instructor.email %></td>
                     <td><%= instructor.price %></td>
                     <td><%= instructor.licenseIssueDate %></td>
                     <td><%= instructor.hasCar %></td>
                     <td>
                         <ul class="list">
-                            <li><a href="./details.html" class="list-action-button-details">Details</a></li>
-                            <li><a href="./form-edit.html" class="list-action-button-edit">Edit</a></li>
-                            <li><a onclick="deleteFunc()"  href="#" class="list-action-button-delete">Delete</a></li>
+                            <li><a href="/instructor/details/<%=instructor._id%>" class="list-action-button-details">Details</a></li>
+                            <li><a href="/instructor/edit/<%=instructor._id%>" class="list-action-button-edit">Edit</a></li>
+                            <li><a href="/instructor/delete/<%=instructor._id%>" class="list-action-button-delete">Delete</a></li>
                         </ul>
                     </td>
                 </tr>
                 <% } %>
              </tbody>
         </table>
-        <p><a href="./form.html" class="button-add">Add new instructor</a></p>
+        <p><a href="/instructor/add" class="button-add">Add new instructor</a></p>
     </div>
     
     <%- include('../fragments/footer.ejs') %>

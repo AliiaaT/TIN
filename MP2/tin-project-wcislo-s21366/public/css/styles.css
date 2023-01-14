@@ -131,6 +131,21 @@ li a.active {
     color:blue ;
 }
 
+
+.form-button-edit{
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 0.8rem;
+    box-sizing: border-box;
+    display: block;
+    background-color: green;
+    color: black;
+}
+
 .list-action-button-details:hover,
 .list-action-button-edit:hover,
 .list-action-button-delete:hover {
@@ -182,6 +197,9 @@ textarea {
     padding: 0.5rem;
     width: 100%;
 }
+.form input[type="checkbox"] {
+    width: 20px;
+}
 
 .form input.error-input,
 .form select.error-input
@@ -196,6 +214,10 @@ textarea {
     margin-bottom: 0.5em;
 }
 
+.form-all-rows {
+    grid-column: 1 / 3;
+    width: 100%;
+}
 .form-buttons {
     margin-top: 2rem;
     grid-column: 1 / span 2;
@@ -263,5 +285,6 @@ footer {
 }
 .table-list{
     width: 100%;
+    min-width: 500px;
 }
 

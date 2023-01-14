@@ -5,73 +5,100 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <script type="application/javascript" src="/js/validationCommon.js"></script>
-    <script type="application/javascript" src="/js/validationLesson.js"></script>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <script type="application/javascript" src="../../js/validationCommon.js"></script>
+    <script type="application/javascript" src="../../js/validationLesson.js"></script>
 </head>
 <body>
-    <div class="header">
-        <nav>
-            <a href="../index.html"><img src="../images/logo-fococlipping-standard.png" alt="logo" class="logo" ></a>
-            <ul class="nav-links">
-                <li><a href="../index.html"><h3>Home</h3></a></li>
-                <li><a href="../studentsPage/students.html"><h3>Students</h3></a></li>
-                <li><a href="../intructorPage/instructor.html"><h3>Instructors</h3></a></li>
-                <li class="lesson"><a href="../LessonsPage/lesson.html"><h3>Driving Lessons</h3></a></li>
-            </ul>
-        </nav>
-    </div>
+    
+    <%- include('../fragments/header.ejs') %>
+    <% console.log(lesson) %>
 
     <div class="main">
-        <h2>Add new lesson</h2>
+        <h2><%= pageTitle %></h2>
         <hr>
         <br>
-        <form class="form" novalidate onsubmit="return validateForm();">
+        <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+            <input type="hidden" name="_id" value="<%=lesson._id %>">
 
             <label for="student" >Student<span class="symbol-required">*</span> </label>
-            <select name="student"  id="student">
-                <option>--choose student--</option>
-                <option value="1">Aliia Temirbek kyzy</option>
-                <option value="2">Michal Jackson</option>
-                <option value="3">Angelina Joulie</option>
+            <select name="stuId"  id="student" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
+                
+                <% if(formMode==='showDetails') { %>
+
+                    <option disabled selected value><%= lesson.student.dataValues.firstName %> <%= lesson.student.dataValues.lastName %></option>
+
+                <% } else if(formMode==='edit') { %>
+                    <option disabled value> -- select student -- </option>
+                    
+                    <% for (let student of students) { %>
+                        <option value="<%=student._id%>" <%= (student._id === lesson.stuId) ? 'selected' : '' %>><%=student.firstName%> <%=student.lastName%></option>
+                    <% } %>
+
+                <% } else { %>
+
+                    <option disabled selected value> -- select student -- </option>
+                    
+                    <% for (let student of students) { %>
+                        <option value="<%=student._id%>"><%=student.firstName%> <%=student.lastName%></option>
+                    <% } %>
+
+                <% } %>
             </select>
             <span id="errorSName" class="errors-text"></span>
 
             <label for="instructor">Instructor<span class="symbol-required">*</span></label>
-            <select name="instructor" id="instructor">
-                <option>--choose instructor--</option>
-                <option value="1">Max</option>
-                <option value="2">Michal</option>
-                <option value="3">Ololo</option>
+            <select name="insId" id="instructor" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
+                <% if(formMode==='showDetails') { %>
+                    <option disabled selected value><%= lesson.instructor.dataValues.name %></option>
+
+                 <% } else if(formMode==='edit') { %>
+                    <option disabled value> -- select instructor -- </option>
+                    
+                    <% for (let instructor of instructors) { %>
+                        <option value="<%=instructor._id%>" <%= (instructor._id == lesson.insId) ? 'selected' : '' %>><%=instructor.name%>%></option>
+                    <% } %>
+
+                <% } else { %>
+                    <option disabled selected value> -- select instructor -- </option>
+                    
+                    <% for (let instructor of instructors) { %>
+                        <option value="<%=instructor._id%>"><%=instructor.name%></option>
+                    <% } %>
+                <% } %>
             </select>
             <span id="errorIName" class="errors-text"></span>
 
             <label for="startDate">Start Date<span class="symbol-required">*</span></label>
-            <input id="startDate" name="startDate" type="datetime-local" required>
+            <input id="startDate" name="startDate" type="datetime-local" required value="<%= lesson.startDate %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
             <span id="errorSNumber" class="errors-text"></span>
             
             <label for="endDate">End Date<span class="symbol-required">*</span></label>
-            <input id="endDate" name="endDate" type="datetime-local"  required>
+            <input id="endDate" name="endDate" type="datetime-local"  required value="<%= lesson.endDate %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
             <span id="errorENumber" class="errors-text"></span>
 
             <label for="category">Category</label>
-            <input id="category" name="category" type="text"  required>
+            <input id="category" name="category" type="text"  required value="<%= lesson.category %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
 
-
-            
             <div class="form-buttons">
                 <p id="errorSummary" style="visibility: hidden;">Form contains errors!</p>
-                <input type="submit" value="Add record" class="form-button-submit-add">
-                <a href="./lesson.html" class="form-button-cancel">Cancel</a>
+                <% if(formMode=='showDetails') { %>
+                    <div class="section-buttons">
+                        <a href="/lesson/edit/<%= lesson._id%>" class="form-button-edit">Edit</a>
+                    </div>
+                    <br>
+                <% } %>
+                <% if(formMode!='showDetails') { %>
+                    <input type="submit" class="form-button-submit-add" value="<%=btnLabel%>" />
+                    <a href="/lesson" class="form-button-cancel">Cancel</a>
+                <% } else { %>
+                    <a href="/lesson" class="form-button-cancel">Return</a>
+                <% } %>
             </div>
         </form>  
     </div>
 
-    <footer>
-        <hr>
-        <span>Aliia Temirbek kyzy</span><br>
-        <span>S21366</span>
-    </footer>
+    <%- include('../fragments/footer.ejs') %>
 
     <script>
         function myFunction() {

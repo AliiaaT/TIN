@@ -5,44 +5,96 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <script type="application/javascript" src="/js/validationCommon.js"></script>
-    <script type="application/javascript" src="/js/validationStudentForm.js"></script>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <script type="application/javascript" src="../../js/validationCommon.js"></script>
+    <script type="application/javascript" src="../../js/validationStudentForm.js"></script>
 </head>
 <body>
 
     <%- include('../fragments/header.ejs') %>
     <div class="main">
-        <h2><%= pageTitle %</h2>
+        <h2><%= pageTitle %></h2>
         <hr>
         <br>    
         <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
-            <input type="hidden" name="_id" value="<%= stud._id %>">
+            <input type="hidden" name="_id" value="<%=stud._id %>">
 
-            <label for="name">Name <span class="symbol-required">*</span></label>
-            <input id="name" name="name" type="text" placeholder="2-60 symbols" value="<% stud._id %>" 
-                <%= (formMode == 'showDetails') ? 'disables' : ''%> required>
-            <span id="errorName" class="errors-text"></span>
+            <label for="firstName">Name <span class="symbol-required">*</span></label>
+            <input id="firstName" name="firstName" type="text" placeholder="2-60 symbols" required value="<%= stud.firstName %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            <span id="errorName" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('firstName'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('firstName')).message %>
+                <% } %>
+            </span>
 
-            <label for="surname">Surname <span class="symbol-required">*</span></label>
-            <input id="surname" name="surname" type="text" placeholder="2-60 symbols" required>
+            <label for="lastName">lastName <span class="symbol-required">*</span></label>
+            <input id="lastName" name="lastName" type="text" placeholder="2-60 symbols" required value="<%= stud.lastName %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
             <span id="errorSurname" class="errors-text"></span>
 
             <label for="phoneNumber">Phone number<span class="symbol-required">*</span></label>
-            <input id="phoneNumber" name="phoneNumber" type="number" placeholder="ex. 571234839" required>
-            <span id="errorNumber" class="errors-text"></span>
+            <input id="phoneNumber" name="phoneNumber" type="number" placeholder="ex. 571234839" required value="<%= stud.phoneNumber %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            <span id="errorNumber" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('phoneNumber'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('phoneNumber')).message %>
+                <% } %>
+            </span>
 
             <label for="address">Address</label> <!--No validation-->
-            <input id="address" name="address" placeholder="10-60 symbols" type="text">
+            <input id="address" name="address" placeholder="10-60 symbols" type="text" value="<%= stud.address %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
             <br>
             <label for="birthDate">Birth Date<span class="symbol-required">*</span></label>
-            <input id="birthDate" name="birthDate" type="date" required>
-            <span id="errorDate" class="errors-text"></span>
+            <input id="birthDate" name="birthDate" type="date" required value="<%=stud.bitrhDate%>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
+            <span id="errorDate" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('birthDate'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('birthDate')).message %>
+                <% } %>
+            </span>
+
+
+            <% if(formMode=='showDetails') { %>
+                <div class="section-buttons">
+                    <a href="/student/edit/<%= stud._id%>" class="form-button-submit-add">Edit</a>
+                </div>
+            <% } %>
+            
+            <% if(formMode=='showDetails') { %>
+                <div></div>
+                <div></div>
+                <h2 class="form-all-rows">Details of Lessons</h2>
+
+                <div></div>
+                <table class="table-list">
+                    <thead>
+                        <tr id="mainRow">
+        
+                            <th>Instructor</th>
+                            <th>Start time</th>
+                            <th>End time</th>
+                            <th>Category</th>
+                        </tr>
+                    </thead>
+                    <% for(let l of stud.lessons) { %>
+                        
+                    <tr>
+                        <td><a href="/lesson/details/<%=l.dataValues._id %>"><%= l.instructor.name%></a></td>
+                        <td><%=l.startDate %></td>
+                        <td><%=l.endDate %></td>
+                        <td><%=l.category %></td>
+                    </tr>
+                    <% } %>
+                </table>
+              <% } %>
+              
 
             <div class="form-buttons">
                 <p id="errorSummary" style="visibility: hidden;">Form contains errors!</p>
-                <input type="submit" value="Add record" class="form-button-submit-add">
-                <a href="../studentsPage/students.html" class="form-button-cancel">Cancel</a>
+
+                <% if(formMode!='showDetails') { %>
+                    <input type="submit" class="form-button-submit-add" value="<%=btnLabel%>" />
+                    <a href="/student" class="form-button-cancel">Cancel</a>
+                <% } else { %>
+                    <a href="/student" class="form-button-cancel">Return</a>
+                <% } %>
             </div>
         </form>  
     </div>

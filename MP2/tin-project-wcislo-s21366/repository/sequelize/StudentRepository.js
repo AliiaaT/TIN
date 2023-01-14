@@ -33,8 +33,8 @@ exports.createStudent = (newStuData) =>{
 };
 
 exports.updateStudent = (stuId, stuData) =>{
-    const firstName = stuData.firstName;
-    const lastName = stuData.lastName;
+    const firstName = stuData.name;
+    const lastName = stuData.surname;
     const phoneNumber = stuData.phoneNumber;
     const address = stuData.address;
     const birthDate = stuData.birthDate;

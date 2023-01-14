@@ -28,7 +28,7 @@ exports.createInstructor = (newInsData) =>{
         email: newInsData.email,
         price: newInsData.price,
         licenseIssueDate: newInsData.licenseIssueDate,
-        haCar: newInsData.haCar
+        hasCar: newInsData.hasCar
     });
 };
 
@@ -37,7 +37,7 @@ exports.updateInstructor = (insId, insData) =>{
     const email = insData.email;
     const price = insData.price;
     const licenseIssueDate = insData.licenseIssueDate;
-    const haCar = insData.haCar;
+    const hasCar = insData.hasCar;
     return Instructor.update(insData, {where: {_id: insId}});
 };
 

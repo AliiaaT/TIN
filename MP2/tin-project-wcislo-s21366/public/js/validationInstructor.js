@@ -4,7 +4,7 @@ function validateForm(){
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
     const priceInput = document.getElementById('price');
-    const licenseInput = document.getElementById('lecense');
+    const licenseInput = document.getElementById('licenseIssueDate');
 
     const errorName = document.getElementById('errorName');
     const errorEmail = document.getElementById('errorEmail');

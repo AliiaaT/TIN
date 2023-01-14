@@ -1,7 +1,7 @@
 function validateForm(){
 
-    const firstNameInput = document.getElementById('name');
-    const lastNameInput = document.getElementById('surname');
+    const firstNameInput = document.getElementById('firstName');
+    const lastNameInput = document.getElementById('lastName');
     const phoneNumberInput = document.getElementById('phoneNumber');
     const birthDateInput = document.getElementById('birthDate');
 
@@ -13,7 +13,7 @@ function validateForm(){
 
     console.log("Before reset Errors");
     
-    resetErrors([firstNameInput, lastNameInput, phoneNumberInput, birthDateInput], 
+    resetErrors([firstNameInput, lastNameInput, phoneNumberInput, birthDateInput],
                 [errorFirstName, errorLastName, errorPhoneNumber, errorBirhtdate]);
 
 

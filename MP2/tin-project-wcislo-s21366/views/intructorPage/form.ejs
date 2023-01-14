@@ -5,43 +5,99 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <script type="application/javascript" src="/js/validationCommon.js"></script>
-    <script type="application/javascript" src="/js/validationInstructor.js"></script>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <script type="application/javascript" src="../../js/validationCommon.js"></script>
+    <script type="application/javascript" src="../../js/validationInstructor.js"></script>
 </head>
 <body>
     <%- include('../fragments/header.ejs') %>
 
     <div class="main">
-        <h2>Add new instructor</h2>
+        <h2><%= pageTitle %></h2>
         <hr>
         <br>
-        <form class="form" novalidate onsubmit="return validateForm();">
+        <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+            <input type="hidden" name="_id" value="<%=inst._id %>">
 
             <label for="name">Name <span class="symbol-required">*</span></label>
-            <input id="name" name="name" type="text" placeholder="2-60 symbols" required>
-            <span id="errorName" class="errors-text"></span>
+            <input id="name" name="name" type="text" placeholder="2-60 symbols" required value="<%= inst.name %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            <span id="errorName" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('name'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('name')).message %>
+                <% } %>
+            </span>
 
             <label for="email">Email <span class="symbol-required">*</span></label>
-            <input id="email" name="email" placeholder="correct email address" type="text" required>
-            <span id="errorEmail" class="errors-text"></span>
+            <input id="email" name="email" placeholder="correct email address" type="text" value="<%= inst.email %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            <span id="errorEmail" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('email'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('email')).message %>
+                <% } %>
+            </span>
 
             <label for="price">Price(per hour)<span class="symbol-required">*</span></label>
-            <input id="price" name="price" type="number" required>
-            <span id="errorPrice" class="errors-text"></span>
+            <input id="price" name="price" type="number" value="<%= inst.price %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            <span id="errorPrice" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('price'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('price')).message %>
+                <% } %>
+            </span>
 
             <label for="license">License issue date<span class="symbol-required">*</span></label>
-            <input id="lecense" name="license" type="date" required>
-            <span id="errorLicense" class="errors-text"></span>
+            <input id="licenseIssueDate" name="licenseIssueDate" type="date" value="<%= inst.licenseIssueDate %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            <span id="errorLicense" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('licenseIssueDate'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('licenseIssueDate')).message %>
+                <% } %>
+            </span>
 
             <label for="hasCar">Has car</label>
-            <input id="hasCar" name="hasCar" type="text">
+            <input id="hasCar" type="checkbox" name="hasCar" <%= (inst.hasCar == true) ? 'checked' : '' %> <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            
+            <% if(formMode=='showDetails') { %>
+                <div></div>
+                <div class="section-buttons">
+                    <a href="/instructor/edit/<%= inst._id%>" class="form-button-submit-add">Edit</a>
+                </div>
+            <% } %>
 
+            <% if(formMode=='showDetails') { %>
+                <div></div>
+                <div></div>
+                <h2 class="form-all-rows">Details of Lessons</h2>
 
+                <div></div>
+                <table class="table-list">
+                    <thead>
+                        <tr id="mainRow">
+        
+                            <th>Student</th>
+                            <th>Start time</th>
+                            <th>End time</th>
+                            <th>Category</th>
+                        </tr>
+                    </thead>
+                    <% for(let l of inst.lessons) { %>
+                        
+                    <tr>
+                        <td><a href="/lesson/details/<%=l.dataValues._id %>"><%= l.student.firstName%> <%= l.student.lastName%></a></td>
+                        <td><%=l.startDate %></td>
+                        <td><%=l.endDate %></td>
+                        <td><%=l.category %></td>
+                    </tr>
+                    <% } %>
+                </table>
+              <% } %>
+              
             <div class="form-buttons">
                 <p id="errorSummary" style="visibility: hidden;">Form contains errors!</p>
-                <input type="submit" value="Add record" class="form-button-submit-add">
-                <a href="../intructorPage/instructor.html" class="form-button-cancel">Cancel</a>
+
+               <% if(formMode!='showDetails') { %>
+                    <input type="submit" class="form-button-submit-add" value="<%=btnLabel%>" />
+                    <a href="/instructor" class="form-button-cancel">Cancel</a>
+                <% } else { %>
+                    <a href="/instructor" class="form-button-cancel">Return</a>
+                <% } %>
             </div>
         </form>  
     </div>

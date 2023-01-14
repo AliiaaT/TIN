@@ -11,21 +11,56 @@ const Instructor = sequelize.define('Instructor', {
 
     name: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "The field is required."
+            },
+            len: {
+                args: [2,60],
+                msg: "The field should contain between 2 and 60 characters"
+            },
+        }
     },
 
     email: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true,
+        validate: {
+            notEmpty: {
+                msg: "The field is required."
+            },
+            len: {
+                args: [5,60],
+                msg: "The field should contain between 2 and 60 characters"
+            },
+            isEmail: {
+                msg: "The field should contain a valid email address"
+            }
+        }
     },
 
     price: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "The field is required."
+            }
+        },
     },
 
     licenseIssueDate: {
         type: Sequelize.DATE,
+        get() {
+            return this.getDataValue('licenseIssueDate').toISOString().split('T')[0]
+          },
+          validate: {
+              notEmpty: {
+                  msg: "The field is required."
+              }
+          },
         allowNull: false
     },
 

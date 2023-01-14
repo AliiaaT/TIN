@@ -11,11 +11,30 @@ const Lesson = sequelize.define('Lesson', {
 
     startDate: {
         type: Sequelize.DATE, //change to date+time later
+    
+        get() {
+            return this.getDataValue('startDate')
+              .toLocaleString('en-GB', { timeZone: 'UTC' });
+          },
+          validate: {
+              notEmpty: {
+                  msg: "The field is required."
+              }
+          },
         allowNull: false
     },
 
     endDate: {
         type: Sequelize.DATE, //change to date+time later
+        get() {
+            return this.getDataValue('endDate')
+              .toLocaleString('en-GB', { timeZone: 'UTC' });
+          },
+          validate: {
+              notEmpty: {
+                  msg: "The field is required."
+              }
+          },
         allowNull: false
     },
 
@@ -25,11 +44,21 @@ const Lesson = sequelize.define('Lesson', {
     },
     stuId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "The field is required."
+            }
+        },
     },
     insId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "The field is required."
+            }
+        },
     }
 
 });
