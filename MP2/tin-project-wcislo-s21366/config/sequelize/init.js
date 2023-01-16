@@ -10,7 +10,7 @@ module.exports = () => {
     Instructor.hasMany(Lesson, {as: 'lessons', foreignKey: {name: 'insId', allowNull: false}, constraints: true, onDelete: 'CASCADE'});
     Lesson.belongsTo(Instructor, {as: 'instructor', foreignKey: {name: 'insId', allowNull: false} });
 
-    // let allStuds, allInsts;
+    //let allStuds, allInsts;
     return sequelize
         .sync({force: false}); // force: true deletes database
         // .then( () => {
