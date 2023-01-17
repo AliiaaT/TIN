@@ -39,7 +39,7 @@ exports.updateStudent = (stuId, stuData) =>{
     const address = stuData.address;
     const birthDate = stuData.birthDate;
     return Student.update(stuData, {where: {_id: stuId}, returning: true,
-        plain: true}); // why updated data is not visible from postman(returned from sequilize)
+        plain: true}); 
 };
 
 exports.deleteStudent = (stuId) => {
