@@ -4,7 +4,7 @@ const LessonRepository = require('../repository/sequelize/LessonRepository')
 exports.showLessonList = (req, res, next) => {
     LessonRepository.getLessons()
         .then(lessns => {
-            res.render('LessonsPage/lesson', {
+            res.render('lessonsPage/lesson', {
                 lessns: lessns,
                 navLocation: 'lesson'
             });
@@ -15,7 +15,7 @@ exports.showLessonDetails = (req, res, next) => {
     const lesId = req.params.lesId;
     LessonRepository.getLessonById(lesId)
         .then(lesson => {
-            res.render('LessonsPage/form', {
+            res.render('lessonsPage/form', {
                 lesson: lesson,
                 students: [],
                 instructors: [],
@@ -30,7 +30,7 @@ exports.showLessonDetails = (req, res, next) => {
 
 exports.showAddLessonForm = (req, res, next) => {
     LessonRepository.getAllStudentsAndInstructors().then(result => {
-        res.render('LessonsPage/form', {
+        res.render('lessonsPage/form', {
             lesson: {},
             students: result.students,
             instructors: result.instructors,
@@ -49,7 +49,7 @@ exports.showEditLessonForm = (req, res, next) => {
     LessonRepository.getLessonById(lesId)
         .then(lesson => {
             LessonRepository.getAllStudentsAndInstructors().then(result => {
-                res.render('LessonsPage/form', {
+                res.render('lessonsPage/form', {
                     lesson: lesson,
                     students: result.students,
                     instructors: result.instructors,
