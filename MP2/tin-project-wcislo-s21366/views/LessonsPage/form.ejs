@@ -12,7 +12,6 @@
 <body>
     
     <%- include('../fragments/header.ejs') %>
-    <% console.log(lesson) %>
 
     <div class="main">
         <h2><%= pageTitle %></h2>
@@ -22,17 +21,17 @@
             <input type="hidden" name="_id" value="<%=lesson._id %>">
 
             <label for="student" >Student<span class="symbol-required">*</span> </label>
-            <select name="stuId"  id="student" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
+            <select name="stuId"  id="student" class="<%= validationErrors.find(e => e.path.includes('stuId')) ? 'error-input' : ''%>"  <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
                 
                 <% if(formMode==='showDetails') { %>
 
-                    <option disabled selected value><%= lesson.student.dataValues.firstName %> <%= lesson.student.dataValues.lastName %></option>
+                    <option disabled selected value><%= lesson.student.firstName %> <%= lesson.student.lastName %></option>
 
                 <% } else if(formMode==='edit') { %>
-                    <option disabled value> -- select student -- </option>
+                    <option disabled value  <%= (lesson.stuId === undefined) ? 'selected' : '' %>> -- select student -- </option>
                     
                     <% for (let student of students) { %>
-                        <option value="<%=student._id%>" <%= (student._id === lesson.stuId) ? 'selected' : '' %>><%=student.firstName%> <%=student.lastName%></option>
+                        <option value="<%=student._id%>" <%= (student._id == lesson.stuId) ? 'selected' : '' %>><%=student.firstName%> <%=student.lastName%></option>
                     <% } %>
 
                 <% } else { %>
@@ -45,15 +44,19 @@
 
                 <% } %>
             </select>
-            <span id="errorSName" class="errors-text"></span>
+            <span id="errorSName" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('stuId'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('stuId')).message %>
+                <% } %>
+            </span>
 
             <label for="instructor">Instructor<span class="symbol-required">*</span></label>
-            <select name="insId" id="instructor" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
+            <select name="insId" id="instructor" class="<%= validationErrors.find(e => e.path.includes('insId')) ? 'error-input' : ''%>"  <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
                 <% if(formMode==='showDetails') { %>
-                    <option disabled selected value><%= lesson.instructor.dataValues.name %></option>
+                    <option disabled selected value><%= lesson.instructor.name %></option>
 
                  <% } else if(formMode==='edit') { %>
-                    <option disabled value> -- select instructor -- </option>
+                    <option disabled value  <%= (lesson.insId === undefined) ? 'selected' : '' %>> -- select instructor -- </option>
                     
                     <% for (let instructor of instructors) { %>
                         <option value="<%=instructor._id%>" <%= (instructor._id == lesson.insId) ? 'selected' : '' %>><%=instructor.name%>%></option>
@@ -67,15 +70,27 @@
                     <% } %>
                 <% } %>
             </select>
-            <span id="errorIName" class="errors-text"></span>
+            <span id="errorIName" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('insId'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('insId')).message %>
+                <% } %>
+            </span>
 
             <label for="startDate">Start Date<span class="symbol-required">*</span></label>
-            <input id="startDate" name="startDate" type="datetime-local" required value="<%= lesson.startDate %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
-            <span id="errorSNumber" class="errors-text"></span>
+            <input id="startDate" name="startDate" type="datetime-local" required value="<%= lesson.startDate %>" class="<%= validationErrors.find(e => e.path.includes('startDate')) ? 'error-input' : ''%>"  <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
+            <span id="errorSNumber" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('startDate'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('startDate')).message %>
+                <% } %>
+            </span>
             
             <label for="endDate">End Date<span class="symbol-required">*</span></label>
-            <input id="endDate" name="endDate" type="datetime-local"  required value="<%= lesson.endDate %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
-            <span id="errorENumber" class="errors-text"></span>
+            <input id="endDate" name="endDate" type="datetime-local"  required value="<%= lesson.endDate %>" class="<%= validationErrors.find(e => e.path.includes('endDate')) ? 'error-input' : ''%>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
+            <span id="errorENumber" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('endDate'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('endDate')).message %>
+                <% } %>
+            </span>
 
             <label for="category">Category</label>
             <input id="category" name="category" type="text"  required value="<%= lesson.category %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>

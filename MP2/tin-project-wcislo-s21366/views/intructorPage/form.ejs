@@ -20,7 +20,7 @@
             <input type="hidden" name="_id" value="<%=inst._id %>">
 
             <label for="name">Name <span class="symbol-required">*</span></label>
-            <input id="name" name="name" type="text" placeholder="2-60 symbols" required value="<%= inst.name %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            <input id="name" name="name" type="text" placeholder="2-60 symbols" class="<%= validationErrors.find(e => e.path.includes('name')) ? 'error-input' : ''%>" required value="<%= inst.name %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
             <span id="errorName" class="errors-text">
                 <% if(validationErrors.find(e => e.path.includes('name'))) { %>
                     <%= validationErrors.find(e => e.path.includes('name')).message %>
@@ -28,7 +28,7 @@
             </span>
 
             <label for="email">Email <span class="symbol-required">*</span></label>
-            <input id="email" name="email" placeholder="correct email address" type="text" value="<%= inst.email %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            <input id="email" name="email" placeholder="correct email address" class="<%= validationErrors.find(e => e.path.includes('email')) ? 'error-input' : ''%>" type="text" value="<%= inst.email %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
             <span id="errorEmail" class="errors-text">
                 <% if(validationErrors.find(e => e.path.includes('email'))) { %>
                     <%= validationErrors.find(e => e.path.includes('email')).message %>
@@ -36,7 +36,7 @@
             </span>
 
             <label for="price">Price(per hour)<span class="symbol-required">*</span></label>
-            <input id="price" name="price" type="number" value="<%= inst.price %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            <input id="price" name="price" type="number" value="<%= inst.price %>" class="<%= validationErrors.find(e => e.path.includes('price')) ? 'error-input' : ''%>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
             <span id="errorPrice" class="errors-text">
                 <% if(validationErrors.find(e => e.path.includes('price'))) { %>
                     <%= validationErrors.find(e => e.path.includes('price')).message %>
@@ -44,7 +44,7 @@
             </span>
 
             <label for="license">License issue date<span class="symbol-required">*</span></label>
-            <input id="licenseIssueDate" name="licenseIssueDate" type="date" value="<%= inst.licenseIssueDate %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            <input id="licenseIssueDate" name="licenseIssueDate" type="date" value="<%= inst.licenseIssueDate %>" class="<%= validationErrors.find(e => e.path.includes('licenseIssueDate')) ? 'error-input' : ''%>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
             <span id="errorLicense" class="errors-text">
                 <% if(validationErrors.find(e => e.path.includes('licenseIssueDate'))) { %>
                     <%= validationErrors.find(e => e.path.includes('licenseIssueDate')).message %>

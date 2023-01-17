@@ -34,13 +34,15 @@ function validateForm(){
 }
 
 
-
 //validation for email field
 if (!checkRequired(emailInput.value)) {
-    //ad email regex validation!!!
     valid = false;
     emailInput.classList.add("error-input");
     errorEmail.innerText = "The field is required.";
+} else if (!checkEmailValid(emailInput.value)) {
+    valid = false;
+    emailInput.classList.add("error-input");
+    errorEmail.innerText = "Invalid email format.";
 }
 
 

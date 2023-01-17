@@ -22,7 +22,8 @@ exports.showLessonDetails = (req, res, next) => {
                 formMode: 'showDetails',
                 pageTitle: 'Lesson details',
                 formAction: '',
-                navLocation: 'lesson'
+                navLocation: 'lesson',
+                validationErrors: []
             });
         });
 }
@@ -37,7 +38,8 @@ exports.showAddLessonForm = (req, res, next) => {
             formMode: 'createNew',
             btnLabel: 'Add new lesson',
             formAction: '/lesson/add',
-            navLocation: 'lesson'
+            navLocation: 'lesson',
+            validationErrors: []
         });
     })
 }
@@ -55,7 +57,8 @@ exports.showEditLessonForm = (req, res, next) => {
                     pageTitle: 'Edit lesson',
                     btnLabel: 'Edit lesson',
                     formAction: '/lesson/edit',
-                    navLocation: 'lesson'
+                    navLocation: 'lesson',
+                    validationErrors: []
                 });
             })
         });
@@ -64,8 +67,24 @@ exports.showEditLessonForm = (req, res, next) => {
 
 exports.addLesson = (req, res, next) => {
     const lesData = {...req.body};
+    console.log("addLesson")
+    console.log(lesData)
     LessonRepository.creteLesson(lesData).then( result => {
         res.redirect("/lesson");
+    }).catch(err => {
+        LessonRepository.getAllStudentsAndInstructors().then(result => {
+            res.render('lessonsPage/form', {
+                lesson: lesData,
+                students: result.students,
+                instructors: result.instructors,
+                pageTitle : 'New Lesson',
+                formMode: 'edit',
+                btnLabel: 'Add new lesson',
+                formAction: '/lesson/add',
+                navLocation: 'lesson',
+                validationErrors: err.errors
+            });
+        }); 
     });
 };
 
@@ -74,6 +93,20 @@ exports.updateLesson = (req, res, next) => {
     const lesData = {...req.body};
     LessonRepository.updateLesson(lesId, lesData).then( result => {
         res.redirect("/lesson");
+    }).catch(err => {
+        LessonRepository.getAllStudentsAndInstructors().then(result => {
+            res.render('lessonsPage/form', {
+                lesson: lesData,
+                students: result.students,
+                instructors: result.instructors,
+                formMode: 'edit',
+                pageTitle: 'Edit lesson',
+                btnLabel: 'Edit lesson',
+                formAction: '/lesson/edit',
+                navLocation: 'lesson',
+                validationErrors: err.errors
+            });
+        });
     });
 };
 
@@ -81,5 +114,5 @@ exports.deleteLesson = (req, res, next) => {
     const lesId = req.params.lesId;
     LessonRepository.deleteLesson(lesId).then( result => {
         res.redirect("/lesson");
-    });
+    })
 };

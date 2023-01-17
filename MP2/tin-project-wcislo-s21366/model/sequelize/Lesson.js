@@ -13,8 +13,8 @@ const Lesson = sequelize.define('Lesson', {
         type: Sequelize.DATE, //change to date+time later
     
         get() {
-            return this.getDataValue('startDate')
-              .toLocaleString('en-GB', { timeZone: 'UTC' });
+            var date = this.getDataValue('startDate').toISOString()
+            return date.split('T')[0] + " " + date.split('T')[1].slice(0,5) 
           },
           validate: {
               notEmpty: {
@@ -27,8 +27,8 @@ const Lesson = sequelize.define('Lesson', {
     endDate: {
         type: Sequelize.DATE, //change to date+time later
         get() {
-            return this.getDataValue('endDate')
-              .toLocaleString('en-GB', { timeZone: 'UTC' });
+            var date = this.getDataValue('endDate').toISOString()
+            return date.split('T')[0] + " " + date.split('T')[1].slice(0,5) 
           },
           validate: {
               notEmpty: {

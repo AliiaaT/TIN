@@ -69,12 +69,12 @@ exports.addStudent = (req, res, next) => {
                 e.message = "The Phone Number you entered is already in use.";
             }
          });
-        res.render('studentsPage/form', {
+         res.render('studentsPage/form', {
             stud: stuData,
-            formMode: 'edit',
-            pageTitle: 'Edit student',
-            btnLabel: 'Edit student',
-            formAction: '/student/edit',
+            pageTitle : 'New Student',
+            formMode: 'createNew',
+            btnLabel: 'Add new student',
+            formAction: '/student/add',
             navLocation: 'student',
             validationErrors: err.errors
         });
@@ -94,12 +94,12 @@ exports.updateStudent = (req, res, next) => {
                 e.message = "The Phone Number you entered is already in use.";
             }
          });
-        res.render('studentsPage/form', {
+         res.render('studentsPage/form', {
             stud: stuData,
-            pageTitle : 'New Student',
-            formMode: 'createNew',
-            btnLabel: 'Add new student',
-            formAction: '/student/add',
+            formMode: 'edit',
+            pageTitle: 'Edit student',
+            btnLabel: 'Edit student',
+            formAction: '/student/edit',
             navLocation: 'student',
             validationErrors: err.errors
         });

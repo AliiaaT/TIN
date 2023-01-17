@@ -60,7 +60,7 @@ const Student = sequelize.define('Student', {
     birthDate: {
         type: Sequelize.DATE,
         get() {
-            return this.getDataValue('birthDate').toISOString().split('T')[0]
+            return !!this.getDataValue('birthDate') ? this.getDataValue('birthDate').toISOString().split('T')[0] : undefined
           },
           validate: {
               notEmpty: {

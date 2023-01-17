@@ -46,4 +46,13 @@ function checkTextLengthRange(value, min, max) {
     return true;
 };
 
+function checkEmailValid(value) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
 
