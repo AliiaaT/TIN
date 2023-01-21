@@ -55,10 +55,15 @@ if (!checkRequired(priceInput.value)) {
     errorPrice.innerText = "The field is required.";
 }
 
+//validation for license field
+if (!checkDateIfPast(licenseInput.value)) {
+    valid = false;
+    licenseInput.classList.add("error-input");
+    errorLicense.innerText = "License issue date should be less than current date.";
+}
 
 //validation for license field
 if (!checkRequired(licenseInput.value)) {
-    //ad Date validation!!! Like not grated then present timedate
     valid = false;
     licenseInput.classList.add("error-input");
     errorLicense.innerText = "The field is required.";

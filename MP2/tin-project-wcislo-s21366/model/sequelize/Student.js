@@ -47,7 +47,7 @@ const Student = sequelize.define('Student', {
             },
             len: {
                 args: [9,9],
-                msg: "The field should contain 9 characters"
+                msg: "The field should contain 9 characters(server)"
             },
         }
     },
@@ -65,7 +65,12 @@ const Student = sequelize.define('Student', {
           validate: {
               notEmpty: {
                   msg: "The field is required."
-              }
+              },
+              customValidator(value) {
+                if (new Date(value) > new Date()) {
+                  throw new Error("Birthdate should be less than current date.(server)");
+                }
+              },
           },
         allowNull: false
     }

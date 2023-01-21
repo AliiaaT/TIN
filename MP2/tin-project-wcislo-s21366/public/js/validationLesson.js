@@ -39,24 +39,35 @@ function validateForm(){
 
 
 
+    //validation endDateInput after startDate
+    if (!checkDateTimeIfAfter(endDateInput.value, startDateInput.value)) {
+        valid = false;
+        endDateInput.classList.add("error-input");
+        errorEDate.innerText = "The End Date should be later than the Start Date.";
+    }
+
+    if (!checkDateIfFuture(startDateInput.value)) {
+        valid = false;
+        startDateInput.classList.add("error-input");
+        errorSDate.innerText = "The time should be in future.";
+    }
+
     //validation for startDate field
     if (!checkRequired(startDateInput.value)) {
-        //ad Date validation!!! Like not grated then present timedate
         valid = false;
         startDateInput.classList.add("error-input");
         errorSDate.innerText = "The field is required.";
     }
 
+    
+
 
     //validation for endDate field
     if (!checkRequired(endDateInput.value)) {
-        //ad Date validation!!! Like not grated then present timedate
         valid = false;
         endDateInput.classList.add("error-input");
         errorEDate.innerText = "The field is required.";
     }
-
-
 
     if (valid) {
         errorSummary.style.visibility = "hidden";

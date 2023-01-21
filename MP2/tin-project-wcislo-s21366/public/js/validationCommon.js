@@ -54,5 +54,70 @@ function checkEmailValid(value) {
     }
 }
 
+function checkDateTimeIfAfter(value, compareTo) {
+    if (!value) {
+        return false;
+    }
+
+    if (!compareTo) {
+        return false;
+    }
+
+    const pattern = /(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/;
+
+    if (!pattern.test(value)) {
+        return false;
+    }
+
+    if (!pattern.test(compareTo)) {
+        return false;
+    }
+
+    const valueDate = new Date(value);
+    const compareToDate = new Date(compareTo);
+    if (valueDate.getTime() < compareToDate.getTime()) {
+        return false;
+    }
+
+    return true;
+}
+
+function checkDateIfPast(value) {
+    if (!value) {
+        return false;
+    }
+
+    const pattern = /(\d{4})-(\d{2})-(\d{2})/;
+    if (!pattern.test(value)) {
+        return false;
+    }
+
+    const valueDate = new Date(value);
+    const now = new Date();
+    if (valueDate.getTime() > now.getTime()) {
+        return false;
+    }
+
+    return true;
+}
+
+function checkDateIfFuture(value) {
+    if (!value) {
+        return false;
+    }
+
+    const pattern = /(\d{4})-(\d{2})-(\d{2})/;
+    if (!pattern.test(value)) {
+        return false;
+    }
+
+    const valueDate = new Date(value);
+    const now = new Date();
+    if (valueDate.getTime() < now.getTime()) {
+        return false;
+    }
+
+    return true;
+}
 
 

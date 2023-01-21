@@ -53,16 +53,19 @@ function validateForm(){
         phoneNumberInput.classList.add("error-input");
         errorPhoneNumber.innerText = "The field should contain 9 digits without country code.";
     }
+    //validation for birthDateInput before now
+    if (!checkDateIfPast(birthDateInput.value)) {
+        valid = false;
+        birthDateInput.classList.add("error-input");
+        errorBirhtdate.innerText = "Birthday should be less than current date."
+    }
 
     //validation for birthDateInput field
     if (!checkRequired(birthDateInput.value)) {
-        //ad Date validation!!! Like not grated then present timedate
         valid = false;
         birthDateInput.classList.add("error-input");
         errorBirhtdate.innerText = "The field is required.";
     }
-
-    
 
     if (valid) {             
         errorSummary.style.visibility = "hidden";

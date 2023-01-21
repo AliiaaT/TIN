@@ -68,6 +68,11 @@ exports.addStudent = (req, res, next) => {
             if(e.path.includes('phoneNumber') && e.type == 'unique violation') {
                 e.message = "The Phone Number you entered is already in use.";
             }
+            console.log("Error occured")
+            console.log(e)
+            if(e.path.includes('birthDate')) {
+                e.message = "birthDate error";
+            }
          });
          res.render('studentsPage/form', {
             stud: stuData,

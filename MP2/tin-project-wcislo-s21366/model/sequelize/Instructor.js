@@ -55,7 +55,12 @@ const Instructor = sequelize.define('Instructor', {
           validate: {
               notEmpty: {
                   msg: "The field is required."
-              }
+              },
+              customValidator(value) {
+                if (new Date(value) > new Date()) {
+                  throw new Error("License Issue Date should be less than current date.(server)");
+                }
+              },
           },
         allowNull: false
     },
