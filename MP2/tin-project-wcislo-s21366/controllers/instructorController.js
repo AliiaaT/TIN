@@ -19,7 +19,7 @@ exports.showInstructorDetails = (req, res, next) => {
             res.render('intructorPage/form', {
                 inst: inst,
                 formMode: 'showDetails',
-                pageTitle: 'Instructor details',
+                pageTitle: req.__('instructors-page.details-instructors-page-title'),
                 formAction: '',
                 navLocation: 'instructor',
                 validationErrors: []
@@ -30,9 +30,9 @@ exports.showInstructorDetails = (req, res, next) => {
 exports.showAddInstructorForm = (req, res, next) => {
     res.render('intructorPage/form', {
         inst: {},
-        pageTitle : 'New Instructor',
+        pageTitle: req.__('instructors-page.add-instructors-page-title'),
+        btnLabel: req.__('instructors-page.buttons.add-new-instructor'),
         formMode: 'createNew',
-        btnLabel: 'Add new instructor',
         formAction: '/instructor/add',
         navLocation: 'instructor',
         validationErrors: []
@@ -47,8 +47,8 @@ exports.showEditInstructorForm = (req, res, next) => {
             res.render('intructorPage/form', {
                 inst: inst,
                 formMode: 'edit',
-                pageTitle: 'Edit instructor',
-                btnLabel: 'Edit instructor',
+                pageTitle: req.__('instructors-page.edit-instructor-page-title'),
+                btnLabel: req.__('instructors-page.buttons.edit-instructor'),
                 formAction: '/instructor/edit',
                 navLocation: 'instructor',
                 validationErrors: []
@@ -70,14 +70,14 @@ exports.addInstructor = (req, res, next) => {
     }).catch(err => {
         err.errors.forEach(e => {
             if(e.path.includes('email') && e.type == 'unique violation') {
-                e.message = "The email adress you entered is already in use.";
+                e.message = req.__('errors.email-already-in-use');
             }
          });
         res.render('intructorPage/form', {
             inst: insData,
-            pageTitle : 'New Instructor',
+            pageTitle: req.__('instructors-page.add-instructors-page-title'),
+            btnLabel: req.__('instructors-page.buttons.add-new-instructor'),
             formMode: 'createNew',
-            btnLabel: 'Add new instructor',
             formAction: '/instructor/add',
             navLocation: 'instructor',
             validationErrors: err.errors
@@ -98,14 +98,14 @@ exports.updateInstructor = (req, res, next) => {
     }).catch(err => {
         err.errors.forEach(e => {
             if(e.path.includes('email') && e.type == 'unique violation') {
-                e.message = "The email adress you entered is already in use.";
+                e.message = req.__('errors.email-already-in-use');
             }
          });
          res.render('intructorPage/form', {
             inst: insData,
             formMode: 'edit',
-            pageTitle: 'Edit instructor',
-            btnLabel: 'Edit instructor',
+            pageTitle: req.__('instructors-page.edit-instructor-page-title'),
+            btnLabel: req.__('instructors-page.buttons.edit-instructor'),
             formAction: '/instructor/edit',
             navLocation: 'instructor',
             validationErrors: err.errors

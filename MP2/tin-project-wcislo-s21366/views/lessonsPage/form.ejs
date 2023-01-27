@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student</title>
+    <title><%= pageTitle %></title>
     <link rel="stylesheet" href="../../css/styles.css">
     <script type="application/javascript" src="../../js/validationCommon.js"></script>
     <script type="application/javascript" src="../../js/validationLesson.js"></script>
@@ -17,10 +17,10 @@
         <h2><%= pageTitle %></h2>
         <hr>
         <br>
-        <form class="form" method="post" action="<%=formAction%>" novalidate >
+        <form class="form" method="post" action="<%=formAction%>" novalidate>
             <input type="hidden" name="_id" value="<%=lesson._id %>">
 
-            <label for="student" >Student<span class="symbol-required">*</span> </label>
+            <label for="student" ><%=__('driving-lessons-page.table.student')%><span class="symbol-required">*</span> </label>
             <select name="stuId"  id="student" class="<%= validationErrors.find(e => e.path.includes('stuId')) ? 'error-input' : ''%>"  <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
                 
                 <% if(formMode==='showDetails') { %>
@@ -28,7 +28,7 @@
                     <option disabled selected value><%= lesson.student.firstName %> <%= lesson.student.lastName %></option>
 
                 <% } else if(formMode==='edit') { %>
-                    <option disabled value  <%= (lesson.stuId === undefined) ? 'selected' : '' %>> -- select student -- </option>
+                    <option disabled value  <%= (lesson.stuId === undefined) ? 'selected' : '' %>> <%=__('verification.select-student')%> </option>
                     
                     <% for (let student of students) { %>
                         <option value="<%=student._id%>" <%= (student._id == lesson.stuId) ? 'selected' : '' %>><%=student.firstName%> <%=student.lastName%></option>
@@ -36,7 +36,7 @@
 
                 <% } else { %>
 
-                    <option disabled selected value> -- select student -- </option>
+                    <option disabled selected value> <%=__('verification.select-student')%> </option>
                     
                     <% for (let student of students) { %>
                         <option value="<%=student._id%>"><%=student.firstName%> <%=student.lastName%></option>
@@ -46,24 +46,24 @@
             </select>
             <span id="errorSName" class="errors-text">
                 <% if(validationErrors.find(e => e.path.includes('stuId'))) { %>
-                    <%= validationErrors.find(e => e.path.includes('stuId')).message %>
+                    <%= __(validationErrors.find(e => e.path.includes('stuId')).message) %>
                 <% } %>
             </span>
 
-            <label for="instructor">Instructor<span class="symbol-required">*</span></label>
+            <label for="instructor"><%=__('driving-lessons-page.table.instructor')%><span class="symbol-required">*</span></label>
             <select name="insId" id="instructor" class="<%= validationErrors.find(e => e.path.includes('insId')) ? 'error-input' : ''%>"  <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
                 <% if(formMode==='showDetails') { %>
                     <option disabled selected value><%= lesson.instructor.name %></option>
 
                  <% } else if(formMode==='edit') { %>
-                    <option disabled value  <%= (lesson.insId === undefined) ? 'selected' : '' %>> -- select instructor -- </option>
+                    <option disabled value  <%= (lesson.insId === undefined) ? 'selected' : '' %>> <%=__('verification.select-instructor')%> </option>
                     
                     <% for (let instructor of instructors) { %>
                         <option value="<%=instructor._id%>" <%= (instructor._id == lesson.insId) ? 'selected' : '' %>><%=instructor.name%>%></option>
                     <% } %>
 
                 <% } else { %>
-                    <option disabled selected value> -- select instructor -- </option>
+                    <option disabled selected value> <%=__('verification.select-instructor')%> </option>
                     
                     <% for (let instructor of instructors) { %>
                         <option value="<%=instructor._id%>"><%=instructor.name%></option>
@@ -72,46 +72,60 @@
             </select>
             <span id="errorIName" class="errors-text">
                 <% if(validationErrors.find(e => e.path.includes('insId'))) { %>
-                    <%= validationErrors.find(e => e.path.includes('insId')).message %>
+                    <%= __(validationErrors.find(e => e.path.includes('insId')).message) %>
                 <% } %>
             </span>
 
-            <label for="startDate">Start Date<span class="symbol-required">*</span></label>
+            <label for="startDate"><%=__('driving-lessons-page.table.start-time')%><span class="symbol-required">*</span></label>
             <input id="startDate" name="startDate" type="datetime-local" required value="<%= lesson.startDate %>" class="<%= validationErrors.find(e => e.path.includes('startDate')) ? 'error-input' : ''%>"  <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
             <span id="errorSNumber" class="errors-text">
                 <% if(validationErrors.find(e => e.path.includes('startDate'))) { %>
-                    <%= validationErrors.find(e => e.path.includes('startDate')).message %>
+                    <%= __(validationErrors.find(e => e.path.includes('startDate')).message) %>
                 <% } %>
             </span>
             
-            <label for="endDate">End Date<span class="symbol-required">*</span></label>
+            <label for="endDate"><%=__('driving-lessons-page.table.end-time')%><span class="symbol-required">*</span></label>
             <input id="endDate" name="endDate" type="datetime-local"  required value="<%= lesson.endDate %>" class="<%= validationErrors.find(e => e.path.includes('endDate')) ? 'error-input' : ''%>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
             <span id="errorENumber" class="errors-text">
                 <% if(validationErrors.find(e => e.path.includes('endDate'))) { %>
-                    <%= validationErrors.find(e => e.path.includes('endDate')).message %>
+                    <%= __(validationErrors.find(e => e.path.includes('endDate')).message) %>
                 <% } %>
             </span>
 
-            <label for="category">Category</label>
+            <label for="category"><%=__('driving-lessons-page.table.category')%></label>
             <input id="category" name="category" type="text"  required value="<%= lesson.category %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
 
             <div class="form-buttons">
-                <p id="errorSummary" style="visibility: hidden;">Form contains errors!</p>
+                <p id="errorSummary" style="visibility: hidden;"><%=__('errors.form-contains-errors')%></p>
                 <% if(formMode=='showDetails') { %>
                     <div class="section-buttons">
-                        <a href="/lesson/edit/<%= lesson._id%>" class="form-button-edit">Edit</a>
+                        <a href="/lesson/edit/<%= lesson._id%>" class="form-button-edit"><%=__('driving-lessons-page.buttons.edit')%></a>
                     </div>
                     <br>
                 <% } %>
                 <% if(formMode!='showDetails') { %>
                     <input type="submit" class="form-button-submit-add" value="<%=btnLabel%>" />
-                    <a href="/lesson" class="form-button-cancel">Cancel</a>
+                    <a href="/lesson" class="form-button-cancel"><%=__('driving-lessons-page.buttons.cancel')%></a>
                 <% } else { %>
-                    <a href="/lesson" class="form-button-cancel">Return</a>
+                    <a href="/lesson" class="form-button-cancel"><%=__('driving-lessons-page.buttons.return')%></a>
                 <% } %>
             </div>
         </form>  
     </div>
+    <div style="display: none">
+        <span id="errors.the-field-is-required"><%= __('errors.the-field-is-required') %></span>
+        <span id="errors.2-60-symbols"><%= __('errors.2-60-symbols') %></span>
+        <span id="errors.9-symbols"><%= __('errors.9-symbols') %></span>
+        <span id="errors.birthdate-bigger-current"><%= __('errors.birthdate-bigger-current') %></span>
+        <span id="errors.date-should-be-in-future"><%= __('errors.date-should-be-in-future') %></span>
+        <span id="errors.end-date-after-start-date"><%= __('errors.end-date-after-start-date') %></span>
+        <span id="errors.license-date-less-current-date"><%= __('errors.license-date-less-current-date') %></span>
+        <span id="errors.valid-email"><%= __('errors.valid-email') %></span>
+        <span id="errors.email-already-in-use"><%= __('errors.email-already-in-use') %></span>
+        <span id="errors.phone-already-in-use"><%= __('errors.phone-already-in-use') %></span>
+        <span id="errors.form-contains-errors"><%= __('errors.form-contains-errors') %></span>
+        <span id="errors.question-add-record"><%= __('errors.question-add-record') %></span>
+     </div>
 
     <%- include('../fragments/footer.ejs') %>
 

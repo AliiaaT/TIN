@@ -14,11 +14,11 @@ const Student = sequelize.define('Student', {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "The field is required."
+                msg: "errors.the-field-is-required"
             },
             len: {
                 args: [2,60],
-                msg: "The field should contain between 2 and 60 characters"
+                msg: "errors.2-60-symbols"
             },
         }
     },
@@ -28,11 +28,11 @@ const Student = sequelize.define('Student', {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "The field is required."
+                msg: "errors.the-field-is-required"
             },
             len: {
                 args: [2,60],
-                msg: "The field should contain between 2 and 60 characters"
+                msg: "errors.2-60-symbols"
             },
         }
     },
@@ -43,11 +43,11 @@ const Student = sequelize.define('Student', {
         unique: true,
         validate: {
             notEmpty: {
-                msg: "The field is required."
+                msg: "errors.the-field-is-required"
             },
             len: {
                 args: [9,9],
-                msg: "The field should contain 9 characters(server)"
+                msg: "errors.9-symbols"
             },
         }
     },
@@ -64,11 +64,11 @@ const Student = sequelize.define('Student', {
           },
           validate: {
               notEmpty: {
-                  msg: "The field is required."
+                  msg: "errors.the-field-is-required"
               },
               customValidator(value) {
                 if (new Date(value) > new Date()) {
-                  throw new Error("Birthdate should be less than current date.(server)");
+                  throw new Error("errors.birthdate-bigger-current");
                 }
               },
           },

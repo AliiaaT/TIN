@@ -13,10 +13,14 @@
         <nav>
             <a href="/"><img src="../../images/logo-fococlipping-standard.png" alt="logo" class="logo" ></a>
             <ul class="nav-links">
-                <li><a href="/" class="<%= navLocation == 'main' ? 'active' : ''%>"><h3>Home</h3></a></li>
-                <li><a href="/student" class="<%= navLocation == 'student' ? 'active' : '' %>"><h3>Students</h3></a></li>
-                <li><a href="/instructor" class="<%= navLocation == 'instructor' ? 'active' : '' %>"><h3>Instructors</h3></a></li>
-                <li><a href="/lesson" class="<%= navLocation == 'lesson' ? 'active' : ''%>" ><h3>Driving Lessons</h3></a></li>
+                <li><a href="/" class="<%= navLocation == 'main' ? 'active' : ''%>"><h3><%=__('nav.home')%></h3></a></li>
+                <li><a href="/student" class="<%= navLocation == 'student' ? 'active' : '' %>"><h3><%=__('nav.students')%></h3></a></li>
+                <li><a href="/instructor" class="<%= navLocation == 'instructor' ? 'active' : '' %>"><h3><%=__('nav.instructors')%></h3></a></li>
+                <li><a href="/lesson" class="<%= navLocation == 'lesson' ? 'active' : ''%>" ><h3><%=__('nav.driving-lessons')%></h3></a></li>
+            </ul>
+            <ul class="nav-links">
+                <li><a href="/changeLang/ru" class="<%= lang == 'ru' ? 'active' : ''%>">RU</a></li>
+                <li><a href="/changeLang/en" class="<%= lang == 'en' ? 'active' : ''%>">EN</a></li>
             </ul>
         </nav>
     </div>

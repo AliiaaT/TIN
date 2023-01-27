@@ -11,6 +11,19 @@ function validateForm(){
     const errorBirhtdate = document.getElementById('errorDate');
     const errorSummary = document.getElementById('errorSummary');
 
+    
+    const fieldRequired = document.getElementById('errors.the-field-is-required').innerText;
+    const symbols2_60 = document.getElementById('errors.2-60-symbols').innerText;
+    const symbols9 = document.getElementById('errors.9-symbols').innerText;
+    const birthdateBiggerCurrent = document.getElementById('errors.birthdate-bigger-current').innerText;
+    const dateShouldBeInFuture = document.getElementById('errors.date-should-be-in-future').innerText;
+    const endDateAfterStartDate = document.getElementById('errors.end-date-after-start-date').innerText;
+    const licenseIssue = document.getElementById('errors.license-date-less-current-date').innerText;
+    const validEmail = document.getElementById('errors.valid-email').innerText;
+    const questionAddRecord = document.getElementById('errors.question-add-record').innerText;
+
+
+
     console.log("Before reset Errors");
     
     resetErrors([firstNameInput, lastNameInput, phoneNumberInput, birthDateInput],
@@ -24,22 +37,22 @@ function validateForm(){
     if (!checkRequired(firstNameInput.value)) {
         valid = false;
         firstNameInput.classList.add("error-input");
-        errorFirstName.innerText = "The field is required.";
+        errorFirstName.innerText = fieldRequired;
     }else if(!checkTextLengthRange(firstNameInput.value, 2, 60)) {
         valid = false;
         firstNameInput.classList.add("error-input");
-        errorFirstName.innerText = "The field should contain 2 to 60 characters.";
+        errorFirstName.innerText = symbols2_60;
     }
 
     //validation for lastNameInput field
     if (!checkRequired(lastNameInput.value)) {
         valid = false;
         lastNameInput.classList.add("error-input");
-        errorLastName.innerText = "The field is required.";
+        errorLastName.innerText = fieldRequired;
     }else if(!checkTextLengthRange(lastNameInput.value, 2, 60)) {
         valid = false;
         lastNameInput.classList.add("error-input");
-        errorLastName.innerText = "The field should contain 2 to 60 characters.";
+        errorLastName.innerText = symbols2_60;
     }
 
 
@@ -47,29 +60,29 @@ function validateForm(){
     if (!checkRequired(phoneNumberInput.value)) {
         valid = false;
         phoneNumberInput.classList.add("error-input");
-        errorPhoneNumber.innerText = "The field is required.";
+        errorPhoneNumber.innerText = fieldRequired;
     }else if(!checkTextLengthRange(phoneNumberInput.value, 9, 9)) {
         valid = false;
         phoneNumberInput.classList.add("error-input");
-        errorPhoneNumber.innerText = "The field should contain 9 digits without country code.";
+        errorPhoneNumber.innerText = symbols9;
     }
     //validation for birthDateInput before now
     if (!checkDateIfPast(birthDateInput.value)) {
         valid = false;
         birthDateInput.classList.add("error-input");
-        errorBirhtdate.innerText = "Birthday should be less than current date."
+        errorBirhtdate.innerText = birthdateBiggerCurrent;
     }
 
     //validation for birthDateInput field
     if (!checkRequired(birthDateInput.value)) {
         valid = false;
         birthDateInput.classList.add("error-input");
-        errorBirhtdate.innerText = "The field is required.";
+        errorBirhtdate.innerText = fieldRequired;
     }
 
     if (valid) {             
         errorSummary.style.visibility = "hidden";
-        const conf = confirm('Do you want to add the record?');
+        const conf = confirm(questionAddRecord);
         return conf
     } else {
         errorSummary.style.visibility = "visible";

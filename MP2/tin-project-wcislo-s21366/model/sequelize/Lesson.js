@@ -24,11 +24,11 @@ const Lesson = sequelize.define('Lesson', {
           },
           validate: {
               notEmpty: {
-                  msg: "The field is required."
+                  msg: "errors.the-field-is-required"
               },
               customValidator(value) {
                 if (new Date(value) < new Date()) {
-                  throw new Error("The Date should be in futur(server)");
+                  throw new Error("errors.date-should-be-in-future");
                 }
             }
           },
@@ -46,13 +46,13 @@ const Lesson = sequelize.define('Lesson', {
           },
           validate: {
               notEmpty: {
-                  msg: "The field is required."
+                  msg: "errors.the-field-is-required"
               },
               // server validation for endDate
               customValidator(value) {
                 var startDate = this.getDataValue('startDate');
                 if (new Date(value) < startDate) {
-                  throw new Error("End Date should be after Start Date");
+                  throw new Error("errors.end-date-after-start-date");
                 }
               },
           },
@@ -68,7 +68,7 @@ const Lesson = sequelize.define('Lesson', {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "The field is required."
+                msg: "error.the-field-is-required"
             }
         },
     },
@@ -77,7 +77,7 @@ const Lesson = sequelize.define('Lesson', {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "The field is required."
+                msg: "error.the-field-is-required"
             }
         },
     }

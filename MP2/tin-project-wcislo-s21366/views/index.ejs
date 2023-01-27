@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title><%=__('nav.home')%></title>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <%- include('./fragments/header.ejs') %>
     <div class="main">
-        <h2>About our driving academy GAZELKA Warsaw</h2><br>
-        <p>We appreciate your interest in driving license courses at GAZELKA! We are a professional, fast growing driving school, established in 2014. Since then we've been offering driving lessons to suit almost every need. GAZELKA helped many Polish and foreign nationals pass the driving exam and get the driving license. Whether for your work, study or to feel more confident with your driving techniques, contact us to find out how we can help you.</p>
-        <br><p>Feeling stressed at the thought of gripping the wheel? We get it! With us you will feel confident behind the wheel again. Our instructors will be happy to reawaken the pleasure of driving in you. We teach people of all ages, our students pass their exams and enjoy driving!</p>
+        <h2><%=__('home-page.title')%></h2><br>
+        <p><%=__('home-page.description1')%></p>
+        <br><p><%=__('home-page.description2')%>/p>
         <br><img src="./images/8bb3ce5ce65928a1aef596b5c93217124afd4a1e.jpg" alt="photo">
     </div>
     <%- include('./fragments/footer.ejs') %>

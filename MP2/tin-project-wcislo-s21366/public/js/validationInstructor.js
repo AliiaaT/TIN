@@ -12,6 +12,17 @@ function validateForm(){
     const errorLicense = document.getElementById('errorLicense');
     const errorSummary = document.getElementById('errorSummary');
 
+    const fieldRequired = document.getElementById('errors.the-field-is-required').innerText;
+    const symbols2_60 = document.getElementById('errors.2-60-symbols').innerText;
+    const symbols9 = document.getElementById('errors.9-symbols').innerText;
+    const birthdateBiggerCurrent = document.getElementById('errors.birthdate-bigger-current').innerText;
+    const dateShouldBeInFuture = document.getElementById('errors.date-should-be-in-future').innerText;
+    const endDateAfterStartDate = document.getElementById('errors.end-date-after-start-date').innerText;
+    const licenseIssue = document.getElementById('errors.license-date-less-current-date').innerText;
+    const validEmail = document.getElementById('errors.valid-email').innerText;
+    const questionAddRecord = document.getElementById('errors.question-add-record').innerText;
+
+
     console.log("Before reset Errors");
 
     resetErrors([nameInput, emailInput, priceInput, licenseInput], 
@@ -26,11 +37,11 @@ function validateForm(){
    if (!checkRequired(nameInput.value)) {
     valid = false;
     nameInput.classList.add("error-input");
-    errorName.innerText = "The field is required.";
+    errorName.innerText = fieldRequired;
 }else if(!checkTextLengthRange(nameInput.value, 2, 60)) {
     valid = false;
     nameInput.classList.add("error-input");
-    errorName.innerText = "The field should contain 2 to 60 characters.";
+    errorName.innerText = symbols2_60;
 }
 
 
@@ -38,11 +49,11 @@ function validateForm(){
 if (!checkRequired(emailInput.value)) {
     valid = false;
     emailInput.classList.add("error-input");
-    errorEmail.innerText = "The field is required.";
+    errorEmail.innerText = fieldRequired;
 } else if (!checkEmailValid(emailInput.value)) {
     valid = false;
     emailInput.classList.add("error-input");
-    errorEmail.innerText = "Invalid email format.";
+    errorEmail.innerText = validEmail;
 }
 
 
@@ -52,28 +63,28 @@ if (!checkRequired(priceInput.value)) {
     //add Price  validation!!!
     valid = false;
     priceInput.classList.add("error-input");
-    errorPrice.innerText = "The field is required.";
+    errorPrice.innerText = fieldRequired;
 }
 
 //validation for license field
 if (!checkDateIfPast(licenseInput.value)) {
     valid = false;
     licenseInput.classList.add("error-input");
-    errorLicense.innerText = "License issue date should be less than current date.";
+    errorLicense.innerText = licenseIssue;
 }
 
 //validation for license field
 if (!checkRequired(licenseInput.value)) {
     valid = false;
     licenseInput.classList.add("error-input");
-    errorLicense.innerText = "The field is required.";
+    errorLicense.innerText = fieldRequired;
 }
 
 
 
 if (valid) {
     errorSummary.style.visibility = "hidden";
-    const conf = confirm('Do you want to add the record?');
+    const conf = confirm(questionAddRecord);
     return conf
 } else {
     errorSummary.style.visibility = "visible";

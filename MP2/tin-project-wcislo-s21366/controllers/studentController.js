@@ -21,7 +21,7 @@ exports.showStudentDetails = (req, res, next) => {
             res.render('studentsPage/form', {
                 stud: stud,
                 formMode: 'showDetails',
-                pageTitle: 'Student details',
+                pageTitle: req.__('students-page.details-student-page-title'),
                 formAction: '',
                 navLocation: 'student',
                 validationErrors: []
@@ -32,9 +32,9 @@ exports.showStudentDetails = (req, res, next) => {
 exports.showAddStudentForm = (req, res, next) => {
     res.render('studentsPage/form', {
         stud: {},
-        pageTitle : 'New Student',
+        pageTitle: req.__('students-page.add-student-page-title'),
         formMode: 'createNew',
-        btnLabel: 'Add new student',
+        btnLabel: req.__('students-page.buttons.add-new-student'),
         formAction: '/student/add',
         navLocation: 'student',
         validationErrors: []
@@ -49,8 +49,8 @@ exports.showEditStudentForm = (req, res, next) => {
             res.render('studentsPage/form', {
                 stud: stud,
                 formMode: 'edit',
-                pageTitle: 'Edit student',
-                btnLabel: 'Edit student',
+                pageTitle: req.__('students-page.edit-student-page-title'),
+                btnLabel: req.__('students-page.buttons.edit-student'),
                 formAction: '/student/edit',
                 navLocation: 'student',
                 validationErrors: []
@@ -66,19 +66,19 @@ exports.addStudent = (req, res, next) => {
     }).catch(err => {
         err.errors.forEach(e => {
             if(e.path.includes('phoneNumber') && e.type == 'unique violation') {
-                e.message = "The Phone Number you entered is already in use.";
+                e.message = req.__('errors.phone-already-in-use');
             }
             console.log("Error occured")
             console.log(e)
-            if(e.path.includes('birthDate')) {
-                e.message = "birthDate error";
-            }
+            // if(e.path.includes('birthDate')) {
+            //     e.message = "birthDate error";
+            // }
          });
          res.render('studentsPage/form', {
             stud: stuData,
-            pageTitle : 'New Student',
+            pageTitle: req.__('students-page.add-student-page-title'),
             formMode: 'createNew',
-            btnLabel: 'Add new student',
+            btnLabel: req.__('students-page.buttons.add-new-student'),
             formAction: '/student/add',
             navLocation: 'student',
             validationErrors: err.errors
@@ -96,14 +96,14 @@ exports.updateStudent = (req, res, next) => {
         console.log(err);
         err.errors.forEach(e => {
             if(e.path.includes('phoneNumber') && e.type == 'unique violation') {
-                e.message = "The Phone Number you entered is already in use.";
+                e.message = req.__('errors.phone-already-in-use');
             }
          });
          res.render('studentsPage/form', {
             stud: stuData,
             formMode: 'edit',
-            pageTitle: 'Edit student',
-            btnLabel: 'Edit student',
+            pageTitle: req.__('students-page.edit-student-page-title'),
+            btnLabel: req.__('students-page.buttons.edit-student'),
             formAction: '/student/edit',
             navLocation: 'student',
             validationErrors: err.errors

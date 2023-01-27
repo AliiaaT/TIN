@@ -14,11 +14,11 @@ const Instructor = sequelize.define('Instructor', {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "The field is required."
+                msg: "errors.the-field-is-required"
             },
             len: {
                 args: [2,60],
-                msg: "The field should contain between 2 and 60 characters"
+                msg: "errors.2-60-symbols"
             },
         }
     },
@@ -29,10 +29,10 @@ const Instructor = sequelize.define('Instructor', {
         unique: true,
         validate: {
             notEmpty: {
-                msg: "The field is required."
+                msg: "errors.the-field-is-required"
             },
             isEmail: {
-                msg: "The field should contain a valid email address"
+                msg: "errors.valid-email"
             }
         }
     },
@@ -42,7 +42,7 @@ const Instructor = sequelize.define('Instructor', {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "The field is required."
+                msg: "errors.the-field-is-required"
             }
         },
     },
@@ -54,11 +54,11 @@ const Instructor = sequelize.define('Instructor', {
           },
           validate: {
               notEmpty: {
-                  msg: "The field is required."
+                  msg: "errors.the-field-is-required"
               },
               customValidator(value) {
                 if (new Date(value) > new Date()) {
-                  throw new Error("License Issue Date should be less than current date.(server)");
+                  throw new Error("errors.license-date-less-current-date");
                 }
               },
           },

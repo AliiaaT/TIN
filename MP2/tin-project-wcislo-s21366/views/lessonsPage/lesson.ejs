@@ -11,18 +11,18 @@
     <%- include('../fragments/header.ejs') %>
 
     <div class="main">
-        <h2>List of lessons:</h2>
+        <h2><%=__('driving-lessons-page.title')%></h2>
         <br>
         <table class="table">
             <thead>
                 <tr id="mainRow">
 
-                    <th>Student</th>
-                    <th>Instructor</th>
-                    <th>Start time</th>
-                    <th>End time</th>
-                    <th>Categoty</th>
-                    <th>Actions</th>
+                    <th><%=__('driving-lessons-page.table.student')%></th>
+                    <th><%=__('driving-lessons-page.table.instructor')%></th>
+                    <th><%=__('driving-lessons-page.table.start-time')%></th>
+                    <th><%=__('driving-lessons-page.table.end-time')%></th>
+                    <th><%=__('driving-lessons-page.table.category')%></th>
+                    <th><%=__('driving-lessons-page.table.actions')%></th>
                 </tr>
             </thead>
             <tbody>
@@ -35,29 +35,19 @@
                     <td><%= lesson.category %></td>
                     <td>
                         <ul class="list">
-                            <li><a href="/lesson/details/<%=lesson._id%>" class="list-action-button-details">Details</a></li>
-                            <li><a href="/lesson/edit/<%=lesson._id%>" class="list-action-button-edit">Edit</a></li>
-                            <li><a href="/lesson/delete/<%=lesson._id%>" class="list-action-button-delete">Delete</a></li>
+                            <li><a href="/lesson/details/<%=lesson._id%>" class="list-action-button-details"><%=__('driving-lessons-page.table.action-buttons.details')%></a></li>
+                            <li><a href="/lesson/edit/<%=lesson._id%>" class="list-action-button-edit"><%=__('driving-lessons-page.table.action-buttons.edit')%></a></li>
+                            <li><a href="/lesson/delete/<%=lesson._id%>" class="list-action-button-delete"><%=__('driving-lessons-page.table.action-buttons.delete')%></a></li>
                         </ul>
                     </td>
                 </tr>
                 <% } %>
             </tbody>
         </table>
-        <p><a href="/lesson/add" class="button-add">Add new lesson</a></p>
+        <p><a href="/lesson/add" class="button-add"><%=__('driving-lessons-page.buttons.add-new-lesson')%></a></p>
     </div>
     
     <%- include('../fragments/footer.ejs') %>
-
-
-    <script>
-        function deleteFunc() {
-            var response = confirm("Do you want to delete it?  Click OK to proceed otherwise click Cancel.");
-            if ( response == true )
-                {alert("Student was deleted")}
-        }
-     </script>
-    
 
 </body>
 </html>

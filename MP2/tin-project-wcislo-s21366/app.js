@@ -24,6 +24,8 @@ const lessonApiRouter = require('./routes/api/LessonApiRoute');
 
 var app = express();
 
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -34,6 +36,27 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(cookieParser('secret'));
+
+
+// init languages 
+const i18n = require('i18n');
+i18n.configure({
+   locales: ['ru', 'en'], // languages available in the application. Create a separate dictionary for each of them 
+   directory: path.join(__dirname, 'locales'), // path to the directory where the dictionaries are located
+   objectNotation: true, // enables the use of nested keys in object notation
+   cookie: 'acme-hr-lang', //the name of the cookie that our application will use to store information about the language currently selected by the user
+});
+app.use(i18n.init); //initialization and connection to the application context
+
+app.use((req, res, next) => {
+  if(!res.locals.lang) {
+      const currentLang = req.cookies['acme-hr-lang'];
+      res.locals.lang = currentLang;
+  }
+  next();
+});
+
 //Aliia here user router
 app.use('/', indexRouter);
 app.use('/student', studentRouter);
@@ -42,11 +65,6 @@ app.use('/lesson', lessonRouter);
 app.use('/api/students', stuApiRouter);
 app.use('/api/instructors', insApiRouter);
 app.use('/api/lessons', lessonApiRouter);
-
-
-
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
