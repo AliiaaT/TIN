@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <%- include('../fragments/header.ejs') %>
+
+    <div class="main">
+        <h2><%=__('driving-lessons-page.title')%></h2>
+        <br>
+        <table class="table">
+            <thead>
+                <tr id="mainRow">
+
+                    <th><%=__('driving-lessons-page.table.student')%></th>
+                    <th><%=__('driving-lessons-page.table.instructor')%></th>
+                    <th><%=__('driving-lessons-page.table.start-time')%></th>
+                    <th><%=__('driving-lessons-page.table.end-time')%></th>
+                    <th><%=__('driving-lessons-page.table.category')%></th>
+                    <th><%=__('driving-lessons-page.table.actions')%></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let lesson of lessns) { %>
+                <tr>
+                    <td><%=lesson.student.firstName%> <%=lesson.student.lastName%></td>
+                    <td><%= lesson.instructor.name%></td>
+                    <td><%= lesson.startDate %></td>
+                    <td><%= lesson.endDate %></td>
+                    <td><%= lesson.category %></td>
+                    <td>
+                        <ul class="list">
+                            <li><a href="/lesson/details/<%=lesson._id%>" class="list-action-button-details"><%=__('driving-lessons-page.table.action-buttons.details')%></a></li>
+                            <li><a href="/lesson/edit/<%=lesson._id%>" class="list-action-button-edit"><%=__('driving-lessons-page.table.action-buttons.edit')%></a></li>
+                            <li><a href="/lesson/delete/<%=lesson._id%>" class="list-action-button-delete"><%=__('driving-lessons-page.table.action-buttons.delete')%></a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <p><a href="/lesson/add" class="button-add"><%=__('driving-lessons-page.buttons.add-new-lesson')%></a></p>
+    </div>
+    
+    <%- include('../fragments/footer.ejs') %>
+
+</body>
+</html>

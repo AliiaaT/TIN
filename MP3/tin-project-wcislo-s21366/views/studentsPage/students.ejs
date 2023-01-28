@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=__('nav.students')%></title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <%- include('../fragments/header.ejs') %>
+    <div class="main">
+        <h2><%=__('students-page.title')%></h2>
+        <br>
+        <table class="table">
+            <thead>
+                <tr id="mainRow">
+
+                    <th><%=__('students-page.table.name')%></th>
+                    <th><%=__('students-page.table.surname')%></th>
+                    <th><%=__('students-page.table.phone-number')%></th>
+                    <th><%=__('students-page.table.adress')%></th>
+                    <th><%=__('students-page.table.birth-date')%></th>
+                    <th><%=__('students-page.table.actions')%></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let student of studs) { %>
+                <tr>
+                    <td><%= student.firstName %></td>
+                    <td><%= student.lastName %></td>
+                    <td><%= student.phoneNumber %></td>
+                    <td><%= student.address %></td>
+                    <td><%= student.birthDate %></td>
+                    <td>
+                        <ul class="list">
+                            <li><a href="/student/details/<%=student._id%>" class="list-action-button-details"><%=__('students-page.table.action-buttons.details')%></a></li>
+                            <li><a href="/student/edit/<%=student._id%>" class="list-action-button-edit"><%=__('students-page.table.action-buttons.edit')%></a></li>
+                            <li><a href="/student/delete/<%=student._id%>" class="list-action-button-delete"><%=__('students-page.table.action-buttons.delete')%></a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <p><a href="/student/add" class="button-add"><%=__('students-page.buttons.add-new-student')%></a></p>
+    
+    </div>
+    <%- include('../fragments/footer.ejs') %>
+    
+
+
+</body>
+</html>

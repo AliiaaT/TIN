@@ -1,0 +1,288 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+
+}
+body {
+    background-color: whitesmoke
+}
+
+  
+.header{
+    height: 16vh;
+    padding: 0 2%;
+    position: relative;
+    background-color: grey;
+    margin-left: 8%;
+    margin-right: 8%;
+    margin-top: 0.5%;
+
+    }
+
+.main{
+    height: 70vh;
+    width: 100%;
+    padding: 0 8%;
+    justify-content: space-between;
+    margin-top: 3%;
+
+}
+footer{
+    padding: 0 8%;
+    position: relative; 
+    text-align: center;
+
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+
+}
+.logo{
+    width: 400px;
+    height: 180px;
+
+}
+
+.nav-links{
+    padding: 28px 0;
+    color: black;
+
+}
+
+.nav-links li{
+    display: inline-block;
+    margin: 0 15px;
+}
+.nav-links li a{
+    text-decoration: none;
+    padding: 5px 0;
+    color: black;
+
+
+}
+
+
+.student
+{
+    text-decoration: underline;
+    background-color: #8f9491;
+
+}
+.instructor{
+    text-decoration: underline;
+    background-color: #8f9491;
+
+}
+.lesson{
+    text-decoration: underline;
+    background-color: #8f9491;
+
+}
+
+li a.active {
+    text-decoration: underline;
+    font-weight: 900;
+}
+
+.table{
+    border-collapse: collapse;
+    color: black;
+    width: 100%;
+}
+
+.table,
+.table th,
+.table td {
+    border: 1px solid;
+}
+
+#mainRow{
+    background-color: grey;
+}
+.table {
+    text-align: center;
+    padding: 1px;
+    margin-bottom: 20px;
+}
+
+.list{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    list-style-type: none;
+}
+
+.list-action-button-details,
+.list-action-button-edit,
+.list-action-button-delete,
+.form-button-submit-add,
+.form-button-cancel {
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 0.8rem;
+    color:blue ;
+}
+
+
+.form-button-edit{
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 0.8rem;
+    box-sizing: border-box;
+    display: block;
+    background-color: green;
+    color: black;
+}
+
+.list-action-button-details:hover,
+.list-action-button-edit:hover,
+.list-action-button-delete:hover {
+    background-color:#448aff;
+}
+.button-add  {
+
+    padding: 10px;
+    background-color: yellow;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    align-items: center;
+    display: grid;
+    gap: 1rem;
+    
+}
+.button-add:hover{
+    background-color: #a39c31;
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 150px 300px 1fr;
+    gap: 1rem;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.form select,
+.form input[type="text"],
+.form input[type="number"],
+.form input[type="date"],
+.form input[type="email"] {
+    border: 1px solid #7f8c8d;
+    color: black;
+    border-radius: 5px;
+    padding: 0.5rem;
+    width: 100%;
+}
+.form input[type="checkbox"] {
+    width: 20px;
+}
+
+.form input.error-input,
+.form select.error-input
+{
+    border: 3px solid #e74c3c; /* you can put here errors-text here as well because it is also red, fix redundence */
+}
+
+
+.form label {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.5em;
+}
+
+.form-all-rows {
+    grid-column: 1 / 3;
+    width: 100%;
+}
+.form-buttons {
+    margin-top: 2rem;
+    grid-column: 1 / span 2;
+}
+
+.symbol-required,
+.errors-text,
+.form p {
+    color: #c0392b;
+}
+
+textarea {
+    overflow: auto;
+}
+
+footer {
+    text-align: center;
+}
+
+
+.form-button-submit-add,
+.form-button-cancel{
+    width: 100%;
+    padding: 0.5rem 1rem;
+}
+
+.form-button-cancel{
+    
+    box-sizing: border-box;
+    display: block;
+    background-color: #e53935;
+    color: black;
+}
+.form-button-cancel:hover{
+    background-color: red;
+}
+
+
+.form-button-submit-add {
+    margin-bottom: 0.5rem;
+    background-color: #388e3c;
+    color: black;
+}
+
+.form-button-submit-add:hover{
+    background-color: #1eac49;
+}
+
+.table-list,
+.table-list th,
+.table-list td {
+    border: 1px solid;
+    border-collapse: collapse;
+    color: black;
+}
+
+.table-list th,
+.table-list td {
+    background-color: #ecf0f1;
+}
+
+.table-list td {
+    text-align: center;
+    padding: 10px;
+}
+.table-list{
+    width: 100%;
+    min-width: 500px;
+}
+

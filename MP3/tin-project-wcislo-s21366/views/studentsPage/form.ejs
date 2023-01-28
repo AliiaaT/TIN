@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <script type="application/javascript" src="../../js/validationCommon.js"></script>
+    <script type="application/javascript" src="../../js/validationStudentForm.js"></script>
+</head>
+<body>
+
+    <%- include('../fragments/header.ejs') %>
+    <div class="main">
+        <h2><%= pageTitle %></h2>
+        <hr>
+        <br>    
+        <form class="form" method="post" action="<%=formAction%>" novalidate>
+            <input type="hidden" name="_id" value="<%=stud._id %>">
+
+            <label for="firstName"><%=__('students-page.table.name')%> <span class="symbol-required">*</span></label>
+            <input id="firstName" name="firstName" type="text" placeholder="<%=__('verification.2-60-symbols')%>" class="<%= validationErrors.find(e => e.path.includes('firstName')) ? 'error-input' : ''%>"  required value="<%= stud.firstName %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            <span id="errorName" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('firstName'))) { %>
+                    <%= __(validationErrors.find(e => e.path.includes('firstName')).message) %>
+                <% } %>
+            </span>
+
+            <label for="lastName"><%=__('students-page.table.surname')%> <span class="symbol-required">*</span></label>
+            <input id="lastName" name="lastName" type="text" placeholder="<%=__('verification.2-60-symbols')%>" class="<%= validationErrors.find(e => e.path.includes('lastName')) ? 'error-input' : ''%>" required value="<%= stud.lastName %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            <span id="errorSurname" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('lastName'))) { %>
+                    <%= __(validationErrors.find(e => e.path.includes('lastName')).message) %>
+                <% } %></span>
+
+            <label for="phoneNumber"><%=__('students-page.table.phone-number')%> <span class="symbol-required">*</span></label>
+            <input id="phoneNumber" name="phoneNumber" type="number" placeholder="<%=__('verification.phone-number-example')%>" class="<%= validationErrors.find(e => e.path.includes('phoneNumber')) ? 'error-input' : ''%>"  required value="<%= stud.phoneNumber %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            <span id="errorNumber" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('phoneNumber'))) { %>
+                    <%= __(validationErrors.find(e => e.path.includes('phoneNumber')).message) %>
+                <% } %>
+            </span>
+
+            <label for="address"><%=__('students-page.table.adress')%></label> <!--No validation-->
+            <input id="address" name="address" placeholder="<%=__('verification.10-60-symbols')%>" type="text" value="<%= stud.address %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
+            <br>
+            <label for="birthDate"><%=__('students-page.table.birth-date')%><span class="symbol-required">*</span></label>
+            <input id="birthDate" name="birthDate" type="date" class="<%= validationErrors.find(e => e.path.includes('birthDate')) ? 'error-input' : ''%>"  required value="<%=stud.birthDate%>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
+            <span id="errorDate" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('birthDate'))) { %>
+                    <%= __(validationErrors.find(e => e.path.includes('birthDate')).message) %>
+                <% } %>
+            </span>
+
+
+            <% if(formMode=='showDetails') { %>
+                <div class="section-buttons">
+                    <a href="/student/edit/<%= stud._id%>" class="form-button-submit-add"><%=__('students-page.buttons.edit')%></a>
+                </div>
+            <% } %>
+            
+            <% if(formMode=='showDetails') { %>
+                <div></div>
+                <div></div>
+                <h2 class="form-all-rows"><%=__('students-page.details-of-lessons-title')%></h2>
+
+                <div></div>
+                <table class="table-list">
+                    <thead>
+                        <tr id="mainRow">
+        
+                            <th><%=__('students-page.lessons-table.instructor')%></th>
+                            <th><%=__('students-page.lessons-table.start-time')%></th>
+                            <th><%=__('students-page.lessons-table.end-time')%></th>
+                            <th><%=__('students-page.lessons-table.category')%></th>
+                        </tr>
+                    </thead>
+                    <% for(let l of stud.lessons) { %>
+                        
+                    <tr>
+                        <td><a href="/lesson/details/<%=l.dataValues._id %>"><%= l.instructor.name%></a></td>
+                        <td><%=l.startDate %></td>
+                        <td><%=l.endDate %></td>
+                        <td><%=l.category %></td>
+                    </tr>
+                    <% } %>
+                </table>
+              <% } %>
+              
+
+            <div class="form-buttons">
+                <p id="errorSummary" style="visibility: hidden;"><%=__('errors.form-contains-errors')%></p>
+
+                <% if(formMode!='showDetails') { %>
+                    <input type="submit" class="form-button-submit-add" value="<%=btnLabel%>" />
+                    <a href="/student" class="form-button-cancel"><%=__('students-page.buttons.cancel')%></a>
+                <% } else { %>
+                    <a href="/student" class="form-button-cancel"><%=__('students-page.buttons.return')%></a>
+                <% } %>
+            </div>
+        </form>  
+    </div>
+    <div style="display: none">
+        <span id="errors.the-field-is-required"><%= __('errors.the-field-is-required') %></span>
+        <span id="errors.2-60-symbols"><%= __('errors.2-60-symbols') %></span>
+        <span id="errors.9-symbols"><%= __('errors.9-symbols') %></span>
+        <span id="errors.birthdate-bigger-current"><%= __('errors.birthdate-bigger-current') %></span>
+        <span id="errors.date-should-be-in-future"><%= __('errors.date-should-be-in-future') %></span>
+        <span id="errors.end-date-after-start-date"><%= __('errors.end-date-after-start-date') %></span>
+        <span id="errors.license-date-less-current-date"><%= __('errors.license-date-less-current-date') %></span>
+        <span id="errors.valid-email"><%= __('errors.valid-email') %></span>
+        <span id="errors.email-already-in-use"><%= __('errors.email-already-in-use') %></span>
+        <span id="errors.phone-already-in-use"><%= __('errors.phone-already-in-use') %></span>
+        <span id="errors.form-contains-errors"><%= __('errors.form-contains-errors') %></span>
+        <span id="errors.question-add-record"><%= __('errors.question-add-record') %></span>
+     </div>
+    <%- include('../fragments/footer.ejs') %>
+
+</body>
+</html>

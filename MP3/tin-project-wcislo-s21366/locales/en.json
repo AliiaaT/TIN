@@ -1,0 +1,134 @@
+{
+	"nav": {
+		"home": "Home",
+		"students": "Students",
+		"instructors": "Instructors",
+		"driving-lessons": "Driving Lessons"
+	},
+	"home-page": {
+		"title": "About our driving academy GAZELKA Warsaw",
+		"description1": "We appreciate your interest in driving license courses at GAZELKA! We are a professional, fast growing driving school, established in 2014. Since then we've been offering driving lessons to suit almost every need. GAZELKA helped many Polish and foreign nationals pass the driving exam and get the driving license. Whether for your work, study or to feel more confident with your driving techniques, contact us to find out how we can help you.",
+		"description2": "Feeling stressed at the thought of gripping the wheel? We get it! With us you will feel confident behind the wheel again. Our instructors will be happy to reawaken the pleasure of driving in you. We teach people of all ages, our students pass their exams and enjoy driving!"
+	},
+	"students-page": {
+		"add-student-page-title": "New Student",
+		"details-student-page-title": "Student details",
+		"edit-student-page-title": "Edit student",
+		"title": "List of students",
+		"table": {
+			"name": "Name",
+			"surname": "Surname",
+			"phone-number": "Phone Number",
+			"adress": "Address",
+			"birth-date": "Birth Date",
+			"actions": "Actions",
+			"action-buttons": {
+				"details": "Details",
+				"edit": "Edit",
+				"delete": "Delete"
+			}
+		},
+		"buttons": {
+			"add-new-student": "Add new student",
+			"return": "Return",
+			"edit": "Edit",
+			"edit-student": "Edit student",
+			"cancel": "Cancel"
+		},
+		"student-details-title": "Student details",
+		"details-of-lessons-title": "Details of Lessons",
+		"edit-student-title": "Edit student",
+		"lessons-table": {
+			"instructor": "Instructor",
+			"start-time": "Start time",
+			"end-time": "End time",
+			"category": "Category"
+		}
+	},
+	"verification": {
+		"2-60-symbols": "2-60 symbols",
+		"phone-number-example": "ex. 571234839",
+		"10-60-symbols": "10-60 symbols",
+		"email": "correct email address",
+		"select-student": "-- select student --",
+		"select-instructor": "-- select instructor --"
+	},
+	"errors": {
+		"the-field-is-required": "The field is required.",
+		"test": "The field is required.",
+		"2-60-symbols": "The field should contain between 2 and 60 characters",
+		"9-symbols": "The field should contain 9 characters",
+		"birthdate-bigger-current": "Birthdate should be less than current date.",
+		"date-should-be-in-future": "The Date should be in future.",
+		"end-date-after-start-date": "End Date should be after Start Date.",
+		"valid-email": "The field should contain a valid email address",
+		"license-date-less-current-date": "License Issue Date should be less than current date.",
+		"email-already-in-use": "The email adress you entered is already in use.",
+		"phone-already-in-use": "The Phone Number you entered is already in use.",
+		"form-contains-errors": "Form contains errors!",
+		"question-add-record": "Do you want to add the record?"
+	},
+	"instructors-page": {
+		"title": "List of instructors",
+		"table": {
+			"name": "Name",
+			"email": "Email",
+			"price": "Price(per hour)",
+			"lisense": "Lisense Issue Date",
+			"has-car": "Has Car",
+			"actions": "Actions",
+			"action-buttons": {
+				"details": "Details",
+				"edit": "Edit",
+				"delete": "Delete"
+			}
+		},
+		"buttons": {
+			"add-new-instructor": "Add new instructor",
+			"return": "Return",
+			"edit": "Edit",
+			"edit-instructor": "Edit instructor",
+			"cancel": "Cancel"
+		},
+		"details-of-lessons-title": "Details of Lessons",
+		"lessons-table": {
+			"student": "Student",
+			"start-time": "Start time",
+			"end-time": "End time",
+			"category": "Category"
+		},
+		"details-instructors-page-title": "Details instructor",
+		"add-instructors-page-title": "Add instructor",
+		"edit-instructor-page-title": "Edit instructor"
+	},
+	"driving-lessons-page": {
+		"title": "List of lessons",
+		"table": {
+			"student": "Student",
+			"instructor": "Instructor",
+			"start-time": "Start time",
+			"end-time": "End time",
+			"category": "Category",
+			"actions": "Actions",
+			"action-buttons": {
+				"details": "Details",
+				"edit": "Edit",
+				"delete": "Delete"
+			}
+		},
+		"buttons": {
+			"add-new-lesson": "Add new lesson",
+			"return": "Return",
+			"edit": "Edit",
+			"edit-lesson": "Edit lesson",
+			"cancel": "Cancel"
+		},
+		"details-lesson-page-title": "Details lesson",
+		"add-lesson-page-title": "Add lesson",
+		"edit-lesson-page-title": "Edit lesson"
+	},
+	"Lesson": {
+		"stuId cannot be null": "Lesson.stuId cannot be null",
+		"insId cannot be null": "Lesson.insId cannot be null"
+	}
+}
