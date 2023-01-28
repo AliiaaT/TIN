@@ -18,6 +18,8 @@
 		"table": {
 			"name": "Имя",
 			"surname": "Фамилия",
+			"email": "Email",
+			"password": "Пароль",
 			"phone-number": "Номер Телефона",
 			"adress": "Адрес",
 			"birth-date": "Дата рождения",
@@ -51,7 +53,8 @@
 		"10-60-symbols": "10-60 симоволов",
 		"email": "Правильный адрес email",
 		"select-student": "-- выбрать студента --",
-		"select-instructor": "-- выбрать инструктора --"
+		"select-instructor": "-- выбрать инструктора --",
+		"password": "надежный пароль"
 	},
 	"errors": {
 		"the-field-is-required": "Обязательное поле.",
@@ -80,7 +83,8 @@
 				"details": "Детали",
 				"edit": "Редактировать",
 				"delete": "Удалить"
-			}
+			},
+			"password": "instructors-page.table.password"
 		},
 		"buttons": {
 			"add-new-instructor": "Добавить нового инструктора",
@@ -134,5 +138,6 @@
 		"the-field-is-required": "error.the-field-is-required"
 	},
 	"Номер телефона уже используется другим пользователем.": "Номер телефона уже используется другим пользователем.",
-	"Email адрес уже используется другим пользователем.": "Email адрес уже используется другим пользователем."
+	"Email адрес уже используется другим пользователем.": "Email адрес уже используется другим пользователем.",
+	"email must be unique": "email must be unique"
 }

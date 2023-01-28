@@ -2,11 +2,15 @@ function validateForm(){
 
     const firstNameInput = document.getElementById('firstName');
     const lastNameInput = document.getElementById('lastName');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
     const phoneNumberInput = document.getElementById('phoneNumber');
     const birthDateInput = document.getElementById('birthDate');
 
     const errorFirstName = document.getElementById('errorName');
     const errorLastName = document.getElementById('errorSurname');
+    const errorEmail = document.getElementById('errorEmail');
+    const errorPassword = document.getElementById('errorPassword');
     const errorPhoneNumber = document.getElementById('errorNumber');
     const errorBirhtdate = document.getElementById('errorDate');
     const errorSummary = document.getElementById('errorSummary');
@@ -26,8 +30,8 @@ function validateForm(){
 
     console.log("Before reset Errors");
     
-    resetErrors([firstNameInput, lastNameInput, phoneNumberInput, birthDateInput],
-                [errorFirstName, errorLastName, errorPhoneNumber, errorBirhtdate]);
+    resetErrors([firstNameInput, lastNameInput, phoneNumberInput, birthDateInput, emailInput, passwordInput],
+                [errorFirstName, errorLastName, errorPhoneNumber, errorBirhtdate, errorEmail, errorPassword]);
 
 
     console.log("AFter reset Errors");
@@ -53,6 +57,24 @@ function validateForm(){
         valid = false;
         lastNameInput.classList.add("error-input");
         errorLastName.innerText = symbols2_60;
+    }
+
+    //validation for email field
+    if (!checkRequired(emailInput.value)) {
+        valid = false;
+        emailInput.classList.add("error-input");
+        errorEmail.innerText = fieldRequired;
+    } else if (!checkEmailValid(emailInput.value)) {
+        valid = false;
+        emailInput.classList.add("error-input");
+        errorEmail.innerText = validEmail;
+    }
+
+    //validation password
+    if (!checkRequired(passwordInput.value)) {
+        valid = false;
+        passwordInput.classList.add("error-input");
+        errorPassword.innerText = fieldRequired;
     }
 
 

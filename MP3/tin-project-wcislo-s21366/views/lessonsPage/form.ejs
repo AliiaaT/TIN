@@ -17,8 +17,7 @@
         <h2><%= pageTitle %></h2>
         <hr>
         <br>
-        <form class="form" method="post" action="<%=formAction%>" novalidate>
-            <input type="hidden" name="_id" value="<%=lesson._id %>">
+        <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">            <input type="hidden" name="_id" value="<%=lesson._id %>">
 
             <label for="student" ><%=__('driving-lessons-page.table.student')%><span class="symbol-required">*</span> </label>
             <select name="stuId"  id="student" class="<%= validationErrors.find(e => e.path.includes('stuId')) ? 'error-input' : ''%>"  <%= (formMode == 'showDetails') ? 'disabled' : '' %>>

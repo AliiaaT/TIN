@@ -4,6 +4,9 @@ const Student = require('../../model/sequelize/Student');
 const Instructor = require('../../model/sequelize/Instructor');
 const Lesson = require('../../model/sequelize/Lesson');
 
+const authUtil = require('../../util/authUtils');
+const passHash = authUtil.hashPassword('12345');
+
 module.exports = () => {
     Student.hasMany(Lesson, {as: 'lessons', foreignKey: {name: 'stuId', allowNull: false}, constraints: true, onDelete: 'CASCADE'});
     Lesson.belongsTo(Student, {as: 'student', foreignKey: {name: 'stuId', allowNull: false} });
@@ -19,9 +22,9 @@ module.exports = () => {
         // .then(studs => {
         //     if(!studs || studs.length==0){
         //         return Student.bulkCreate([
-        //             {firstName: 'Aliia', lastName: 'Temirbek kyzy', phoneNumber: 111111111, address: null, birthDate: '2001-01-01'},
-        //             {firstName: 'Jenny', lastName: 'Kim', phoneNumber: 222222222, address: 'Korea', birthDate: '2002-01-01'},
-        //             {firstName: 'Liam', lastName: 'Max', phoneNumber: 333333333, address: 'Poland', birthDate: '2003-01-01'}
+        //             {firstName: 'Aliia', lastName: 'Temirbek kyzy', email: "first@gmail.com", phoneNumber: 111111111, address: null, birthDate: '2001-01-01', password: passHash},
+        //             {firstName: 'Jenny', lastName: 'Kim', email: "second@gmail.com", phoneNumber: 222222222, address: 'Korea', birthDate: '2002-01-01', password: passHash},
+        //             {firstName: 'Liam', lastName: 'Max', email: "third@gmail.com", phoneNumber: 333333333, address: 'Poland', birthDate: '2003-01-01', password: passHash}
         //         ])
         //         .then( () => {
         //             return Student.findAll();

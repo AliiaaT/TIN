@@ -38,6 +38,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cookieParser('secret'));
 
+// create session
+const session = require('express-session');
+app.use(session({
+  secret: 'my_secret_password',
+  resave: false
+}));
+
+// make session available to templates
+app.use((req, res, next) => {
+  const loggedUser = req.session.loggedUser;
+  res.locals.loggedUser = loggedUser;
+  if (!res.locals.loginError) {
+    res.locals.loginError = undefined;
+  }
+  next();
+});
+
 
 // init languages 
 const i18n = require('i18n');
@@ -57,11 +74,14 @@ app.use((req, res, next) => {
   next();
 });
 
+
+const authUtil = require('./util/authUtils');
+
 //Aliia here user router
 app.use('/', indexRouter);
-app.use('/student', studentRouter);
-app.use('/instructor', instructorRouter);
-app.use('/lesson', lessonRouter);
+app.use('/student', authUtil.permitAuthenticatedUser, studentRouter);
+app.use('/instructor', authUtil.permitAuthenticatedUser, instructorRouter);
+app.use('/lesson', authUtil.permitAuthenticatedUser, lessonRouter);
 app.use('/api/students', stuApiRouter);
 app.use('/api/instructors', insApiRouter);
 app.use('/api/lessons', lessonApiRouter);

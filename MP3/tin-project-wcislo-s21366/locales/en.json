@@ -18,6 +18,8 @@
 		"table": {
 			"name": "Name",
 			"surname": "Surname",
+			"email": "Email",
+			"password": "Password",
 			"phone-number": "Phone Number",
 			"adress": "Address",
 			"birth-date": "Birth Date",
@@ -51,7 +53,8 @@
 		"10-60-symbols": "10-60 symbols",
 		"email": "correct email address",
 		"select-student": "-- select student --",
-		"select-instructor": "-- select instructor --"
+		"select-instructor": "-- select instructor --",
+		"password": "secure password"
 	},
 	"errors": {
 		"the-field-is-required": "The field is required.",

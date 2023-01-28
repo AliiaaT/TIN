@@ -68,6 +68,9 @@ exports.addStudent = (req, res, next) => {
             if(e.path.includes('phoneNumber') && e.type == 'unique violation') {
                 e.message = req.__('errors.phone-already-in-use');
             }
+            if(e.path.includes('email') && e.type == 'unique violation') {
+                e.message = req.__('errors.email-already-in-use');
+            }
             console.log("Error occured")
             console.log(e)
             // if(e.path.includes('birthDate')) {
@@ -97,6 +100,9 @@ exports.updateStudent = (req, res, next) => {
         err.errors.forEach(e => {
             if(e.path.includes('phoneNumber') && e.type == 'unique violation') {
                 e.message = req.__('errors.phone-already-in-use');
+            }
+            if(e.path.includes('email') && e.type == 'unique violation') {
+                e.message = req.__('errors.email-already-in-use');
             }
          });
          res.render('studentsPage/form', {

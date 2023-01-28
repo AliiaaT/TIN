@@ -16,8 +16,7 @@
         <h2><%= pageTitle %></h2>
         <hr>
         <br>
-        <form class="form" method="post" action="<%=formAction%>" novalidate >
-            <input type="hidden" name="_id" value="<%=inst._id %>">
+        <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">            <input type="hidden" name="_id" value="<%=inst._id %>">
 
             <label for="name"><%=__('instructors-page.table.name')%> <span class="symbol-required">*</span></label>
             <input id="name" name="name" type="text" placeholder="<%=__('verification.2-60-symbols')%>" class="<%= validationErrors.find(e => e.path.includes('name')) ? 'error-input' : ''%>" required value="<%= inst.name %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>

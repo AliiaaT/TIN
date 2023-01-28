@@ -188,6 +188,7 @@ textarea {
 .form input[type="text"],
 .form input[type="number"],
 .form input[type="date"],
+.form input[type="password"],
 .form input[type="email"] {
     border: 1px solid #7f8c8d;
     color: black;

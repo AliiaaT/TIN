@@ -8,6 +8,12 @@ exports.getStudents = () => {
     return Student.findAll();
 };
 
+exports.findByEmail = (email) => {
+    return Student.findOne({
+        where: {email: email}
+    });
+}
+
 exports.getStudentById = (stuId) => {
     return Student.findByPk(stuId,
         {
@@ -22,10 +28,14 @@ exports.getStudentById = (stuId) => {
     });
 };
 
+const authUtil = require('../../util/authUtils');
 exports.createStudent = (newStuData) =>{
+    console.log(newStuData);
     return Student.create({
         firstName: newStuData.firstName,
         lastName: newStuData.lastName,
+        email: newStuData.email,
+        password: authUtil.hashPassword(newStuData.password),
         phoneNumber: newStuData.phoneNumber,
         address: newStuData.address,
         birthDate: newStuData.birthDate
@@ -38,6 +48,8 @@ exports.updateStudent = (stuId, stuData) =>{
     const phoneNumber = stuData.phoneNumber;
     const address = stuData.address;
     const birthDate = stuData.birthDate;
+
+    stuData.password = authUtil.hashPassword(stuData.password);
     return Student.update(stuData, {where: {_id: stuId}, returning: true,
         plain: true}); // why updated data is not visible from postman(returned from sequilize)
 };
