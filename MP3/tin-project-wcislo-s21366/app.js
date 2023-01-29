@@ -7,8 +7,10 @@ var logger = require('morgan');
 //Aliia here create router
 var indexRouter = require('./routes/index');
 const studentRouter = require('./routes/studentRoute');
+const vehicleRouter = require('./routes/vehicleRoute');
 const instructorRouter = require('./routes/instructorRoute');
 const lessonRouter = require('./routes/lessonRoute');
+const examRouter = require('./routes/examRoute');
 const sequelizeInit = require('./config/sequelize/init');
 sequelizeInit()
   .catch(err => {
@@ -82,8 +84,11 @@ const authUtil = require('./util/authUtils');
 //Aliia here user router
 app.use('/', indexRouter);
 app.use('/student', authUtil.permitAuthenticatedAdminUser, studentRouter);
+app.use('/vehicle', authUtil.permitAuthenticatedAdminUser, vehicleRouter);
 app.use('/instructor', authUtil.permitAuthenticatedAdminUser, instructorRouter);
 app.use('/lesson', authUtil.permitAuthenticatedUser, lessonRouter);
+app.use('/exam', authUtil.permitAuthenticatedUser, examRouter);
+
 app.use('/api/students', stuApiRouter);
 app.use('/api/instructors', insApiRouter);
 app.use('/api/lessons', lessonApiRouter);

@@ -54,7 +54,7 @@ const loginIfCorrectPassword = (req, res, password, user, type) => {
     } else {
         res.render('index', {
             navLocation: '',
-            loginError: "Invalid email address or password"
+            loginError: req.__('login.error')
         })
     }
 }

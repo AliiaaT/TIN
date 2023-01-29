@@ -16,7 +16,8 @@
         <h2><%= pageTitle %></h2>
         <hr>
         <br>    
-        <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">            <input type="hidden" name="_id" value="<%=stud._id %>">
+        <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">            
+            <input type="hidden" name="_id" value="<%=stud._id %>">
 
             <label for="firstName"><%=__('students-page.table.name')%> <span class="symbol-required">*</span></label>
             <input id="firstName" name="firstName" type="text" placeholder="<%=__('verification.2-60-symbols')%>" class="<%= validationErrors.find(e => e.path.includes('firstName')) ? 'error-input' : ''%>"  required value="<%= stud.firstName %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
@@ -131,6 +132,7 @@
         <span id="errors.form-contains-errors"><%= __('errors.form-contains-errors') %></span>
         <span id="errors.question-add-record"><%= __('errors.question-add-record') %></span>
      </div>
+     <br><br><br><br><br><br><br><br><br>
     <%- include('../fragments/footer.ejs') %>
 
 </body>

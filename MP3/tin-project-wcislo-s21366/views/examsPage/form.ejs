@@ -7,7 +7,7 @@
     <title><%= pageTitle %></title>
     <link rel="stylesheet" href="../../css/styles.css">
     <script type="application/javascript" src="../../js/validationCommon.js"></script>
-    <script type="application/javascript" src="../../js/validationLesson.js"></script>
+    <script type="application/javascript" src="../../js/validationExam.js"></script>
 </head>
 <body>
     
@@ -18,20 +18,20 @@
         <hr>
         <br>
         <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">            
-            <input type="hidden" name="_id" value="<%=lesson._id %>">
+            <input type="hidden" name="_id" value="<%=exam._id %>">
 
-            <label for="student" ><%=__('driving-lessons-page.table.student')%><span class="symbol-required">*</span> </label>
+            <label for="student" ><%=__('exams-page.table.student')%><span class="symbol-required">*</span> </label>
             <select name="stuId"  id="student" class="<%= validationErrors.find(e => e.path.includes('stuId')) ? 'error-input' : ''%>"  <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
                 
                 <% if(formMode==='showDetails') { %>
 
-                    <option disabled selected value><%= lesson.student.firstName %> <%= lesson.student.lastName %></option>
+                    <option disabled selected value><%= exam.student.firstName %> <%= exam.student.lastName %></option>
 
                 <% } else if(formMode==='edit') { %>
-                    <option disabled value  <%= (lesson.stuId === undefined) ? 'selected' : '' %>> <%=__('verification.select-student')%> </option>
+                    <option disabled value  <%= (exam.stuId === undefined) ? 'selected' : '' %>> <%=__('verification.select-student')%> </option>
                     
                     <% for (let student of students) { %>
-                        <option value="<%=student._id%>" <%= (student._id == lesson.stuId) ? 'selected' : '' %>><%=student.firstName%> <%=student.lastName%></option>
+                        <option value="<%=student._id%>" <%= (student._id == exam.stuId) ? 'selected' : '' %>><%=student.firstName%> <%=student.lastName%></option>
                     <% } %>
 
                 <% } else { %>
@@ -50,16 +50,16 @@
                 <% } %>
             </span>
 
-            <label for="instructor"><%=__('driving-lessons-page.table.instructor')%><span class="symbol-required">*</span></label>
+            <label for="instructor"><%=__('exams-page.table.instructor')%><span class="symbol-required">*</span></label>
             <select name="insId" id="instructor" class="<%= validationErrors.find(e => e.path.includes('insId')) ? 'error-input' : ''%>"  <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
                 <% if(formMode==='showDetails') { %>
-                    <option disabled selected value><%= lesson.instructor.name %></option>
+                    <option disabled selected value><%= exam.instructor.name %></option>
 
                  <% } else if(formMode==='edit') { %>
-                    <option disabled value  <%= (lesson.insId === undefined) ? 'selected' : '' %>> <%=__('verification.select-instructor')%> </option>
+                    <option disabled value  <%= (exam.insId === undefined) ? 'selected' : '' %>> <%=__('verification.select-instructor')%> </option>
                     
                     <% for (let instructor of instructors) { %>
-                        <option value="<%=instructor._id%>" <%= (instructor._id == lesson.insId) ? 'selected' : '' %>><%=instructor.name%>%></option>
+                        <option value="<%=instructor._id%>" <%= (instructor._id == exam.insId) ? 'selected' : '' %>><%=instructor.name%>%></option>
                     <% } %>
 
                 <% } else { %>
@@ -76,16 +76,16 @@
                 <% } %>
             </span>
 
-            <label for="vehicle"><%=__('driving-lessons-page.table.car-model')%><span class="symbol-required">*</span></label>
+            <label for="vehicle"><%=__('exams-page.table.car-model')%><span class="symbol-required">*</span></label>
             <select name="vehId" id="vehicle" class="<%= validationErrors.find(e => e.path.includes('vehId')) ? 'error-input' : ''%>"  <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
                 <% if(formMode==='showDetails') { %>
-                    <option disabled selected value><%= lesson.vehicle.modelName %></option>
+                    <option disabled selected value><%= exam.vehicle.modelName %></option>
 
                  <% } else if(formMode==='edit') { %>
-                    <option disabled value  <%= (lesson.vehId === undefined) ? 'selected' : '' %>> <%=__('verification.select-vehicle')%> </option>
+                    <option disabled value  <%= (exam.vehId === undefined) ? 'selected' : '' %>> <%=__('verification.select-vehicle')%> </option>
                     
                     <% for (let vehicle of vehicles) { %>
-                        <option value="<%=vehicle._id%>" <%= (vehicle._id == lesson.vehId) ? 'selected' : '' %>><%=vehicle.modelName%>%></option>
+                        <option value="<%=vehicle._id%>" <%= (vehicle._id == exam.vehId) ? 'selected' : '' %>><%=vehicle.modelName%>%></option>
                     <% } %>
 
                 <% } else { %>
@@ -102,40 +102,33 @@
                 <% } %>
             </span>
 
-            <label for="startDate"><%=__('driving-lessons-page.table.start-time')%><span class="symbol-required">*</span></label>
-            <input id="startDate" name="startDate" type="datetime-local" required value="<%= lesson.startDate %>" class="<%= validationErrors.find(e => e.path.includes('startDate')) ? 'error-input' : ''%>"  <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
+            <label for="startDate"><%=__('exams-page.table.start-time')%><span class="symbol-required">*</span></label>
+            <input id="startDate" name="startDate" type="datetime-local" required value="<%= exam.startDate %>" class="<%= validationErrors.find(e => e.path.includes('startDate')) ? 'error-input' : ''%>"  <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
             <span id="errorSNumber" class="errors-text">
                 <% if(validationErrors.find(e => e.path.includes('startDate'))) { %>
                     <%= __(validationErrors.find(e => e.path.includes('startDate')).message) %>
                 <% } %>
             </span>
-            
-            <label for="endDate"><%=__('driving-lessons-page.table.end-time')%><span class="symbol-required">*</span></label>
-            <input id="endDate" name="endDate" type="datetime-local"  required value="<%= lesson.endDate %>" class="<%= validationErrors.find(e => e.path.includes('endDate')) ? 'error-input' : ''%>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
-            <span id="errorENumber" class="errors-text">
-                <% if(validationErrors.find(e => e.path.includes('endDate'))) { %>
-                    <%= __(validationErrors.find(e => e.path.includes('endDate')).message) %>
-                <% } %>
-            </span>
+        
 
-            <label for="category"><%=__('driving-lessons-page.table.category')%></label>
-            <input id="category" name="category" type="text"  required value="<%= lesson.category %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
+            <label for="status"><%=__('exams-page.table.status')%></label>
+            <input id="status" name="status" type="text"  required value="<%= exam.status %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
 
             <div class="form-buttons">
                 <p id="errorSummary" style="visibility: hidden;"><%=__('errors.form-contains-errors')%></p>
                 <% if(formMode=='showDetails') { %>
                     <div class="section-buttons">
                         <% if(loggedUserType =='administrator') { %>
-                            <a href="/lesson/edit/<%= lesson._id%>" class="form-button-edit"><%=__('driving-lessons-page.buttons.edit')%></a>
+                            <a href="/exam/edit/<%= exam._id%>" class="form-button-edit"><%=__('exams-page.buttons.edit')%></a>
                         <% } %>    
                     </div>
                     <br>
                 <% } %>
                 <% if(formMode!='showDetails') { %>
                     <input type="submit" class="form-button-submit-add" value="<%=btnLabel%>" />
-                    <a href="/lesson" class="form-button-cancel"><%=__('driving-lessons-page.buttons.cancel')%></a>
+                    <a href="/exam" class="form-button-cancel"><%=__('exams-page.buttons.cancel')%></a>
                 <% } else { %>
-                    <a href="/lesson" class="form-button-cancel"><%=__('driving-lessons-page.buttons.return')%></a>
+                    <a href="/exam" class="form-button-cancel"><%=__('exams-page.buttons.return')%></a>
                 <% } %>
             </div>
         </form>  
@@ -157,11 +150,6 @@
 
     <%- include('../fragments/footer.ejs') %>
 
-    <script>
-        function myFunction() {
-          alert("Record has been added.");
-        }
-    </script>
 
 </body>
 </html>

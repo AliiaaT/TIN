@@ -3,14 +3,18 @@
 		"home": "Home",
 		"students": "Students",
 		"instructors": "Instructors",
-		"driving-lessons": "Driving Lessons"
+		"driving-lessons": "Driving Lessons",
+		"vehicles": "Vehicles",
+		"exams": "Exams"
 	},
 	"login": {
 		"email": "Email:",
 		"password": "Password:",
 		"login": "Login",
 		"sign-in": "Sign in",
-		"logged-in-as": "You are logged in as:"
+		"sign-out": "Sign out",
+		"logged-in-as": "You are logged in as:",
+		"error": "Invalid email address or password"
 	},
 	"home-page": {
 		"title": "About our driving academy GAZELKA Warsaw",
@@ -61,6 +65,7 @@
 		"email": "correct email address",
 		"select-student": "-- select student --",
 		"select-instructor": "-- select instructor --",
+		"select-vehicle": "-- select vehicle --",
 		"password": "secure password"
 	},
 	"errors": {
@@ -118,6 +123,7 @@
 			"instructor": "Instructor",
 			"start-time": "Start time",
 			"end-time": "End time",
+			"car-model": "Car model",
 			"category": "Category",
 			"actions": "Actions",
 			"action-buttons": {
@@ -138,7 +144,71 @@
 		"edit-lesson-page-title": "Edit lesson"
 	},
 	"Lesson": {
-		"stuId cannot be null": "Lesson.stuId cannot be null",
-		"insId cannot be null": "Lesson.insId cannot be null"
+		"stuId cannot be null": "Student should be chosen",
+		"insId cannot be null": "Instructor should be chosen",
+		"vehId cannot be null": "Vehicle should be chosen"
+	},
+	"vehicles-page": {
+		"title": "List of vehicles",
+		"buttons": {
+			"add-new-vehicle": "Add new vehicle",
+			"return": "Return",
+			"edit": "Edit",
+			"edit-vehicle": "Edit vehicle",
+			"cancel": "Cancel"
+		},
+		"vehicle-details-title": "Vehicle details",
+		"details-of-vehicle-title": "Details of Vehicle",
+		"edit-vehicle-title": "Edit vehicle",
+		"table": {
+			"model-name": "Model name",
+			"transmition-type": "Transmition type",
+			"actions": "Action",
+			"action-buttons": {
+				"details": "Details",
+				"edit": "Edit",
+				"delete": "Delete"
+			}
+		},
+		"add-vehicle-page-title": "Add vehicle",
+		"edit-vehicle-page-title": "Edit vehicle",
+		"details-vehicle-page-title": "Vehicle details"
+	},
+	"exams-page": {
+		"title": "List of exams",
+		"table": {
+			"student": "Student",
+			"instructor": "Instructor",
+			"start-time": "Start time",
+			"car-model": "Car model",
+			"status": "Exam status",
+			"actions": "Actions",
+			"action-buttons": {
+				"details": "Details",
+				"edit": "Edit",
+				"delete": "Delete"
+			}
+		},
+		"buttons": {
+			"add-new-exam": "Add new exam",
+			"return": "Return",
+			"edit": "Edit",
+			"edit-exam": "Edit exam",
+			"cancel": "Cancel"
+		},
+		"details-exam-page-title": "Details exam",
+		"add-exam-page-title": "Add exam",
+		"edit-exam-page-title": "Edit exam"
+	},
+	"Exam": {
+		"stuId cannot be null": "Student should be chosen",
+		"insId cannot be null": "Instructor should be chosen",
+		"vehId cannot be null": "Vehicle should be chosen"
+	},
+	"Instructor": {
+		"password cannot be null": "Password can't be empty"
+	},
+	"Student": {
+		"password cannot be null": "Password can't be empty"
 	}
 }

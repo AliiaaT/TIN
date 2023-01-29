@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=__('nav.vehicles')%></title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <%- include('../fragments/header.ejs') %>
+    <div class="main">
+        <h2><%=__('vehicles-page.title')%></h2>
+        <br>
+        <table class="table">
+            <thead>
+                <tr id="mainRow">
+
+                    <th><%=__('vehicles-page.table.model-name')%></th>
+                    <th><%=__('vehicles-page.table.transmition-type')%></th>
+                    <th><%=__('vehicles-page.table.actions')%></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let vehicle of vehicles) { %>
+                <tr>
+                    <td><%= vehicle.modelName %></td>
+                    <td><%= vehicle.transmitionType %></td>
+                    <td>
+                        <ul class="list">
+                            <li><a href="/vehicle/details/<%=vehicle._id%>" class="list-action-button-details"><%=__('vehicles-page.table.action-buttons.details')%></a></li>
+                            <li><a href="/vehicle/edit/<%=vehicle._id%>" class="list-action-button-edit"><%=__('vehicles-page.table.action-buttons.edit')%></a></li>
+                            <li><a href="/vehicle/delete/<%=vehicle._id%>" class="list-action-button-delete"><%=__('vehicles-page.table.action-buttons.delete')%></a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <p><a href="/vehicle/add" class="button-add"><%=__('vehicles-page.buttons.add-new-vehicle')%></a></p>
+    
+    </div>
+    <%- include('../fragments/footer.ejs') %>
+    
+
+
+</body>
+</html>

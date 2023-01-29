@@ -53,11 +53,12 @@ exports.showLessonDetails = (req, res, next) => {
 }
 
 exports.showAddLessonForm = (req, res, next) => {
-    LessonRepository.getAllStudentsAndInstructors().then(result => {
+    LessonRepository.getAllStudentsInstructorsVehicles().then(result => {
         res.render('lessonsPage/form', {
             lesson: {},
             students: result.students,
             instructors: result.instructors,
+            vehicles: result.vehicles,
             pageTitle: req.__('driving-lessons-page.add-lesson-page-title'),
             btnLabel: req.__('driving-lessons-page.buttons.add-new-lesson'),
             formMode: 'createNew',
@@ -72,11 +73,12 @@ exports.showEditLessonForm = (req, res, next) => {
     const lesId = req.params.lesId;
     LessonRepository.getLessonById(lesId)
         .then(lesson => {
-            LessonRepository.getAllStudentsAndInstructors().then(result => {
+            LessonRepository.getAllStudentsInstructorsVehicles().then(result => {
                 res.render('lessonsPage/form', {
                     lesson: lesson,
                     students: result.students,
                     instructors: result.instructors,
+                    vehicles: result.vehicles,
                     formMode: 'edit',
                     pageTitle: req.__('driving-lessons-page.edit-lesson-page-title'),
                     btnLabel: req.__('driving-lessons-page.buttons.edit-lesson'),
@@ -96,11 +98,12 @@ exports.addLesson = (req, res, next) => {
     LessonRepository.creteLesson(lesData).then( result => {
         res.redirect("/lesson");
     }).catch(err => {
-        LessonRepository.getAllStudentsAndInstructors().then(result => {
+        LessonRepository.getAllStudentsInstructorsVehicles().then(result => {
             res.render('lessonsPage/form', {
                 lesson: lesData,
                 students: result.students,
                 instructors: result.instructors,
+                vehicles: result.vehicles,
                 pageTitle: req.__('driving-lessons-page.add-lesson-page-title'),
                 btnLabel: req.__('driving-lessons-page.buttons.add-new-lesson'),
                 formMode: 'edit',
@@ -118,11 +121,12 @@ exports.updateLesson = (req, res, next) => {
     LessonRepository.updateLesson(lesId, lesData).then( result => {
         res.redirect("/lesson");
     }).catch(err => {
-        LessonRepository.getAllStudentsAndInstructors().then(result => {
+        LessonRepository.getAllStudentsInstructorsVehicles().then(result => {
             res.render('lessonsPage/form', {
                 lesson: lesData,
                 students: result.students,
                 instructors: result.instructors,
+                vehicles: result.vehicles,
                 formMode: 'edit',
                 pageTitle: req.__('driving-lessons-page.edit-lesson-page-title'),
                 btnLabel: req.__('driving-lessons-page.buttons.edit-lesson'),

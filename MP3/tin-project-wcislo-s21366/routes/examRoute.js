@@ -1,0 +1,19 @@
+const express = require('express');
+const router = express.Router();
+
+const examController = require('../controllers/examController');
+
+
+const authUtil = require('../util/authUtils');
+
+router.get('/', examController.showExamList);
+router.get('/details/:examId', examController.showExamDetails);
+router.get('/add', authUtil.permitAuthenticatedAdminAndInstructorUser, examController.showAddExamForm);
+router.get('/edit/:examId', authUtil.permitAuthenticatedAdminAndInstructorUser, examController.showEditExamForm);
+
+
+router.post('/add', authUtil.permitAuthenticatedAdminAndInstructorUser, examController.addExam);
+router.post('/edit', authUtil.permitAuthenticatedAdminAndInstructorUser, examController.updateExam);
+router.get('/delete/:examId', authUtil.permitAuthenticatedAdminAndInstructorUser, examController.deleteExam);
+
+module.exports = router;

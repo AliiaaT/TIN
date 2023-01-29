@@ -1,13 +1,13 @@
 const Sequelize = require('sequelize');
 
-const Lesson = require('../../model/sequelize/Lesson');
 const Student = require('../../model/sequelize/Student');
 const Instructor = require('../../model/sequelize/Instructor');
+const Exam = require('../../model/sequelize/Exam');
 const { where } = require('sequelize');
 const Vehicle = require('../../model/sequelize/Vehicle');
 
-exports.getLessons = () => {
-    return Lesson.findAll({include: [
+exports.getExams = () => {
+    return Exam.findAll({include: [
         {
             model: Student,
             as: 'student'
@@ -15,15 +15,16 @@ exports.getLessons = () => {
         {
             model: Instructor,
             as: 'instructor'
-        }, {
+        }, 
+        {
             model: Vehicle,
             as: 'vehicle'
         }]
     });
 };
 
-exports.getLessonByStuId = (stuId) => {
-    return Lesson.findAll({include: [
+exports.getExamByStuId = (stuId) => {
+    return Exam.findAll({include: [
         {
             model: Student,
             as: 'student'
@@ -31,15 +32,16 @@ exports.getLessonByStuId = (stuId) => {
         {
             model: Instructor,
             as: 'instructor'
-        }, {
+        }, 
+        {
             model: Vehicle,
             as: 'vehicle'
         }], where: {stuId: stuId}
     });
 };
 
-exports.getLessonByInsId = (insId) => {
-    return Lesson.findAll({include: [
+exports.getExamByInsId = (insId) => {
+    return Exam.findAll({include: [
         {
             model: Student,
             as: 'student'
@@ -47,7 +49,8 @@ exports.getLessonByInsId = (insId) => {
         {
             model: Instructor,
             as: 'instructor'
-        }, {
+        }, 
+        {
             model: Vehicle,
             as: 'vehicle'
         }], where: {insId: insId}
@@ -69,8 +72,8 @@ exports.getAllStudentsInstructorsVehicles = () => {
     })
 }
 
-exports.getLessonById = (lessonId) => {
-    return Lesson.findByPk(lessonId, {include: [
+exports.getExamById = (examId) => {
+    return Exam.findByPk(examId, {include: [
         {
             model: Student,
             as: 'student'
@@ -87,31 +90,31 @@ exports.getLessonById = (lessonId) => {
 
 
 
-exports.creteLesson = (data) =>{
+exports.creteExam = (data) =>{
     console.log(JSON.stringify(data));
     console.log(data)
-    return Lesson.create({
+    return Exam.create({
         foreignKey: {name: 'stuId', allowNull: false},
         stuId: data.stuId,
         insId: data.insId,
         vehId: data.vehId,
+        status: data.status,
         startDate: data.startDate,
         endDate: data.endDate,
         category: data.category
     });
 };
 
-exports.updateLesson = (lessonId, data) =>{
-
-    return Lesson.update(data, {where: {_id: lessonId}});
+exports.updateExam = (examId, data) =>{
+    return Exam.update(data, {where: {_id: examId}});
 };
 
-exports.deleteLesson = (lessonId) => {
-    return Lesson.destroy({
-        where: {_id: lessonId}
+exports.deleteExam = (examId) => {
+    return Exam.destroy({
+        where: {_id: examId}
     });
 };
 
-exports.deleteManyLessons = (lessonId) =>{
-    return Lesson.find({_id: { [Sequelize.Op.in]: lessonId }});
+exports.deleteManyExams = (examId) =>{
+    return Exam.find({_id: { [Sequelize.Op.in]: examId }});
 }

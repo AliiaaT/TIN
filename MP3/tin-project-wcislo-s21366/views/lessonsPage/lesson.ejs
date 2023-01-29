@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson</title>
+    <title><%=__('nav.driving-lessons')%></title>
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body>
@@ -21,6 +21,7 @@
                     <th><%=__('driving-lessons-page.table.instructor')%></th>
                     <th><%=__('driving-lessons-page.table.start-time')%></th>
                     <th><%=__('driving-lessons-page.table.end-time')%></th>
+                    <th><%=__('driving-lessons-page.table.car-model')%></th>
                     <th><%=__('driving-lessons-page.table.category')%></th>
                     <th><%=__('driving-lessons-page.table.actions')%></th>
                 </tr>
@@ -32,6 +33,7 @@
                     <td><%= lesson.instructor.name%></td>
                     <td><%= lesson.startDate %></td>
                     <td><%= lesson.endDate %></td>
+                    <td><%= lesson.vehicle.modelName %></td>
                     <td><%= lesson.category %></td>
                     <td>
                         <ul class="list">

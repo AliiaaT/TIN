@@ -3,6 +3,8 @@ const sequelize = require('./sequelize');
 const Student = require('../../model/sequelize/Student');
 const Instructor = require('../../model/sequelize/Instructor');
 const Lesson = require('../../model/sequelize/Lesson');
+const Exam = require('../../model/sequelize/Exam');
+const Vehicle = require('../../model/sequelize/Vehicle');
 const Administrator = require('../../model/sequelize/Administrator');
 
 const authUtil = require('../../util/authUtils');
@@ -10,14 +12,35 @@ const passHash = authUtil.hashPassword('12345');
 
 module.exports = () => {
     Student.hasMany(Lesson, {as: 'lessons', foreignKey: {name: 'stuId', allowNull: false}, constraints: true, onDelete: 'CASCADE'});
-    Lesson.belongsTo(Student, {as: 'student', foreignKey: {name: 'stuId', allowNull: false} });
     Instructor.hasMany(Lesson, {as: 'lessons', foreignKey: {name: 'insId', allowNull: false}, constraints: true, onDelete: 'CASCADE'});
+    Vehicle.hasMany(Lesson, {as: 'lessons', foreignKey: {name: 'vehId', allowNull: false}, constraints: true, onDelete: 'CASCADE'});
+
+
+    Student.hasMany(Exam, {as: 'exam', foreignKey: {name: 'stuId', allowNull: false}, constraints: true, onDelete: 'CASCADE'});
+    Instructor.hasMany(Exam, {as: 'exam', foreignKey: {name: 'insId', allowNull: false}, constraints: true, onDelete: 'CASCADE'});
+    Vehicle.hasMany(Exam, {as: 'exam', foreignKey: {name: 'vehId', allowNull: false}, constraints: true, onDelete: 'CASCADE'});
+
+
+    Lesson.belongsTo(Student, {as: 'student', foreignKey: {name: 'stuId', allowNull: false} });
     Lesson.belongsTo(Instructor, {as: 'instructor', foreignKey: {name: 'insId', allowNull: false} });
+    Lesson.belongsTo(Vehicle, {as: 'vehicle', foreignKey: {name: 'vehId', allowNull: false} });
+    
+    Exam.belongsTo(Student, {as: 'student', foreignKey: {name: 'stuId', allowNull: false} });
+    Exam.belongsTo(Instructor, {as: 'instructor', foreignKey: {name: 'insId', allowNull: false} });
+    Exam.belongsTo(Vehicle, {as: 'vehicle', foreignKey: {name: 'vehId', allowNull: false} });
 
     // let allStuds, allInsts;
     return sequelize
         .sync({force: true}) // force: true deletes database
         .then( () => {
+            return Vehicle.bulkCreate([
+                {modelName: "Toyota Prius", transmitionType: "manual"},
+                {modelName: "Honda", transmitionType: "automatic"},
+                {modelName: "Mercedes", transmitionType: "manual"},
+            ])
+        })
+        .then( (vehicles) => {
+            allVehicles = vehicles;
             return Student.findAll();
         })
         .then(studs => {
@@ -58,9 +81,9 @@ module.exports = () => {
         .then(lessns => {
             if(!lessns || lessns.length==0) {
                 return Lesson.bulkCreate([
-                    {stuId: allStuds[0]._id, insId: allInsts[0]._id, startDate: '3000-01-01', endDate: '2002-01-02', category: null}, // change to datetime later
-                    {stuId: allStuds[1]._id, insId: allInsts[1]._id, startDate: '2022-01-01', endDate: '2002-01-12', category: 'A'},
-                    {stuId: allStuds[2]._id, insId: allInsts[1]._id, startDate: '2033-01-01', endDate: '2002-01-12', category: 'B'}
+                    {stuId: allStuds[0]._id, insId: allInsts[0]._id, vehId: allVehicles[0]._id, startDate: '3000-01-01', endDate: '2002-01-02', category: null}, // change to datetime later
+                    {stuId: allStuds[1]._id, insId: allInsts[1]._id, vehId: allVehicles[1]._id, startDate: '2022-01-01', endDate: '2002-01-12', category: 'A'},
+                    {stuId: allStuds[2]._id, insId: allInsts[1]._id, vehId: allVehicles[1]._id, startDate: '2033-01-01', endDate: '2002-01-12', category: 'B'}
                 ]);
             }else{
                 return lessns;
@@ -69,6 +92,12 @@ module.exports = () => {
             return Administrator.bulkCreate([
                 {firstName: 'Admin', lastName: 'Admin', email: "admin@gmail.com", password: passHash},
             ])
-        });
+        }).then(administrators => {
+            return Exam.bulkCreate([
+                {startDate: '2023-03-01', stuId: allStuds[0]._id, insId: allInsts[0]._id, vehId: allVehicles[1]._id, status: "planned"},
+                {startDate: '2023-03-02', stuId: allStuds[1]._id, insId: allInsts[1]._id, vehId: allVehicles[0]._id, status: "passed"},
+                {startDate: '2023-03-03', stuId: allStuds[2]._id, insId: allInsts[1]._id, vehId: allVehicles[2]._id, status: "failed"}
+            ])
+        })
 };
 

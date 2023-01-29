@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <script type="application/javascript" src="../../js/validationCommon.js"></script>
+    <script type="application/javascript" src="../../js/validationVehicle.js"></script>
+</head>
+<body>
+
+    <%- include('../fragments/header.ejs') %>
+    <div class="main">
+        <h2><%= pageTitle %></h2>
+        <hr>
+        <br>    
+        <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">           
+            <input type="hidden" name="_id" value="<%=vehicle._id %>">
+
+            <label for="modelName"><%=__('vehicles-page.table.model-name')%> <span class="symbol-required">*</span></label>
+            <input id="modelName" name="modelName" type="text" placeholder="<%=__('verification.2-60-symbols')%>" class="<%= validationErrors.find(e => e.path.includes('modelName')) ? 'error-input' : ''%>"  required value="<%= vehicle.modelName %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            <span id="errorModelName" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('modelName'))) { %>
+                    <%= __(validationErrors.find(e => e.path.includes('modelName')).message) %>
+                <% } %>
+            </span>
+
+            <label for="transmitionType"><%=__('vehicles-page.table.transmition-type')%> <span class="symbol-required">*</span></label>
+            <input id="transmitionType" name="transmitionType" type="text" placeholder="<%=__('verification.2-60-symbols')%>" class="<%= validationErrors.find(e => e.path.includes('transmitionType')) ? 'error-input' : ''%>" required value="<%= vehicle.transmitionType %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            <span id="errorTransmitionType" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('transmitionType'))) { %>
+                    <%= __(validationErrors.find(e => e.path.includes('transmitionType')).message) %>
+                <% } %></span>
+
+
+            <% if(formMode=='showDetails') { %>
+                <div class="section-buttons">
+                    <a href="/vehicle/edit/<%= vehicle._id%>" class="form-button-submit-add"><%=__('vehicles-page.buttons.edit')%></a>
+                </div>
+            <% } %>
+              
+
+            <div class="form-buttons">
+                <p id="errorSummary" style="visibility: hidden;"><%=__('errors.form-contains-errors')%></p>
+
+                <% if(formMode!='showDetails') { %>
+                    <input type="submit" class="form-button-submit-add" value="<%=btnLabel%>" />
+                    <a href="/vehicle" class="form-button-cancel"><%=__('vehicles-page.buttons.cancel')%></a>
+                <% } else { %>
+                    <a href="/vehicle" class="form-button-cancel"><%=__('vehicles-page.buttons.return')%></a>
+                <% } %>
+            </div>
+        </form>  
+    </div>
+    <div style="display: none">
+        <span id="errors.the-field-is-required"><%= __('errors.the-field-is-required') %></span>
+        <span id="errors.2-60-symbols"><%= __('errors.2-60-symbols') %></span>
+        <span id="errors.9-symbols"><%= __('errors.9-symbols') %></span>
+        <span id="errors.birthdate-bigger-current"><%= __('errors.birthdate-bigger-current') %></span>
+        <span id="errors.date-should-be-in-future"><%= __('errors.date-should-be-in-future') %></span>
+        <span id="errors.end-date-after-start-date"><%= __('errors.end-date-after-start-date') %></span>
+        <span id="errors.license-date-less-current-date"><%= __('errors.license-date-less-current-date') %></span>
+        <span id="errors.valid-email"><%= __('errors.valid-email') %></span>
+        <span id="errors.email-already-in-use"><%= __('errors.email-already-in-use') %></span>
+        <span id="errors.phone-already-in-use"><%= __('errors.phone-already-in-use') %></span>
+        <span id="errors.form-contains-errors"><%= __('errors.form-contains-errors') %></span>
+        <span id="errors.question-add-record"><%= __('errors.question-add-record') %></span>
+     </div>
+    <%- include('../fragments/footer.ejs') %>
+
+</body>
+</html>

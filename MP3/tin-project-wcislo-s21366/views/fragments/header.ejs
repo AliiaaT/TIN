@@ -18,10 +18,13 @@
                     <% if(loggedUserType === "administrator") { %>
                         <li><a href="/student" class="<%= navLocation == 'student' ? 'active' : '' %>"><h3><%=__('nav.students')%></h3></a></li>
                         <li><a href="/instructor" class="<%= navLocation == 'instructor' ? 'active' : '' %>"><h3><%=__('nav.instructors')%></h3></a></li>
+                        <li><a href="/vehicle" class="<%= navLocation == 'vehicle' ? 'active' : '' %>"><h3><%=__('nav.vehicles')%></h3></a></li>
                     <% } %>
                     <li><a href="/lesson" class="<%= navLocation == 'lesson' ? 'active' : ''%>" ><h3><%=__('nav.driving-lessons')%></h3></a></li>
+                    <li><a href="/exam" class="<%= navLocation == 'exam' ? 'active' : '' %>"><h3><%=__('nav.exams')%></h3></a></li>
                 <% } %>
-                            </ul>
+
+            </ul>
             <ul class="nav-links">
                 <li><a href="/changeLang/ru" class="<%= lang == 'ru' ? 'active' : ''%>">RU</a></li>
                 <li><a href="/changeLang/en" class="<%= lang == 'en' ? 'active' : ''%>">EN</a></li>
@@ -42,7 +45,7 @@
                 </div>
             <% } else { %>
                 <span><%=__('login.logged-in-as')%> <%=loggedUser.email%></span>
-                <a href="/logout">Sign out</a>
+                <a href="/logout"><%=__('login.sign-out')%></a>
             <% } %>
         </nav>
     </div>

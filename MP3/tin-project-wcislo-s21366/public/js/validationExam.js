@@ -5,13 +5,11 @@ function validateForm(){
     const instructorInput = document.getElementById('instructor');
     const vehicleInput = document.getElementById('vehicle');
     const startDateInput = document.getElementById('startDate');
-    const endDateInput = document.getElementById('endDate');
 
     const errorStudent = document.getElementById('errorSName');
     const errorInstructor = document.getElementById('errorIName');
     const errorVehicle = document.getElementById('errorVName');
     const errorSDate = document.getElementById('errorSNumber');
-    const errorEDate = document.getElementById('errorENumber');
     const errorSummary = document.getElementById('errorSummary');
 
     
@@ -28,8 +26,8 @@ function validateForm(){
 
     console.log("Before reset Errors");
 
-    resetErrors([studentInput, instructorInput, startDateInput, endDateInput, vehicleInput], 
-                [errorStudent, errorInstructor, errorSDate, errorEDate, errorVehicle]
+    resetErrors([studentInput, instructorInput, startDateInput, vehicleInput], 
+                [errorStudent, errorInstructor, errorSDate, errorVehicle]
     );
 
 
@@ -58,15 +56,6 @@ function validateForm(){
         errorVehicle.innerText = fieldRequired;
     }
 
-
-
-    //validation endDateInput after startDate
-    if (!checkDateTimeIfAfter(endDateInput.value, startDateInput.value)) {
-        valid = false;
-        endDateInput.classList.add("error-input");
-        errorEDate.innerText = endDateAfterStartDate;
-    }
-
     if (!checkDateIfFuture(startDateInput.value)) {
         valid = false;
         startDateInput.classList.add("error-input");
@@ -80,13 +69,6 @@ function validateForm(){
         errorSDate.innerText = fieldRequired;
     }
 
-    //validation for endDate field
-    if (!checkRequired(endDateInput.value)) {
-        valid = false;
-        endDateInput.classList.add("error-input");
-        errorEDate.innerText = fieldRequired;
-    }
-
     if (valid) {
         errorSummary.style.visibility = "hidden";
         const conf = confirm(questionAddRecord);
@@ -95,15 +77,4 @@ function validateForm(){
         errorSummary.style.visibility = "visible";
         return false;
     }
-    
-
 };
-
-
-
-
-
-
-
-
-

@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../../config/sequelize/sequelize');
 
-const Lesson = sequelize.define('Lesson', {
+const Exam = sequelize.define('Exam', {
     _id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -25,43 +25,9 @@ const Lesson = sequelize.define('Lesson', {
           validate: {
               notEmpty: {
                   msg: "errors.the-field-is-required"
-              },
-              customValidator(value) {
-                if (new Date(value) < new Date()) {
-                  throw new Error("errors.date-should-be-in-future");
-                }
-            }
+              }
           },
         allowNull: false
-    },
-
-    endDate: {
-        type: Sequelize.DATE, //change to date+time later
-        get() {
-            var date = this.getDataValue('endDate');
-            var a = new Date(date)
-            a.setHours(a.getHours() + 1); // Poland time is +1 hour
-            date = a.toISOString();
-            return date.split('T')[0] + " " + date.split('T')[1].slice(0,5) 
-          },
-          validate: {
-              notEmpty: {
-                  msg: "errors.the-field-is-required"
-              },
-              // server validation for endDate
-              customValidator(value) {
-                var startDate = this.getDataValue('startDate');
-                if (new Date(value) < startDate) {
-                  throw new Error("errors.end-date-after-start-date");
-                }
-              },
-          },
-        allowNull: false
-    },
-
-    category: {
-        type: Sequelize.STRING,
-        allowNull: true
     },
     stuId: {
         type: Sequelize.INTEGER,
@@ -89,8 +55,12 @@ const Lesson = sequelize.define('Lesson', {
                 msg: "error.the-field-is-required"
             }
         },
-    }
+    },
+    status: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
 
 });
 
-module.exports = Lesson;
+module.exports = Exam;

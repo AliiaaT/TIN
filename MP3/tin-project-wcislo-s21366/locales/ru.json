@@ -3,14 +3,18 @@
 		"home": "Главная страница",
 		"students": "Студенты",
 		"instructors": "Инструкторы",
-		"driving-lessons": "Занятия вождения"
+		"driving-lessons": "Занятия вождения",
+		"vehicles": "Машины",
+		"exams": "Экзамены"
 	},
 	"login": {
-		"email": "Емайл:",
+		"email": "Имейл:",
 		"password": "Пароль:",
 		"login": "Логин",
 		"sign-in": "Войти",
-		"logged-in-as": "Вы залогинились как:"
+		"sign-out": "Выйти",
+		"logged-in-as": "Вы залогинились как:",
+		"error": "Неправильный имейл или пароль"
 	},
 	"home-page": {
 		"title": "О нашей академии GAZELKA Warsaw",
@@ -61,7 +65,8 @@
 		"email": "Правильный адрес email",
 		"select-student": "-- выбрать студента --",
 		"select-instructor": "-- выбрать инструктора --",
-		"password": "надежный пароль"
+		"password": "надежный пароль",
+		"select-vehicle": "-- выбрать машину --"
 	},
 	"errors": {
 		"the-field-is-required": "Обязательное поле.",
@@ -118,6 +123,7 @@
 			"instructor": "Инструктор",
 			"start-time": "Время начало",
 			"end-time": "Время конец",
+			"car-model": "Модель машины",
 			"category": "Категория",
 			"actions": "Действия",
 			"action-buttons": {
@@ -138,13 +144,78 @@
 		"edit-lesson-page-title": "Редактировать занятие"
 	},
 	"Lesson": {
-		"stuId cannot be null": "Lesson.stuId cannot be null",
-		"insId cannot be null": "Lesson.insId cannot be null"
+		"stuId cannot be null": "Студент должен быть выбран",
+		"insId cannot be null": "Инструктор должен быть выбран",
+		"vehId cannot be null": "Машина должна быть выбрана"
 	},
 	"error": {
 		"the-field-is-required": "error.the-field-is-required"
 	},
 	"Номер телефона уже используется другим пользователем.": "Номер телефона уже используется другим пользователем.",
 	"Email адрес уже используется другим пользователем.": "Email адрес уже используется другим пользователем.",
-	"email must be unique": "email must be unique"
+	"email must be unique": "email must be unique",
+	"vehicles-page": {
+		"title": "Список машин",
+		"buttons": {
+			"add-new-vehicle": "Добавить новую машину",
+			"return": "Назад",
+			"edit": "Редактировать",
+			"edit-vehicle": "Редактировать машину",
+			"cancel": "Отменить"
+		},
+		"vehicle-details-title": "Данные о машине",
+		"details-of-vehicle-title": "Данные о машине",
+		"edit-vehicle-title": "Редактировать машину",
+		"table": {
+			"model-name": "Модель",
+			"transmition-type": "Тип коробки передачи",
+			"actions": "Action",
+			"action-buttons": {
+				"details": "Детали",
+				"edit": "Редактировать",
+				"delete": "Удалить"
+			}
+		},
+		"add-vehicle-page-title": "Добавить машину",
+		"edit-vehicle-page-title": "Редактировать машину",
+		"details-vehicle-page-title": "Данные о машине"
+	},
+	"exams-page": {
+		"title": "Список экзаменов",
+		"table": {
+			"student": "Студент",
+			"instructor": "Инструктор",
+			"start-time": "Время начало",
+			"car-model": "Модель машины",
+			"category": "Категория",
+			"status": "Статус экзамена",
+			"actions": "Действия",
+			"action-buttons": {
+				"details": "Детали",
+				"edit": "Редактировать",
+				"delete": "Удалить"
+			}
+		},
+		"buttons": {
+			"add-new-exam": "Добавить новый экзамен",
+			"return": "Назад",
+			"edit": "Редактировать",
+			"edit-exam": "Редактировать экзамен",
+			"cancel": "Отменить"
+		},
+		"details-exam-page-title": "Детали экзамена",
+		"add-exam-page-title": "Добавить экзамен",
+		"edit-exam-page-title": "Редактировать экзамен"
+	},
+	"Exam": {
+		"stuId cannot be null": "Студент должен быть выбран",
+		"insId cannot be null": "Инструктор должен быть выбран",
+		"vehId cannot be null": "Машина должна быть выбрана"
+	},
+	"Instructor": {
+		"password cannot be null": "Пароль не может быть пустым"
+	},
+	"Student": {
+		"password cannot be null": "Пароль не может быть пустым"
+	}
 }
