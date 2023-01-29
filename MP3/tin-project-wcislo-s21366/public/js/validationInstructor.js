@@ -3,11 +3,13 @@ function validateForm(){
 
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
     const priceInput = document.getElementById('price');
     const licenseInput = document.getElementById('licenseIssueDate');
 
     const errorName = document.getElementById('errorName');
     const errorEmail = document.getElementById('errorEmail');
+    const errorPassword = document.getElementById('errorPassword');
     const errorPrice = document.getElementById('errorPrice');
     const errorLicense = document.getElementById('errorLicense');
     const errorSummary = document.getElementById('errorSummary');
@@ -25,8 +27,8 @@ function validateForm(){
 
     console.log("Before reset Errors");
 
-    resetErrors([nameInput, emailInput, priceInput, licenseInput], 
-                [errorName, errorEmail, errorPrice, errorLicense]
+    resetErrors([nameInput, emailInput, priceInput, licenseInput, passwordInput], 
+                [errorName, errorEmail, errorPrice, errorLicense, errorPassword]
     );
 
     console.log("AFter reset Errors");
@@ -38,58 +40,64 @@ function validateForm(){
     valid = false;
     nameInput.classList.add("error-input");
     errorName.innerText = fieldRequired;
-}else if(!checkTextLengthRange(nameInput.value, 2, 60)) {
-    valid = false;
-    nameInput.classList.add("error-input");
-    errorName.innerText = symbols2_60;
-}
+    }else if(!checkTextLengthRange(nameInput.value, 2, 60)) {
+        valid = false;
+        nameInput.classList.add("error-input");
+        errorName.innerText = symbols2_60;
+    }
 
 
-//validation for email field
-if (!checkRequired(emailInput.value)) {
-    valid = false;
-    emailInput.classList.add("error-input");
-    errorEmail.innerText = fieldRequired;
-} else if (!checkEmailValid(emailInput.value)) {
-    valid = false;
-    emailInput.classList.add("error-input");
-    errorEmail.innerText = validEmail;
-}
+    //validation for email field
+    if (!checkRequired(emailInput.value)) {
+        valid = false;
+        emailInput.classList.add("error-input");
+        errorEmail.innerText = fieldRequired;
+    } else if (!checkEmailValid(emailInput.value)) {
+        valid = false;
+        emailInput.classList.add("error-input");
+        errorEmail.innerText = validEmail;
+    }
+
+        //validation password
+    if (!checkRequired(passwordInput.value)) {
+        valid = false;
+        passwordInput.classList.add("error-input");
+        errorPassword.innerText = fieldRequired;
+    }
+
+
+    //validation for price field
+    if (!checkRequired(priceInput.value)) {
+        //add Price  validation!!!
+        valid = false;
+        priceInput.classList.add("error-input");
+        errorPrice.innerText = fieldRequired;
+    }
+
+    //validation for license field
+    if (!checkDateIfPast(licenseInput.value)) {
+        valid = false;
+        licenseInput.classList.add("error-input");
+        errorLicense.innerText = licenseIssue;
+    }
+
+    //validation for license field
+    if (!checkRequired(licenseInput.value)) {
+        valid = false;
+        licenseInput.classList.add("error-input");
+        errorLicense.innerText = fieldRequired;
+    }
 
 
 
-//validation for price field
-if (!checkRequired(priceInput.value)) {
-    //add Price  validation!!!
-    valid = false;
-    priceInput.classList.add("error-input");
-    errorPrice.innerText = fieldRequired;
-}
-
-//validation for license field
-if (!checkDateIfPast(licenseInput.value)) {
-    valid = false;
-    licenseInput.classList.add("error-input");
-    errorLicense.innerText = licenseIssue;
-}
-
-//validation for license field
-if (!checkRequired(licenseInput.value)) {
-    valid = false;
-    licenseInput.classList.add("error-input");
-    errorLicense.innerText = fieldRequired;
-}
-
-
-
-if (valid) {
-    errorSummary.style.visibility = "hidden";
-    const conf = confirm(questionAddRecord);
-    return conf
-} else {
-    errorSummary.style.visibility = "visible";
-    return false;
-}
+    if (valid) {
+        errorSummary.style.visibility = "hidden";
+        const conf = confirm(questionAddRecord);
+        return conf
+    } else {
+        errorSummary.style.visibility = "visible";
+        return false;
+    }
 
 };
 

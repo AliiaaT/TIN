@@ -19,3 +19,21 @@ exports.permitAuthenticatedUser = (req, res, next) => {
         throw new Error('unauthorized access');
     }
 }
+exports.permitAuthenticatedAdminUser = (req, res, next) => {
+    const loggedUser = req.session.loggedUser;
+    const loggedUserType = req.session.loggedUserType;
+    if(loggedUser && loggedUserType == "administrator") {
+        next();
+    } else {
+        throw new Error('unauthorized access, only administrators have access');
+    }
+}
+exports.permitAuthenticatedAdminAndInstructorUser = (req, res, next) => {
+    const loggedUser = req.session.loggedUser;
+    const loggedUserType = req.session.loggedUserType;
+    if(loggedUser && (loggedUserType == "administrator" || loggedUserType == "instructor")) {
+        next();
+    } else {
+        throw new Error('unauthorized access, only administrators have access');
+    }
+}

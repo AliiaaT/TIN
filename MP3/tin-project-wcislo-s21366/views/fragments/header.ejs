@@ -15,8 +15,10 @@
             <ul class="nav-links">
                 <li><a href="/" class="<%= navLocation == 'main' ? 'active' : ''%>"><h3><%=__('nav.home')%></h3></a></li>
                 <% if(loggedUser) { %>
-                    <li><a href="/student" class="<%= navLocation == 'student' ? 'active' : '' %>"><h3><%=__('nav.students')%></h3></a></li>
-                    <li><a href="/instructor" class="<%= navLocation == 'instructor' ? 'active' : '' %>"><h3><%=__('nav.instructors')%></h3></a></li>
+                    <% if(loggedUserType === "administrator") { %>
+                        <li><a href="/student" class="<%= navLocation == 'student' ? 'active' : '' %>"><h3><%=__('nav.students')%></h3></a></li>
+                        <li><a href="/instructor" class="<%= navLocation == 'instructor' ? 'active' : '' %>"><h3><%=__('nav.instructors')%></h3></a></li>
+                    <% } %>
                     <li><a href="/lesson" class="<%= navLocation == 'lesson' ? 'active' : ''%>" ><h3><%=__('nav.driving-lessons')%></h3></a></li>
                 <% } %>
                             </ul>
@@ -26,20 +28,20 @@
             </ul>
             <% if(!loggedUser) { %>
                 <div id="login">
-                    <h5>Loggin</h5>
+                    <h5><%=__('login.login')%></h5>
                     <form method="post" action="/login" novalidate>
-                        <label for="loginEmail">Email:</label>
+                        <label for="loginEmail"><%=__('login.email')%></label>
                         <input type="email" id="loginEmail" name="email">
             
-                        <label for="loginPassword">Password:</label>
+                        <label for="loginPassword"><%=__('login.password')%></label>
                         <input type="password" id="loginPassword" name="password">
             
-                        <input type="submit" value="Sign in">
+                        <input type="submit" value="<%=__('login.sign-in')%>">
                         <span id="loginErrors"><%= loginError ? loginError : ''%></span>
                     </form>
                 </div>
             <% } else { %>
-                <span>You are logged in as: <%=loggedUser.firstName + " " + loggedUser.lastName%></span>
+                <span><%=__('login.logged-in-as')%> <%=loggedUser.email%></span>
                 <a href="/logout">Sign out</a>
             <% } %>
         </nav>

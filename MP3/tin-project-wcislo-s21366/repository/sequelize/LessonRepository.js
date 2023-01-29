@@ -3,6 +3,7 @@ const Sequelize = require('sequelize');
 const Lesson = require('../../model/sequelize/Lesson');
 const Student = require('../../model/sequelize/Student');
 const Instructor = require('../../model/sequelize/Instructor');
+const { where } = require('sequelize');
 
 exports.getLessons = () => {
     return Lesson.findAll({include: [
@@ -14,6 +15,32 @@ exports.getLessons = () => {
             model: Instructor,
             as: 'instructor'
         }]
+    });
+};
+
+exports.getLessonByStuId = (stuId) => {
+    return Lesson.findAll({include: [
+        {
+            model: Student,
+            as: 'student'
+        },
+        {
+            model: Instructor,
+            as: 'instructor'
+        }], where: {stuId: stuId}
+    });
+};
+
+exports.getLessonByInsId = (insId) => {
+    return Lesson.findAll({include: [
+        {
+            model: Student,
+            as: 'student'
+        },
+        {
+            model: Instructor,
+            as: 'instructor'
+        }], where: {insId: insId}
     });
 };
 

@@ -2,13 +2,37 @@ const LessonRepository = require('../repository/sequelize/LessonRepository')
 
 
 exports.showLessonList = (req, res, next) => {
-    LessonRepository.getLessons()
-        .then(lessns => {
-            res.render('lessonsPage/lesson', {
-                lessns: lessns,
-                navLocation: 'lesson'
-            });
-        })
+    console.log(req.session.loggedUser)
+    // logged user is student - show lessons with him
+    if (req.session.loggedUserType == "student") {
+        LessonRepository.getLessonByStuId(req.session.loggedUser._id)
+        // LessonRepository.getLessons()
+            .then(lessns => {
+                res.render('lessonsPage/lesson', {
+                    lessns: lessns,
+                    navLocation: 'lesson'
+                });
+            })
+    } else if (req.session.loggedUserType == "instructor") {
+        LessonRepository.getLessonByInsId(req.session.loggedUser._id)
+        // LessonRepository.getLessons()
+            .then(lessns => {
+                res.render('lessonsPage/lesson', {
+                    lessns: lessns,
+                    navLocation: 'lesson'
+                });
+            })
+    } else {
+        // for admin show all lessons
+        LessonRepository.getLessons()
+        // LessonRepository.getLessons()
+            .then(lessns => {
+                res.render('lessonsPage/lesson', {
+                    lessns: lessns,
+                    navLocation: 'lesson'
+                });
+            })
+    }
 }
 
 exports.showLessonDetails = (req, res, next) => {

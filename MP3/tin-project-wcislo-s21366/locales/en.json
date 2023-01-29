@@ -5,6 +5,13 @@
 		"instructors": "Instructors",
 		"driving-lessons": "Driving Lessons"
 	},
+	"login": {
+		"email": "Email:",
+		"password": "Password:",
+		"login": "Login",
+		"sign-in": "Sign in",
+		"logged-in-as": "You are logged in as:"
+	},
 	"home-page": {
 		"title": "About our driving academy GAZELKA Warsaw",
 		"description1": "We appreciate your interest in driving license courses at GAZELKA! We are a professional, fast growing driving school, established in 2014. Since then we've been offering driving lessons to suit almost every need. GAZELKA helped many Polish and foreign nationals pass the driving exam and get the driving license. Whether for your work, study or to feel more confident with your driving techniques, contact us to find out how we can help you.",

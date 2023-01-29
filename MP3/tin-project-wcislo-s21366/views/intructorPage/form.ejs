@@ -33,6 +33,14 @@
                     <%= __(validationErrors.find(e => e.path.includes('email')).message) %>
                 <% } %>
             </span>
+            
+            <label for="password"><%=__('students-page.table.password')%> <span class="symbol-required">*</span></label>
+            <input id="password" name="password" type="password" placeholder="<%=__('verification.password')%>" class="<%= validationErrors.find(e => e.path.includes('password')) ? 'error-input' : ''%>" value="<%= inst.password %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            <span id="errorPassword" class="errors-text">
+                <% if(validationErrors.find(e => e.path.includes('password'))) { %>
+                    <%= __(validationErrors.find(e => e.path.includes('password')).message) %>
+                <% } %>
+            </span>
 
             <label for="price"><%=__('instructors-page.table.price')%><span class="symbol-required">*</span></label>
             <input id="price" name="price" type="number" value="<%= inst.price %>" class="<%= validationErrors.find(e => e.path.includes('price')) ? 'error-input' : ''%>" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>

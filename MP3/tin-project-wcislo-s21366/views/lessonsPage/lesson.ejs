@@ -36,15 +36,22 @@
                     <td>
                         <ul class="list">
                             <li><a href="/lesson/details/<%=lesson._id%>" class="list-action-button-details"><%=__('driving-lessons-page.table.action-buttons.details')%></a></li>
-                            <li><a href="/lesson/edit/<%=lesson._id%>" class="list-action-button-edit"><%=__('driving-lessons-page.table.action-buttons.edit')%></a></li>
-                            <li><a href="/lesson/delete/<%=lesson._id%>" class="list-action-button-delete"><%=__('driving-lessons-page.table.action-buttons.delete')%></a></li>
+                            
+                             <% if (loggedUserType == "administrator") { %>
+                                <li><a href="/lesson/edit/<%=lesson._id%>" class="list-action-button-edit"><%=__('driving-lessons-page.table.action-buttons.edit')%></a></li>
+                            <% } %>
+                            <% if (loggedUserType == "instructor" || loggedUserType == "administrator") { %>
+                                <li><a href="/lesson/delete/<%=lesson._id%>" class="list-action-button-delete"><%=__('driving-lessons-page.table.action-buttons.delete')%></a></li>
+                            <% } %>
                         </ul>
                     </td>
                 </tr>
                 <% } %>
             </tbody>
         </table>
-        <p><a href="/lesson/add" class="button-add"><%=__('driving-lessons-page.buttons.add-new-lesson')%></a></p>
+        <% if (loggedUserType == "administrator") { %>
+            <p><a href="/lesson/add" class="button-add"><%=__('driving-lessons-page.buttons.add-new-lesson')%></a></p>
+        <% } %>
     </div>
     
     <%- include('../fragments/footer.ejs') %>

@@ -98,7 +98,9 @@
                 <p id="errorSummary" style="visibility: hidden;"><%=__('errors.form-contains-errors')%></p>
                 <% if(formMode=='showDetails') { %>
                     <div class="section-buttons">
-                        <a href="/lesson/edit/<%= lesson._id%>" class="form-button-edit"><%=__('driving-lessons-page.buttons.edit')%></a>
+                        <% if(loggedUserType =='administrator') { %>
+                            <a href="/lesson/edit/<%= lesson._id%>" class="form-button-edit"><%=__('driving-lessons-page.buttons.edit')%></a>
+                        <% } %>    
                     </div>
                     <br>
                 <% } %>

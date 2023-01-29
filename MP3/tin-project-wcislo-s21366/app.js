@@ -48,7 +48,9 @@ app.use(session({
 // make session available to templates
 app.use((req, res, next) => {
   const loggedUser = req.session.loggedUser;
+  const loggedUserType = req.session.loggedUserType;
   res.locals.loggedUser = loggedUser;
+  res.locals.loggedUserType = loggedUserType;
   if (!res.locals.loginError) {
     res.locals.loginError = undefined;
   }
@@ -79,8 +81,8 @@ const authUtil = require('./util/authUtils');
 
 //Aliia here user router
 app.use('/', indexRouter);
-app.use('/student', authUtil.permitAuthenticatedUser, studentRouter);
-app.use('/instructor', authUtil.permitAuthenticatedUser, instructorRouter);
+app.use('/student', authUtil.permitAuthenticatedAdminUser, studentRouter);
+app.use('/instructor', authUtil.permitAuthenticatedAdminUser, instructorRouter);
 app.use('/lesson', authUtil.permitAuthenticatedUser, lessonRouter);
 app.use('/api/students', stuApiRouter);
 app.use('/api/instructors', insApiRouter);

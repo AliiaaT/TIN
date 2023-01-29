@@ -8,6 +8,12 @@ exports.getInstructors = () => {
     return Instructor.findAll();
 };
 
+exports.findByEmail = (email) => {
+    return Instructor.findOne({
+        where: {email: email}
+    });
+}
+
 exports.getInstructorById = (insId) => {
     return Instructor.findByPk(insId,
         {
@@ -22,10 +28,12 @@ exports.getInstructorById = (insId) => {
     });
 };
 
+const authUtil = require('../../util/authUtils');
 exports.createInstructor = (newInsData) =>{
     return Instructor.create({
         name: newInsData.name,
         email: newInsData.email,
+        password: authUtil.hashPassword(newInsData.password),
         price: newInsData.price,
         licenseIssueDate: newInsData.licenseIssueDate,
         hasCar: newInsData.hasCar
@@ -38,6 +46,8 @@ exports.updateInstructor = (insId, insData) =>{
     const price = insData.price;
     const licenseIssueDate = insData.licenseIssueDate;
     const hasCar = insData.hasCar;
+
+    insData.password = authUtil.hashPassword(insData.password);
     return Instructor.update(insData, {where: {_id: insId}});
 };
 
