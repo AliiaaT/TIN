@@ -8,12 +8,12 @@ const authUtil = require('../util/authUtils');
 
 router.get('/', examController.showExamList);
 router.get('/details/:examId', examController.showExamDetails);
-router.get('/add', authUtil.permitAuthenticatedAdminAndInstructorUser, examController.showAddExamForm);
-router.get('/edit/:examId', authUtil.permitAuthenticatedAdminAndInstructorUser, examController.showEditExamForm);
+router.get('/add', authUtil.permitAuthenticatedAdminUser, examController.showAddExamForm);
+router.get('/edit/:examId', authUtil.permitAuthenticatedAdminUser, examController.showEditExamForm);
 
 
-router.post('/add', authUtil.permitAuthenticatedAdminAndInstructorUser, examController.addExam);
-router.post('/edit', authUtil.permitAuthenticatedAdminAndInstructorUser, examController.updateExam);
+router.post('/add', authUtil.permitAuthenticatedAdminUser, examController.addExam);
+router.post('/edit', authUtil.permitAuthenticatedAdminUser, examController.updateExam);
 router.get('/delete/:examId', authUtil.permitAuthenticatedAdminAndInstructorUser, examController.deleteExam);
 
 module.exports = router;

@@ -45,8 +45,7 @@ exports.login = (req, res, next) => {
 }
 
 const loginIfCorrectPassword = (req, res, password, user, type) => {
-    console.log("loginIfCorrectPassword");
-    console.log(user);
+
     if(authUtil.comparePasswords(password, user.password) === true) {
         req.session.loggedUserType = type;
         req.session.loggedUser = user;
